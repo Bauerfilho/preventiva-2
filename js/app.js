@@ -1,5 +1,5 @@
 /* =========================================
-   SINDROMES FEBRIS — APP PRINCIPAL
+   INTENSIVÃO PREVENTIVA — APP PRINCIPAL
    ========================================= */
 
 (function () {
@@ -7,13 +7,15 @@
 
   /* ─────────────────────────────────────────
      MAPEAMENTO DE CORES POR BLOCO
+     (mesmas cores de GO_BLOCKS em js/data.js)
   ───────────────────────────────────────── */
   const BLOCK_META = {
-    entrada:    { color: '#0f766e', soft: 'rgba(15,118,110,0.22)', icon: '⌂' },
-    integracao: { color: '#0f766e', soft: 'rgba(15,118,110,0.22)', icon: '◇' },
-    dengue:     { color: '#dc2626', soft: 'rgba(220,38,38,0.20)',  icon: 'D' },
-    icterica:   { color: '#d97706', soft: 'rgba(217,119,6,0.22)',  icon: 'I' },
-    leish:      { color: '#7c3aed', soft: 'rgba(124,58,237,0.22)', icon: 'L' },
+    home:  { color: '#6366f1', soft: 'rgba(99,102,241,0.22)',  icon: '⌂' },
+    m1:    { color: '#2563eb', soft: 'rgba(37,99,235,0.22)',   icon: '1' },
+    m2:    { color: '#14b8a6', soft: 'rgba(20,184,166,0.22)',  icon: '2' },
+    m3:    { color: '#f97316', soft: 'rgba(249,115,22,0.22)',  icon: '3' },
+    m4:    { color: '#8b5cf6', soft: 'rgba(139,92,246,0.22)',  icon: '4' },
+    integ: { color: '#10b981', soft: 'rgba(16,185,129,0.22)',  icon: '★' },
   };
 
   /* ─────────────────────────────────────────
@@ -24,7 +26,7 @@
     if (!nav) return;
     nav.innerHTML = '';
 
-    const blockOrder = ['entrada', 'integracao', 'dengue', 'icterica', 'leish'];
+    const blockOrder = ['home', 'm1', 'm2', 'm3', 'm4', 'integ'];
 
     blockOrder.forEach(blockId => {
       const block = GO_BLOCKS[blockId];
@@ -88,7 +90,7 @@
       nav.appendChild(group);
     });
 
-    /* Abrir o bloco "entrada" por padrão */
+    /* Abrir o bloco "home" por padrão */
     const firstGroup = nav.querySelector('.nav-group');
     if (firstGroup) openGroup(firstGroup, firstGroup.querySelector('.nav-group-header'));
   }
@@ -217,7 +219,7 @@
         </div>
       </div>`;
 
-    ['entrada','integracao','dengue','icterica','leish'].forEach(blockId => {
+    ['home','m1','m2','m3','m4','integ'].forEach(blockId => {
       const blk  = GO_BLOCKS[blockId];
       const meta = BLOCK_META[blockId];
       if (!blk) return;
