@@ -471,13 +471,665 @@ GO_RENDER['m1-06'] = function(container, page) {
   renderStandard(container, page, body);
 };
 
-/* As próximas páginas (m1-07 a m1-13) seguem em outro bloco para manter o arquivo legível. */
+/* ─────────────────────────────────────────
+   PÁGINA 7 — Sensibilidade
+───────────────────────────────────────── */
+GO_RENDER['m1-07'] = function(container, page) {
+  const body = `
+  ${pageHero({
+    module: 'm1', moduleLabel: 'Módulo 1 — Validação de Testes', pageNum: 7,
+    title: 'Sensibilidade: detectar doentes e confiar no negativo',
+    lead: 'A coluna dos doentes em ação — onde nasce a frase "SnNout: teste sensível, negativo exclui".',
+    grad: 'var(--grad-m1)'
+  })}
 
-/* Stubs temporários para m1-07 a m1-13 — preenchidos nas próximas iterações */
-['m1-07','m1-08','m1-09','m1-10','m1-11','m1-12','m1-13'].forEach(id => {
-  if (!GO_RENDER[id]) GO_RENDER[id] = function(c, p) {
-    c.innerHTML = pageHero({module:'m1', moduleLabel:'Módulo 1', title: p.label, lead:'Página em construção contínua — em breve preenchida com conteúdo integral.', grad:'var(--grad-m1)'}) +
-      '<div style="padding: 40px; text-align:center; color:var(--text-muted)">Conteúdo desta página ainda sendo costurado.</div>' +
-      navFooter(p.id);
-  };
-});
+  ${conceptHero({
+    question: 'Pergunta central',
+    title: 'Se sensibilidade fala de teste positivo nos doentes, por que dizemos que um teste sensível serve para excluir doença?',
+    lead: 'O paradoxo só se resolve quando entendemos que sensibilidade alta implica falso negativo baixo — e é isso que dá confiança ao resultado negativo.',
+    glow: 'rgba(34,197,94,.22)'
+  })}
+
+  ${keyTerms(['sensibilidade','verdadeiro positivo','falso negativo','rastreamento','banco de sangue','SnNout','anti-HCV','infertilidade'])}
+
+  <div class="prose">
+    <p>A <span class="keyword">sensibilidade</span> é a probabilidade de o teste dar positivo entre as pessoas que <strong>realmente têm a doença</strong>. Em outras palavras, ela mora <em>na coluna dos doentes</em> da tabela 2x2: olha apenas para VP e FN.</p>
+
+    <p>Quando a sensibilidade é alta, significa que pouquíssimos doentes recebem resultado negativo (FN baixo). Por isso, se um teste muito sensível der negativo, você pode <strong>confiar nesse negativo</strong> — porque é improvável que ele esteja errado entre quem tem a doença.</p>
+
+    <p class="pulled">Por isso a frase de fixação clássica: <strong>"teste sensível, negativo exclui"</strong> — em inglês, <em>SnNout</em> (Sensitive, Negative, rules out).</p>
+
+    <p>Pense em um <strong>banco de sangue</strong> rastreando hepatite C. O custo de um falso negativo é catastrófico: uma bolsa contaminada chega a múltiplos receptores. O banco precisa de um teste com sensibilidade altíssima — mesmo que isso aumente falsos positivos (bolsas descartadas indevidamente). Entre os dois erros, descartar uma bolsa saudável é muito menos grave do que transfundir uma bolsa contaminada.</p>
+
+    <p>Esse é o coração do uso clínico da sensibilidade: <strong>doenças graves, contagiosas, ou que exigem rastreamento amplo</strong> — câncer, HIV, hepatites, infarto agudo — pedem testes com sensibilidade alta na linha de frente.</p>
+  </div>
+
+  ${sectionTitle('🧪','Calculadora interativa — coluna dos doentes', 'var(--c-green)')}
+  <p style="color:var(--text-muted); margin-bottom: 12px;">Tabela ajustada para um cenário tipo banco de sangue (alta sensibilidade). Mude VP/FN e veja a sensibilidade reagir em tempo real.</p>
+  ${PrevInt.tabela2x2({ vp: 99, fp: 50, fn: 1, vn: 950, lockPrev: true, title: 'Cenário banco de sangue — hepatite C' })}
+
+  ${sectionTitle('🎯','Visual SnNout × SpPin', 'var(--c-amber)')}
+  <div class="dist-wrap">${PrevSVG.snnoutSpinDual()}</div>
+
+  ${didaxBlock('caso','🩺','Situação-problema: o doador de sangue',
+    `<p>Um banco de sangue testa 1.000 bolsas em uma região com prevalência baixa de hepatite C. Surge um lote de 50 testes positivos. Antes de descartar, o serviço repete os exames com um teste confirmatório (mais específico). Por que esse fluxo existe?</p>
+    <p><strong>Resposta:</strong> o teste inicial é <em>altamente sensível</em> — sua função é não deixar passar nenhum caso. Por isso ele aceita falsos positivos. O confirmatório, mais específico, separa quem realmente tem do que foi positivo apenas por reação cruzada.</p>`)}
+
+  ${didaxBlock('importa','💡','Por que isso importa na prática?',
+    `<p>Em <strong>rastreamento de doença grave</strong>, errar para mais (FP) custa um susto e exames adicionais. Errar para menos (FN) pode custar vidas. Por isso sensibilidade alta é critério de entrada — não de saída — da cascata diagnóstica.</p>`)}
+
+  ${bancaCallout(`<p>A banca quer que você associe <strong>sensibilidade → exclusão</strong> e que reconheça os cenários que pedem sensibilidade alta: rastreamento, banco de sangue, câncer, infarto, COVID, doenças contagiosas. A frase-âncora é <strong>"teste sensível, negativo exclui"</strong>.</p>`)}
+
+  ${didaxBlock('pegadinha','⚠️','Pegadinha de prova',
+    `<p>A banca pode dizer que "teste sensível serve para confirmar doença". <strong>Errado.</strong> Teste sensível serve para <em>excluir</em> doença quando dá negativo. Para confirmar, precisamos de especificidade.</p>`)}
+
+  ${didaxBlock('naoconfunda','🔀','Não confunda',
+    `<p>Sensibilidade ≠ valor preditivo negativo. Sensibilidade é propriedade do teste (não muda com prevalência); VPN depende de prevalência. Veremos isso em detalhe no Módulo 2.</p>`)}
+
+  ${didaxBlock('errocomum','❌','Erro comum',
+    `<p>Dividir VP pelo total da população (VP + FP + FN + VN). <strong>Errado.</strong> O denominador da sensibilidade é apenas a coluna dos doentes: <strong>VP + FN</strong>.</p>`)}
+
+  ${didaxBlock('avancado','⚡','O que diferencia o aluno avançado',
+    `<p>O avançado nunca lê "teste sensível" sem perguntar: <em>qual a especificidade?</em> Sensibilidade alta isolada pode esconder uma especificidade catastrófica — um teste com sensibilidade 100% e especificidade 0% dá positivo em todo mundo e não vale nada.</p>`)}
+
+  ${formulaBox('Sensibilidade',
+    `${frac('VP','VP + FN')} = ${frac('verdadeiros positivos','total de doentes')}`,
+    'O denominador é apenas a coluna dos doentes.')}
+
+  ${didaxBlock('numerico','🔢','Exemplo numérico preservado — infertilidade masculina',
+    `<ul class="tight">
+      <li>Estudo com <strong>200 doentes</strong> e 200 sadios.</li>
+      <li>VP = <strong>182</strong>, FN = <strong>18</strong>.</li>
+      <li>Sensibilidade = 182 / 200 = <strong>91%</strong>.</li>
+      <li>Interpretação: o teste detecta 91% dos homens com infertilidade. Em 9 a cada 100 doentes, ele falha — é o falso negativo que precisamos vigiar.</li>
+    </ul>`)}
+
+  ${revisaoAtiva([
+    { q: 'Qual a fórmula da sensibilidade?', a: 'VP / (VP + FN). Apenas a coluna dos doentes entra no cálculo.' },
+    { q: 'Por que sensibilidade alta dá confiança no resultado negativo?', a: 'Porque sensibilidade alta significa FN baixo. Se quase nenhum doente sai negativo, um negativo é, com alta probabilidade, um sadio.' },
+    { q: 'Cite três cenários que pedem teste sensível.', a: 'Rastreamento populacional (ex.: sangue oculto, mamografia), triagem em banco de sangue (HCV, HIV), exclusão de doenças graves de evolução rápida (infarto, sepse).' }
+  ])}
+
+  ${pageFooterMeta({
+    resumo: 'Sensibilidade = VP / (VP + FN). Mora na coluna dos doentes, não muda com prevalência e dá confiança ao resultado negativo. SnNout: teste sensível, negativo exclui.',
+    proximaConexao: 'Se um teste sensível é bom para excluir, podemos somar testes sensíveis em paralelo e ficar ainda mais seguros — é o que veremos agora.',
+    nextId: 'm1-08'
+  })}
+  `;
+  renderStandard(container, page, body);
+};
+
+/* ─────────────────────────────────────────
+   PÁGINA 8 — Testes em paralelo
+───────────────────────────────────────── */
+GO_RENDER['m1-08'] = function(container, page) {
+  const body = `
+  ${pageHero({
+    module: 'm1', moduleLabel: 'Módulo 1 — Validação de Testes', pageNum: 8,
+    title: 'Testes em paralelo: somando sensibilidade para excluir doença',
+    lead: 'Quando dois ou mais testes correm juntos — basta um positivo para seguir investigando.',
+    grad: 'var(--grad-m1)'
+  })}
+
+  ${conceptHero({
+    question: 'Pergunta central',
+    title: 'Como combinar testes para reduzir ainda mais a chance de deixar um doente passar?',
+    lead: 'Em situações de alto risco, não basta ter um teste sensível — colocamos vários em paralelo e exigimos que TODOS sejam negativos para excluir.',
+    glow: 'rgba(34,197,94,.22)'
+  })}
+
+  ${keyTerms(['testes em paralelo','sensibilidade somada','ECG seriado','troponina','precordialgia','infarto','dor torácica atípica'])}
+
+  <div class="prose">
+    <p>Testes em paralelo são feitos <strong>ao mesmo tempo</strong> (ou em janela curta), e o resultado da combinação é considerado positivo se <em>qualquer um</em> dos testes for positivo. A regra é simples: <strong>basta um positivo para que o conjunto seja positivo</strong>.</p>
+
+    <p>Por isso, paralelo <strong>aumenta a sensibilidade</strong> do conjunto — porque é mais difícil que <em>todos</em> os testes deixem o doente passar. Cada teste adicional cobre uma fração do "buraco" deixado pelo anterior.</p>
+
+    <p class="pulled">A consequência: paralelo <strong>aumenta também os falsos positivos</strong>, e por isso é estratégia de <em>exclusão</em>, não de confirmação. O preço de não perder doente é aceitar mais alarmes falsos.</p>
+
+    <p>Caso clínico clássico: um homem de 60 anos chega ao pronto-socorro com <strong>precordialgia atípica</strong>. O médico não pode arriscar deixar um infarto passar. Faz <strong>ECG seriado + troponina seriada</strong> em paralelo. Se ambos vierem negativos em janela adequada, a confiança para descartar síndrome coronariana aguda aumenta muito.</p>
+
+    <p>Em rastreamento de câncer de colo, podemos combinar <strong>citologia + teste de HPV</strong> em paralelo — basta um positivo para indicar colposcopia. O custo da combinação é mais colposcopias, mas o ganho é detectar lesões que cada teste, isoladamente, poderia perder.</p>
+  </div>
+
+  ${sectionTitle('🔀','Paralelo × Série — comparação visual', 'var(--c-amber)')}
+  <div class="dist-wrap">${PrevSVG.paraleloSerie()}</div>
+
+  ${sectionTitle('🧪','Simulador interativo — paralelo aumenta sensibilidade', 'var(--c-green)')}
+  <p style="color:var(--text-muted); margin-bottom: 12px;">Aumente VP e reduza FN para simular a adição de um segundo teste em paralelo. Observe a sensibilidade subir.</p>
+  ${PrevInt.tabela2x2({ vp: 195, fp: 80, fn: 5, vn: 720, lockPrev: true, title: 'Cenário ECG + troponina seriados (paralelo)' })}
+
+  ${didaxBlock('caso','🩺','Situação-problema: homem 60 anos, precordialgia atípica',
+    `<p>Paciente chega ao PS com dor torácica que pode ser cardíaca, esofágica ou musculoesquelética. ECG inicial normal, troponina inicial negativa. <strong>Não basta.</strong> O médico solicita ECG seriado a cada 30 minutos e troponina em 0h, 3h e 6h — em paralelo. Se todos vierem negativos, a probabilidade de infarto cai drasticamente; o paciente pode receber alta com plano de ambulatório.</p>
+    <p><strong>Lição:</strong> em situação de alto risco e baixo custo de FP, somar testes em paralelo é proteção contra o erro grave de mandar embora um infarto.</p>`)}
+
+  ${didaxBlock('importa','💡','Por que isso importa na prática?',
+    `<p>Sempre que o custo do falso negativo é catastrófico (morte, contágio, perda de janela terapêutica), <strong>some testes em paralelo</strong>. O paciente fica investigando mais — vale a pena.</p>`)}
+
+  ${bancaCallout(`<p>A banca cobra a associação <strong>paralelo → sensibilidade → exclusão</strong>. Frase âncora: <strong>"paralelo aumenta sensibilidade"</strong>. O contrário (paralelo aumenta especificidade) é a pegadinha clássica.</p>`)}
+
+  ${didaxBlock('pegadinha','⚠️','Pegadinha de prova',
+    `<p>Inverter o papel: dizer que paralelo aumenta especificidade. <strong>Errado.</strong> Paralelo aumenta sensibilidade e, como efeito colateral, também aumenta FP.</p>`)}
+
+  ${didaxBlock('naoconfunda','🔀','Não confunda',
+    `<p>Testes em paralelo ≠ testes simultâneos quaisquer. A definição operacional é: <strong>basta um positivo para considerar o conjunto positivo</strong>. Se a regra fosse "todos positivos para considerar positivo", já seria série.</p>`)}
+
+  ${didaxBlock('errocomum','❌','Erro comum',
+    `<p>Aplicar paralelo em rastreamento populacional barato. Em prevalência muito baixa, paralelo gera um exército de FP — gasto, ansiedade e exames confirmatórios desnecessários. Use paralelo em alto risco, não em qualquer triagem.</p>`)}
+
+  ${didaxBlock('avancado','⚡','O que diferencia o aluno avançado',
+    `<p>O avançado pondera: <em>qual o ganho marginal de sensibilidade do segundo teste? E o custo em FP?</em> Adicionar um teste em paralelo só faz sentido se o ganho de sensibilidade compensar o aumento de FP no contexto clínico.</p>`)}
+
+  ${didaxBlock('numerico','🔢','Exemplo numérico — paralelo no PS',
+    `<ul class="tight">
+      <li>Teste A (ECG inicial): sensibilidade 60%.</li>
+      <li>Teste B (troponina 6h): sensibilidade 85%.</li>
+      <li>Em paralelo (basta um positivo), sensibilidade combinada ≈ 1 − (1 − 0,60)(1 − 0,85) = 1 − 0,06 = <strong>94%</strong>.</li>
+      <li>Interpretação: a chance de um doente passar despercebido cai de 15–40% (testes isolados) para ~6% (paralelo).</li>
+    </ul>`)}
+
+  ${revisaoAtiva([
+    { q: 'Testes em paralelo aumentam o quê?', a: 'Sensibilidade do conjunto. Como efeito colateral, também aumentam os falsos positivos.' },
+    { q: 'Qual a regra operacional do paralelo?', a: 'Basta um teste positivo para considerar o conjunto positivo.' },
+    { q: 'Em que cenário paralelo é justificado?', a: 'Quando o custo do falso negativo é muito alto: emergência (infarto, AVC), doença contagiosa grave, rastreamento de câncer de alto risco.' }
+  ])}
+
+  ${pageFooterMeta({
+    resumo: 'Testes em paralelo aumentam a sensibilidade do conjunto: basta um positivo para que o conjunto seja positivo. Estratégia de exclusão em alto risco — paga o preço em FP.',
+    proximaConexao: 'Se a coluna dos doentes nos dá sensibilidade, falta entender o outro lado da tabela — a coluna dos sadios, onde vive a especificidade.',
+    nextId: 'm1-09'
+  })}
+  `;
+  renderStandard(container, page, body);
+};
+
+/* ─────────────────────────────────────────
+   PÁGINA 9 — Especificidade
+───────────────────────────────────────── */
+GO_RENDER['m1-09'] = function(container, page) {
+  const body = `
+  ${pageHero({
+    module: 'm1', moduleLabel: 'Módulo 1 — Validação de Testes', pageNum: 9,
+    title: 'Especificidade: confiar no positivo e proteger contra iatrogenia',
+    lead: 'A coluna dos sadios em ação — SpPin: teste específico, positivo confirma.',
+    grad: 'var(--grad-m1)'
+  })}
+
+  ${conceptHero({
+    question: 'Pergunta central',
+    title: 'Se especificidade fala de teste negativo nos sadios, por que ela serve para CONFIRMAR doença?',
+    lead: 'Porque especificidade alta significa falso positivo baixo — e isso dá confiança ao positivo, não ao negativo.',
+    glow: 'rgba(239,68,68,.22)'
+  })}
+
+  ${keyTerms(['especificidade','verdadeiro negativo','falso positivo','SpPin','histopatológico','adenocarcinoma','confirmação','cirurgia','quimioterapia'])}
+
+  <div class="prose">
+    <p>A <span class="keyword">especificidade</span> é a probabilidade de o teste dar negativo entre as pessoas que <strong>realmente não têm a doença</strong>. Ela mora na <em>coluna dos sadios</em> da tabela 2x2 — olha apenas FP e VN.</p>
+
+    <p>Quando a especificidade é alta, significa que pouquíssimos sadios recebem resultado positivo (FP baixo). Por isso, se um teste muito específico der positivo, você pode <strong>confiar nesse positivo</strong>: é improvável que ele esteja errado, porque sadios quase nunca dão positivo nesse teste.</p>
+
+    <p class="pulled">Por isso a frase-âncora: <strong>"teste específico, positivo confirma"</strong> — em inglês, <em>SpPin</em> (Specific, Positive, rules in).</p>
+
+    <p>Pense em um <strong>exame histopatológico</strong> identificando adenocarcinoma. Antes de submeter o paciente a uma cirurgia oncológica, quimioterapia ou radioterapia — todos com alto custo emocional, físico e financeiro — o sistema clínico exige um teste com especificidade altíssima. O preço de tratar um falso positivo seria devastador: cirurgia desnecessária, efeitos colaterais, trauma psicológico, possível iatrogenia.</p>
+
+    <p>É por isso que cirurgia oncológica não começa com um exame de imagem suspeito — começa com <strong>confirmação histopatológica</strong>. O histopatológico tem especificidade próxima de 100% porque visualiza diretamente o tecido sob microscopia.</p>
+  </div>
+
+  ${sectionTitle('🧪','Calculadora interativa — coluna dos sadios', 'var(--c-red)')}
+  <p style="color:var(--text-muted); margin-bottom: 12px;">Cenário tipo histopatológico (alta especificidade). Veja como reduzir FP eleva a especificidade.</p>
+  ${PrevInt.tabela2x2({ vp: 95, fp: 2, fn: 5, vn: 898, lockPrev: true, title: 'Cenário histopatológico — adenocarcinoma' })}
+
+  ${sectionTitle('🎯','Visual SpPin × SnNout', 'var(--c-amber)')}
+  <div class="dist-wrap">${PrevSVG.snnoutSpinDual()}</div>
+
+  ${didaxBlock('caso','🩺','Situação-problema: o paciente com nódulo pulmonar',
+    `<p>Paciente com nódulo pulmonar suspeito na TC. Antes de operar, exige-se <strong>biópsia com histopatológico</strong>. A imagem sozinha tem boa sensibilidade — encontra muitos nódulos — mas especificidade limitada (nem todo nódulo é câncer). Operar baseado só em imagem geraria toracotomias em pacientes com inflamação ou nódulo benigno.</p>
+    <p><strong>Lição:</strong> antes de tratamento agressivo, sempre exija teste com alta especificidade. Confirmar > rastrear, nesse ponto da cascata.</p>`)}
+
+  ${didaxBlock('importa','💡','Por que isso importa na prática?',
+    `<p>Sempre que a conduta seguinte é <strong>cirúrgica, quimioterápica, ou potencialmente iatrogênica</strong>, a especificidade do teste-âncora precisa ser alta. Tratar falso positivo nesse contexto é dano grave.</p>`)}
+
+  ${bancaCallout(`<p>A banca cobra a associação <strong>especificidade → confirmação</strong>. Frase âncora: <strong>"teste específico, positivo confirma"</strong>. Exemplos clássicos: histopatológico, cultura, biópsia. Cenários: cirurgia, oncologia, transplante.</p>`)}
+
+  ${didaxBlock('pegadinha','⚠️','Pegadinha de prova',
+    `<p>Dizer que "teste específico serve para excluir doença". <strong>Errado.</strong> Teste específico serve para <em>confirmar</em> doença quando dá positivo. Para excluir, precisamos de sensibilidade.</p>`)}
+
+  ${didaxBlock('naoconfunda','🔀','Não confunda',
+    `<p>Especificidade ≠ valor preditivo positivo. Especificidade é propriedade do teste; VPP depende de prevalência. Em doença rara, mesmo teste muito específico tem VPP baixo — veremos isso no Módulo 2.</p>`)}
+
+  ${didaxBlock('errocomum','❌','Erro comum',
+    `<p>Dividir VN pelo total geral. <strong>Errado.</strong> O denominador da especificidade é apenas a coluna dos sadios: <strong>FP + VN</strong>.</p>`)}
+
+  ${didaxBlock('avancado','⚡','O que diferencia o aluno avançado',
+    `<p>O avançado nunca propõe tratamento agressivo sem confirmar com teste de alta especificidade. E sabe que, mesmo com especificidade alta, doença rara reduz o VPP — uma armadilha que será desmontada no Módulo 2.</p>`)}
+
+  ${formulaBox('Especificidade',
+    `${frac('VN','FP + VN')} = ${frac('verdadeiros negativos','total de sadios')}`,
+    'O denominador é apenas a coluna dos sadios.')}
+
+  ${didaxBlock('numerico','🔢','Exemplo numérico preservado — infertilidade masculina',
+    `<ul class="tight">
+      <li>200 sadios no estudo.</li>
+      <li>VN = <strong>176</strong>, FP = <strong>24</strong>.</li>
+      <li>Especificidade = 176 / 200 = <strong>88%</strong>.</li>
+      <li>Interpretação: o teste classifica corretamente como negativo 88 a cada 100 sadios. Em 12 a cada 100 ele erra para mais (FP).</li>
+    </ul>`)}
+
+  ${revisaoAtiva([
+    { q: 'Qual a fórmula da especificidade?', a: 'VN / (FP + VN). Apenas a coluna dos sadios entra no cálculo.' },
+    { q: 'Por que especificidade alta dá confiança no positivo?', a: 'Porque FP baixo: se quase nenhum sadio sai positivo, um positivo é, com alta probabilidade, um doente.' },
+    { q: 'Cite cenários que pedem teste específico.', a: 'Confirmação antes de cirurgia oncológica, antes de quimioterapia, antes de transplante, e qualquer tratamento agressivo cujo dano da iatrogenia seja grande.' }
+  ])}
+
+  ${pageFooterMeta({
+    resumo: 'Especificidade = VN / (FP + VN). Mora na coluna dos sadios, não muda com prevalência, dá confiança ao resultado positivo. SpPin: teste específico, positivo confirma.',
+    proximaConexao: 'Se sensibilidade combinada em paralelo aumenta exclusão, especificidade combinada em série aumenta confirmação. Próxima parada.',
+    nextId: 'm1-10'
+  })}
+  `;
+  renderStandard(container, page, body);
+};
+
+/* ─────────────────────────────────────────
+   PÁGINA 10 — Testes em série
+───────────────────────────────────────── */
+GO_RENDER['m1-10'] = function(container, page) {
+  const body = `
+  ${pageHero({
+    module: 'm1', moduleLabel: 'Módulo 1 — Validação de Testes', pageNum: 10,
+    title: 'Testes em série: somando especificidade para confirmar doença',
+    lead: 'Quando os testes correm em sequência — só seguimos enquanto todos vêm positivos.',
+    grad: 'var(--grad-m1)'
+  })}
+
+  ${conceptHero({
+    question: 'Pergunta central',
+    title: 'Como combinar testes para reduzir falsos positivos e ter confiança suficiente para tratar?',
+    lead: 'Em série, o segundo teste só roda se o primeiro for positivo. Para confirmar, todos precisam ser positivos.',
+    glow: 'rgba(139,92,246,.22)'
+  })}
+
+  ${keyTerms(['testes em série','especificidade somada','Seu Antônio','emagrecimento','anemia ferropriva','colonoscopia','histopatológico','confirmação'])}
+
+  <div class="prose">
+    <p>Testes em série são feitos <strong>em sequência</strong>: o segundo teste só é solicitado se o primeiro for positivo. Para considerar o conjunto positivo, <strong>todos</strong> os testes precisam ser positivos. Basta um negativo para encerrar a cadeia.</p>
+
+    <p>Por isso, série <strong>aumenta a especificidade</strong> do conjunto — porque é mais difícil que um sadio dê positivo em <em>todos</em> os testes sequenciais. Os FP do primeiro teste são filtrados pelo segundo; os do segundo, pelo terceiro.</p>
+
+    <p class="pulled">A consequência: série <strong>aumenta também os falsos negativos</strong>, e por isso é estratégia de <em>confirmação</em>, não de rastreamento. O preço de não tratar um sadio é aceitar que algum doente seja perdido pelo caminho.</p>
+
+    <p>Caso clínico clássico: <strong>Seu Antônio, 71 anos</strong>, chega ao consultório com emagrecimento e anemia. O médico pede sangue oculto nas fezes (rastreamento, alta sensibilidade) — vem positivo. Indica <strong>colonoscopia</strong> — encontra lesão suspeita. Faz <strong>biópsia com histopatológico</strong> — confirma adenocarcinoma. Só agora é seguro indicar cirurgia.</p>
+
+    <p>Essa cadeia em série existe porque ninguém leva um paciente ao centro cirúrgico baseado em sangue oculto positivo. Cada etapa filtra falsos positivos da anterior, e a especificidade do conjunto chega perto de 100%.</p>
+  </div>
+
+  ${sectionTitle('🔀','Paralelo × Série — comparação visual', 'var(--c-amber)')}
+  <div class="dist-wrap">${PrevSVG.paraleloSerie()}</div>
+
+  ${sectionTitle('🩺','Linha do tempo de Seu Antônio', 'var(--c-violet)')}
+  <div class="case-card">
+    <p><strong>Etapa 1 —</strong> Consulta inicial: anamnese revela emagrecimento + anemia microcítica. Probabilidade pré-teste de neoplasia colorretal sobe.</p>
+    <p><strong>Etapa 2 —</strong> Sangue oculto nas fezes (alta sensibilidade): <span style="color:var(--c-green); font-weight:700;">positivo</span>. Não confirma nada, mas autoriza colonoscopia.</p>
+    <p><strong>Etapa 3 —</strong> Colonoscopia (visualização direta): lesão vegetante em sigmoide. <span style="color:var(--c-green); font-weight:700;">positivo morfológico</span>. Ainda não tratamos.</p>
+    <p><strong>Etapa 4 —</strong> Biópsia + histopatológico (alta especificidade): <span style="color:var(--c-red); font-weight:700;">adenocarcinoma confirmado</span>. Agora a cirurgia oncológica é segura.</p>
+    <p style="margin-top: 12px; color: var(--text-muted);">Note que cada etapa <em>só roda se a anterior foi positiva</em>. Um único negativo em qualquer ponto encerra a cadeia — eis a série.</p>
+  </div>
+
+  ${didaxBlock('caso','🩺','Situação-problema: rastreamento de HIV em doador de sangue',
+    `<p>Um doador tem teste rápido de HIV positivo. <strong>Ninguém comunica diagnóstico ainda.</strong> O sistema faz, em série: ELISA → Western blot → carga viral. Só após positivos em todos os testes específicos o diagnóstico é firmado.</p>
+    <p><strong>Lição:</strong> diagnóstico de doença com forte impacto social/psicológico exige cadeia em série de testes cada vez mais específicos.</p>`)}
+
+  ${didaxBlock('importa','💡','Por que isso importa na prática?',
+    `<p>Sempre que a próxima conduta é agressiva (cirurgia, quimioterapia, anúncio de doença grave), <strong>some testes em série</strong>. Cada teste adicional aumenta a especificidade combinada e reduz o risco de tratar um sadio.</p>`)}
+
+  ${bancaCallout(`<p>A banca cobra <strong>série → especificidade → confirmação</strong>. Frase âncora: <strong>"série aumenta especificidade"</strong>. Pegadinhas clássicas invertem com paralelo.</p>`)}
+
+  ${didaxBlock('pegadinha','⚠️','Pegadinha de prova',
+    `<p>Dizer que "testes em série aumentam sensibilidade". <strong>Errado.</strong> Série aumenta especificidade. Quem aumenta sensibilidade é paralelo.</p>`)}
+
+  ${didaxBlock('naoconfunda','🔀','Não confunda',
+    `<p>Repetição do mesmo teste ≠ testes em série. Série usa testes <em>diferentes e cada vez mais específicos</em>. Repetir o mesmo teste não filtra FP — apenas confirma o resultado do primeiro.</p>`)}
+
+  ${didaxBlock('errocomum','❌','Erro comum',
+    `<p>Aplicar série em rastreamento populacional. Em rastreamento, cada etapa adicional reduz adesão e aumenta FN — perdemos doentes que abandonam o caminho. Série é para confirmação, não para captura.</p>`)}
+
+  ${didaxBlock('avancado','⚡','O que diferencia o aluno avançado',
+    `<p>O avançado planeja a cascata: testes sensíveis na linha de frente (para não perder doente), testes específicos no fim (para não tratar sadio). Sabe que paralelo na entrada e série na saída é a arquitetura padrão dos programas bem desenhados.</p>`)}
+
+  ${didaxBlock('numerico','🔢','Exemplo numérico — série em rastreamento de câncer colorretal',
+    `<ul class="tight">
+      <li>Sangue oculto: especificidade 70%.</li>
+      <li>Colonoscopia: especificidade 95%.</li>
+      <li>Histopatológico: especificidade 99%.</li>
+      <li>Em série (todos positivos), especificidade combinada ≈ 0,70 × 0,95 × 0,99 = <strong>~99,8%</strong>.</li>
+      <li>O preço: alguns doentes abandonam a cadeia ou caem em FN em alguma etapa.</li>
+    </ul>`)}
+
+  ${revisaoAtiva([
+    { q: 'Testes em série aumentam o quê?', a: 'Especificidade do conjunto. Como efeito colateral, aumentam falsos negativos.' },
+    { q: 'Qual a regra operacional da série?', a: 'Os testes correm em sequência. O próximo só é feito se o anterior foi positivo. Para considerar positivo, todos precisam ser positivos.' },
+    { q: 'Em que cenário série é justificado?', a: 'Antes de cirurgia, quimioterapia, transplante, ou anúncio de doença com forte impacto social (HIV). Tudo o que tenha custo alto de iatrogenia.' }
+  ])}
+
+  ${pageFooterMeta({
+    resumo: 'Testes em série aumentam a especificidade do conjunto: todos precisam ser positivos. Estratégia de confirmação, paga o preço em FN. Paralelo no rastreamento, série na confirmação.',
+    proximaConexao: 'Falta entender por que sensibilidade e especificidade são chamadas de "propriedades do teste" — elas não mudam com a prevalência. Próxima parada.',
+    nextId: 'm1-11'
+  })}
+  `;
+  renderStandard(container, page, body);
+};
+
+/* ─────────────────────────────────────────
+   PÁGINA 11 — Sens/Esp não mudam com prevalência
+───────────────────────────────────────── */
+GO_RENDER['m1-11'] = function(container, page) {
+  const body = `
+  ${pageHero({
+    module: 'm1', moduleLabel: 'Módulo 1 — Validação de Testes', pageNum: 11,
+    title: 'Sensibilidade, especificidade e prevalência: o que muda e o que não muda',
+    lead: 'Belém, Manaus, Orlando, Nova York, Lisboa — o teste é o mesmo. Suas propriedades também.',
+    grad: 'var(--grad-m1)'
+  })}
+
+  ${conceptHero({
+    question: 'Pergunta central',
+    title: 'Se a prevalência de uma doença varia entre cidades, a sensibilidade do teste muda também?',
+    lead: 'Não. Sensibilidade e especificidade são propriedades intrínsecas do teste. Quem muda com prevalência são os valores preditivos — assunto do Módulo 2.',
+    glow: 'rgba(20,184,166,.22)'
+  })}
+
+  ${keyTerms(['prevalência','propriedade do teste','Belém','Manaus','Orlando','Nova York','Lisboa','hanseníase','INEP','invariância'])}
+
+  <div class="prose">
+    <p>Uma armadilha frequente em prova é sugerir que, quando uma doença é mais prevalente em uma região, o teste "fica mais sensível" ou "menos sensível" naquela região. <strong>Isso é falso.</strong></p>
+
+    <p>Sensibilidade e especificidade são <strong>propriedades intrínsecas do teste</strong>: dependem da química, da física, da biologia do exame — e da definição do ponto de corte. Não dependem de quantas pessoas têm a doença na população.</p>
+
+    <p class="pulled">Pense assim: um termômetro mede temperatura igual em Manaus e em Lisboa. O fato de Manaus ter mais pessoas com febre não muda a precisão do termômetro. O mesmo vale para qualquer teste diagnóstico.</p>
+
+    <p>O que <strong>muda</strong> com a prevalência são os <strong>valores preditivos</strong>: VPP (probabilidade de doença dado teste positivo) e VPN (probabilidade de ausência de doença dado teste negativo). Esses são os personagens centrais do Módulo 2.</p>
+
+    <p>Em hanseníase, por exemplo: a sensibilidade do teste é a mesma em Belém (alta prevalência) e em Lisboa (baixa prevalência). Mas o significado de um teste positivo é diferente: em Belém, a probabilidade pós-teste é alta; em Lisboa, é baixa — a maioria dos positivos será FP justamente porque a doença é rara.</p>
+  </div>
+
+  ${sectionTitle('🌍','Simulador interativo — prevalência muda, Se/Esp ficam fixas', 'var(--c-teal)')}
+  <p style="color:var(--text-muted); margin-bottom: 12px;">Mova o slider. Sensibilidade fixa em 90%, especificidade fixa em 95%. Veja: nada muda nessas duas — mas espere até o Módulo 2 para ver o que muda nos valores preditivos.</p>
+  ${PrevInt.simPrevalencia({ sens: 0.90, esp: 0.95, prev: 0.10 })}
+
+  ${didaxBlock('caso','🩺','Situação-problema: questão INEP — hanseníase',
+    `<p>Em uma UBS, aplicaram um teste para hanseníase em 200 pessoas: 100 sabidamente acometidas e 100 sabidamente não acometidas. Resultado: <strong>98 verdadeiros positivos</strong> entre os doentes e <strong>90 verdadeiros negativos</strong> entre os sadios.</p>
+    <p><strong>Cálculo:</strong></p>
+    <ul class="tight">
+      <li>Sensibilidade = 98 / 100 = <strong>98%</strong>.</li>
+      <li>Especificidade = 90 / 100 = <strong>90%</strong>.</li>
+    </ul>
+    <p>Esses valores valem em qualquer cidade onde o teste seja aplicado — Belém, Manaus, Orlando, Nova York ou Lisboa. Não importa a prevalência local.</p>`)}
+
+  ${didaxBlock('importa','💡','Por que isso importa na prática?',
+    `<p>Confundir "propriedade do teste" com "propriedade da população" é fonte de erro grave em prova. A banca explora isso o tempo todo. Fixe: <strong>Se/Esp/RV não mudam com prevalência.</strong></p>`)}
+
+  ${bancaCallout(`<p>A banca quer que você marque, sem hesitar: <strong>em população de alta prevalência, sensibilidade e especificidade NÃO mudam.</strong> O que muda são os valores preditivos. Essa é uma das pegadinhas mais frequentes em provas de residência.</p>`)}
+
+  ${didaxBlock('pegadinha','⚠️','Pegadinha de prova',
+    `<p>Perguntar: "em região de alta prevalência, o que acontece com sensibilidade?" Resposta correta: <strong>não muda.</strong> Marque sem dúvida. Quem muda é VPP/VPN.</p>`)}
+
+  ${didaxBlock('naoconfunda','🔀','Não confunda',
+    `<p>Não confunda <strong>sensibilidade/especificidade</strong> (propriedades do teste, fixas) com <strong>valores preditivos</strong> (propriedades do teste + população, variáveis). VPP/VPN são tema do Módulo 2.</p>`)}
+
+  ${didaxBlock('errocomum','❌','Erro comum',
+    `<p>Achar que mais doentes na população "aumenta a sensibilidade". <strong>Errado.</strong> A sensibilidade é calculada apenas entre os doentes — não importa quantos doentes existam na população, a proporção VP/(VP+FN) não muda.</p>`)}
+
+  ${didaxBlock('avancado','⚡','O que diferencia o aluno avançado',
+    `<p>O avançado separa, mentalmente, dois mundos: <em>propriedades do teste</em> (Se/Esp/RV) versus <em>propriedades da população</em> (prevalência). Os valores preditivos são o cruzamento dos dois.</p>`)}
+
+  ${didaxBlock('numerico','🔢','Exemplo numérico preservado — hanseníase INEP',
+    `<ul class="tight">
+      <li>100 acometidos, VP = 98 → Sensibilidade = <strong>98%</strong>.</li>
+      <li>100 não acometidos, VN = 90 → Especificidade = <strong>90%</strong>.</li>
+      <li>Esses valores se mantêm em Belém, Manaus, Orlando, Nova York e Lisboa.</li>
+    </ul>`)}
+
+  ${revisaoAtiva([
+    { q: 'Sensibilidade muda com prevalência?', a: 'Não. É propriedade do teste.' },
+    { q: 'Especificidade muda com prevalência?', a: 'Não. É propriedade do teste.' },
+    { q: 'Para que servem sensibilidade e especificidade na escolha do exame?', a: 'Para escolher entre testes na mesma população (qual exclui melhor, qual confirma melhor) — sem depender da prevalência local.' }
+  ])}
+
+  ${pageFooterMeta({
+    resumo: 'Sensibilidade e especificidade são propriedades intrínsecas do teste — não mudam com prevalência. Valores preditivos (VPP/VPN) sim mudam, e serão o coração do Módulo 2.',
+    proximaConexao: 'Falta uma métrica que cruze sensibilidade e especificidade em uma única medida elegante: a razão de verossimilhança.',
+    nextId: 'm1-12'
+  })}
+  `;
+  renderStandard(container, page, body);
+};
+
+/* ─────────────────────────────────────────
+   PÁGINA 12 — Razões de verossimilhança
+───────────────────────────────────────── */
+GO_RENDER['m1-12'] = function(container, page) {
+  const body = `
+  ${pageHero({
+    module: 'm1', moduleLabel: 'Módulo 1 — Validação de Testes', pageNum: 12,
+    title: 'Razões de verossimilhança: cruzando sensibilidade e especificidade',
+    lead: 'A única métrica que mede o teste como um todo — útil quando vários testes competem.',
+    grad: 'var(--grad-m1)'
+  })}
+
+  ${conceptHero({
+    question: 'Pergunta central',
+    title: 'Como avaliar um teste quando sensibilidade e especificidade precisam ser consideradas JUNTAS?',
+    lead: 'Um teste com sensibilidade 100% e especificidade 0% dá positivo em todo mundo — inútil. A razão de verossimilhança nos protege dessa armadilha.',
+    glow: 'rgba(139,92,246,.22)'
+  })}
+
+  ${keyTerms(['razão de verossimilhança','RV+','RV−','SE','probabilidade em doentes','probabilidade em não doentes','favorecer','afastar'])}
+
+  <div class="prose">
+    <p>Sensibilidade e especificidade não devem ser avaliadas sempre de forma isolada. Um teste pode impressionar com sensibilidade de 100%, mas ser inútil se sua especificidade for 0%. Nesse cenário, <strong>todos os testes seriam positivos</strong>: todos os doentes detectados, mas todos os sadios também transformados em falsos positivos.</p>
+
+    <p>Para cruzar sensibilidade e especificidade em uma única medida, usamos as <span class="keyword">razões de verossimilhança</span>. A ideia é comparar a probabilidade de um resultado em doentes com a probabilidade do mesmo resultado em não doentes.</p>
+
+    <p class="pulled">A razão de verossimilhança positiva (RV+) pergunta: <em>quanto mais provável é um teste positivo em quem tem doença do que em quem não tem?</em> Por isso, quanto maior a RV+, melhor para favorecer diagnóstico.</p>
+
+    <p>A razão de verossimilhança negativa (RV−) pergunta: <em>quanto ainda aparece teste negativo em quem tem doença em comparação com quem não tem?</em> Por isso, quanto menor a RV−, melhor para afastar diagnóstico.</p>
+
+    <p>A frase de fixação é: <strong>razão de verossimilhança SE</strong> — porque a <em>S</em>ensibilidade fica em cima e a <em>E</em>specificidade entra embaixo (diretamente ou por complemento).</p>
+  </div>
+
+  ${sectionTitle('🧮','Calculadora interativa de RV+ e RV−', 'var(--c-violet)')}
+  <p style="color:var(--text-muted); margin-bottom: 12px;">Mova VP, FP, FN, VN. A tabela calcula sensibilidade, especificidade, RV+ e RV− em tempo real. Compare cenários e veja a RV+ se aproximar de 1 quando o teste perde utilidade.</p>
+  ${PrevInt.tabela2x2({ vp: 90, fp: 10, fn: 10, vn: 90, lockPrev: false, title: 'Calculadora de razões de verossimilhança' })}
+
+  ${didaxBlock('caso','🩺','Situação-problema: o teste milagroso',
+    `<p>Um representante apresenta um teste novo: "sensibilidade de 100%, doutor!". Antes de comprar, o hospital pergunta: <strong>qual é a especificidade?</strong> O representante hesita: "5%". Você calcula: RV+ = 1,0 / (1 − 0,05) ≈ 1,05. <strong>Não ajuda em nada</strong> — a probabilidade de positivo é praticamente igual em doentes e em sadios.</p>
+    <p><strong>Lição:</strong> nunca confie em sensibilidade isolada. RV+ próxima de 1 = teste inútil.</p>`)}
+
+  ${didaxBlock('importa','💡','Por que isso importa na prática?',
+    `<p>Quando vários testes competem por adoção em um serviço, a RV é o critério mais elegante de comparação. Ela resume sensibilidade e especificidade em um único número interpretável.</p>`)}
+
+  ${bancaCallout(`<p>A banca cobra a <strong>direção ideal</strong>: RV+ alta para favorecer, RV− baixa (próxima de zero) para afastar. Pegadinha clássica: "RV− ideal é alta". <strong>Errado</strong> — RV− boa é baixa.</p>`)}
+
+  ${didaxBlock('pegadinha','⚠️','Pegadinha de prova',
+    `<p>Dar sensibilidade alta isolada e esconder especificidade muito baixa. Sempre cruze. <strong>Sensibilidade 100% + especificidade 0% = teste inútil.</strong></p>`)}
+
+  ${didaxBlock('naoconfunda','🔀','Não confunda',
+    `<p>RV+ alta favorece diagnóstico. RV− <strong>baixa</strong> afasta diagnóstico. Quem cair na pegadinha "RV− alta é bom" perde a questão.</p>`)}
+
+  ${didaxBlock('errocomum','❌','Erro comum',
+    `<p>Achar que RV− deve ser alta. <strong>Errado.</strong> RV− ideal é próxima de zero. RV− = 1 significa que o teste negativo é tão comum em doentes quanto em sadios — inútil para afastar.</p>`)}
+
+  ${didaxBlock('avancado','⚡','O que diferencia o aluno avançado',
+    `<p>O avançado percebe que RV mede o encontro entre sensibilidade e especificidade, sendo mais útil quando vários testes competem. E sabe que RV é a ponte para o raciocínio bayesiano: pré-teste × RV → pós-teste (próximo módulo).</p>`)}
+
+  ${formulaBox('Razão de verossimilhança positiva (RV+)',
+    `${frac('Sensibilidade','1 − Especificidade')} = ${frac('VP / (VP + FN)','FP / (FP + VN)')}`,
+    'Quanto maior, melhor para favorecer diagnóstico. RV+ > 10 é forte; RV+ = 1 é inútil.')}
+
+  ${formulaBox('Razão de verossimilhança negativa (RV−)',
+    `${frac('1 − Sensibilidade','Especificidade')} = ${frac('FN / (VP + FN)','VN / (FP + VN)')}`,
+    'Quanto menor (próxima de zero), melhor para afastar diagnóstico. RV− < 0,1 é forte; RV− = 1 é inútil.')}
+
+  ${didaxBlock('numerico','🔢','Exemplo numérico — sensibilidade 90%, especificidade 10%',
+    `<ul class="tight">
+      <li>Sensibilidade = 90% (0,90).</li>
+      <li>Especificidade = 10% (0,10).</li>
+      <li>RV+ = 0,90 / (1 − 0,10) = 0,90 / 0,90 = <strong>1</strong>.</li>
+      <li>Interpretação: RV+ = 1 não ajuda, porque a probabilidade de teste positivo em doentes é igual à probabilidade em não doentes. Apesar da sensibilidade parecer boa, o teste não distingue grupos.</li>
+    </ul>`)}
+
+  ${revisaoAtiva([
+    { q: 'RV+ ideal é alta ou baixa?', a: 'Alta. Quanto maior, mais o teste positivo favorece o diagnóstico.' },
+    { q: 'RV− ideal é alta ou baixa?', a: 'Baixa, próxima de zero. Quanto menor, mais o teste negativo afasta o diagnóstico.' },
+    { q: 'Razões de verossimilhança mudam com prevalência?', a: 'Não. Como dependem apenas de Se/Esp (propriedades do teste), também são fixas em diferentes populações.' }
+  ])}
+
+  ${pageFooterMeta({
+    resumo: 'RV+ alta favorece diagnóstico; RV− baixa afasta diagnóstico. Razão de verossimilhança SE: sensibilidade em cima, especificidade embaixo. Não muda com prevalência.',
+    proximaConexao: 'Hora de consolidar tudo em um painel de prova: como reconhecer, em segundos, o que a questão está pedindo.',
+    nextId: 'm1-13'
+  })}
+  `;
+  renderStandard(container, page, body);
+};
+
+/* ─────────────────────────────────────────
+   PÁGINA 13 — Fechamento de prova
+───────────────────────────────────────── */
+GO_RENDER['m1-13'] = function(container, page) {
+  const body = `
+  ${pageHero({
+    module: 'm1', moduleLabel: 'Módulo 1 — Validação de Testes', pageNum: 13,
+    title: 'Fechamento de prova: como escolher o raciocínio certo em segundos',
+    lead: 'O painel final do Módulo 1 — gatilhos de enunciado, frases-âncora e o quiz que treina reconhecimento.',
+    grad: 'var(--grad-m1)'
+  })}
+
+  ${conceptHero({
+    question: 'Pergunta central',
+    title: 'Como reconhecer rapidamente o que a questão está pedindo — sem perder tempo montando tabela quando o enunciado já entrega o cálculo?',
+    lead: 'O aluno avançado lê dois sinais: a palavra-gatilho do enunciado e a finalidade clínica do raciocínio (excluir, confirmar, calcular, comparar).',
+    glow: 'rgba(245,158,11,.22)'
+  })}
+
+  ${keyTerms(['gatilhos de prova','INEP','UFCSPA','UNIFESP','USP-SP','palavras-âncora','reflexo abdominojugular','insuficiência cardíaca','raciocínio rápido'])}
+
+  <div class="prose">
+    <p>Na prova, o primeiro passo é <strong>reconhecer o tipo de pergunta</strong>. Se o enunciado fala "dentre os doentes, quantos testaram positivo?", ele está praticamente gritando <strong>sensibilidade</strong>. Se fala "dentre os não doentes, quantos testaram negativo?", está gritando <strong>especificidade</strong>.</p>
+
+    <p>Se a questão fala em <strong>rastreamento</strong>, banco de sangue, câncer, epidemia ou alta letalidade, o raciocínio é <em>evitar falso negativo</em>. Pense em sensibilidade ou testes em paralelo. Se tudo vier negativo, a confiança para excluir aumenta.</p>
+
+    <p>Se a questão fala em <strong>confirmação</strong>, câncer, histopatológico, cirurgia, quimioterapia, trauma psicológico ou iatrogenia, o raciocínio é <em>evitar falso positivo</em>. Pense em especificidade ou testes em série.</p>
+
+    <p class="pulled">Se a questão fala em um <strong>achado clínico que favorece a possibilidade de uma doença</strong>, compare a probabilidade desse achado em doentes versus não doentes. Isso aponta para <em>razão de verossimilhança positiva</em>.</p>
+
+    <p>Exemplo citado: a questão da USP-SP sobre insuficiência cardíaca, em que o achado com maior RV+ era o <strong>reflexo abdominojugular</strong>. Não era o sinal mais sensível — era o que mais distinguia doentes de sadios.</p>
+  </div>
+
+  ${sectionTitle('📋','Painel de frases-âncora — fixe antes da prova', 'var(--c-amber)')}
+  <div class="case-card">
+    <ul class="tight">
+      <li><strong>Acurácia:</strong> quanto o teste acerta no total.</li>
+      <li><strong>Sensibilidade:</strong> positivo entre doentes; confio no negativo (SnNout).</li>
+      <li><strong>Especificidade:</strong> negativo entre sadios; confio no positivo (SpPin).</li>
+      <li><strong>Paralelo:</strong> aumenta sensibilidade → exclusão.</li>
+      <li><strong>Série:</strong> aumenta especificidade → confirmação.</li>
+      <li><strong>RV+:</strong> quanto maior, melhor para favorecer diagnóstico.</li>
+      <li><strong>RV−:</strong> quanto menor, melhor para afastar diagnóstico.</li>
+      <li><strong>Se/Esp/RV:</strong> NÃO mudam com prevalência.</li>
+    </ul>
+  </div>
+
+  ${sectionTitle('🎯','Quiz banca-style — qual raciocínio a banca quer?', 'var(--c-violet)')}
+  ${PrevInt.quizBanca([
+    {
+      stem: 'Em banco de sangue, qual característica do teste é prioritária?',
+      options: ['Sensibilidade alta','Especificidade alta','Acurácia alta','RV+ próxima de 1'],
+      correct: 0,
+      explain: 'Banco de sangue exige sensibilidade altíssima — falso negativo (bolsa contaminada transfundida) é catastrófico. Aceita-se FP em troca.'
+    },
+    {
+      stem: 'Antes de cirurgia oncológica, qual exame é a âncora?',
+      options: ['Imagem com alta sensibilidade','Histopatológico com alta especificidade','Teste rápido em série','Marcador tumoral isolado'],
+      correct: 1,
+      explain: 'Antes de cirurgia, tratamento agressivo, exige-se especificidade alta. O histopatológico confirma. SpPin: teste específico, positivo confirma.'
+    },
+    {
+      stem: 'Testes em paralelo aumentam:',
+      options: ['Especificidade','Sensibilidade','Acurácia somente','VPP'],
+      correct: 1,
+      explain: 'Paralelo aumenta sensibilidade do conjunto (basta um positivo). Estratégia de exclusão. Quem aumenta especificidade é série.'
+    },
+    {
+      stem: 'Um achado clínico que favorece a possibilidade de uma doença aponta para qual métrica?',
+      options: ['VPN alto','RV+ alta','Sensibilidade isolada','Acurácia'],
+      correct: 1,
+      explain: 'Quando o achado favorece o diagnóstico, queremos RV+ alta (probabilidade do achado em doentes muito maior que em sadios). Exemplo: reflexo abdominojugular em ICC.'
+    },
+    {
+      stem: 'Em região de alta prevalência, a sensibilidade do teste:',
+      options: ['Aumenta','Diminui','Não muda','Depende do ponto de corte local'],
+      correct: 2,
+      explain: 'Sensibilidade não muda com prevalência. É propriedade do teste. Quem muda com prevalência são VPP e VPN — assunto do Módulo 2.'
+    }
+  ], 'Quiz integrador — Módulo 1')}
+
+  ${didaxBlock('caso','🩺','Questão de prova preservada — paralelo × série',
+    `<p>A questão apresenta três afirmações:</p>
+    <ol class="tight">
+      <li>"Testes em paralelo aumentam especificidade."</li>
+      <li>"Testes em paralelo aumentam falso negativo."</li>
+      <li>"Testes em série maximizam especificidade e valor preditivo positivo."</li>
+    </ol>
+    <p><strong>Correta: apenas a 3.</strong> Paralelo aumenta sensibilidade (não especificidade); paralelo reduz FN (porque aumenta sensibilidade); série maximiza especificidade e, em populações com prevalência adequada, eleva VPP.</p>`)}
+
+  ${didaxBlock('importa','💡','Por que isso importa na prática?',
+    `<p>Prova de residência cobra tanto cálculo quanto leitura rápida de intenção do enunciado. Quem reconhece o objetivo em 5 segundos ganha tempo para as questões pesadas.</p>`)}
+
+  ${bancaCallout(`<p>A banca quer que o aluno identifique o alvo: <strong>excluir, confirmar, calcular ou comparar</strong>. Cada alvo aponta para uma métrica. Decorar fórmulas sem reconhecer o alvo é receita para perder a questão.</p>`)}
+
+  ${didaxBlock('pegadinha','⚠️','Pegadinhas finais do Módulo 1',
+    `<ul class="tight">
+      <li>Inverter paralelo e série.</li>
+      <li>Inverter sensibilidade e especificidade.</li>
+      <li>Achar que prevalência muda Se/Esp.</li>
+      <li>Achar que RV− deve ser alta.</li>
+      <li>Confundir RV+ com VPP (este é o ponto de entrada do Módulo 2).</li>
+    </ul>`)}
+
+  ${didaxBlock('naoconfunda','🔀','Não confunda',
+    `<p>Paralelo ≠ série. Sensível ≠ específico. RV+ alta ≠ RV− alta. Sensibilidade ≠ VPP. Especificidade ≠ VPN.</p>`)}
+
+  ${didaxBlock('errocomum','❌','Erro comum',
+    `<p>Tentar resolver todas as questões montando tabela completa, mesmo quando o enunciado já entrega o numerador e denominador. <strong>Pare, leia, identifique a métrica pedida.</strong> Só monte tabela quando os dados estão dispersos.</p>`)}
+
+  ${didaxBlock('avancado','⚡','O que diferencia o aluno avançado',
+    `<p>O aluno avançado sabe quando montar a tabela inteira e quando usar apenas a coluna necessária. Reconhece palavras-gatilho. Cruza Se/Esp para tirar RV. E nunca confunde propriedade do teste com propriedade da população.</p>`)}
+
+  ${didaxBlock('numerico','🔢','Painel de fórmulas finais — Módulo 1',
+    `<ul class="tight">
+      <li><strong>Acurácia</strong> = (VP + VN) / total</li>
+      <li><strong>Sensibilidade</strong> = VP / (VP + FN)</li>
+      <li><strong>Especificidade</strong> = VN / (FP + VN)</li>
+      <li><strong>RV+</strong> = Sensibilidade / (1 − Especificidade)</li>
+      <li><strong>RV−</strong> = (1 − Sensibilidade) / Especificidade</li>
+    </ul>
+    <p style="margin-top: 10px;"><strong>Exemplo numérico preservado — Hanseníase:</strong> 98 VP em 100 doentes → Se = 98%. 90 VN em 100 sadios → Esp = 90%.</p>
+    <p><strong>Exemplo numérico preservado — infertilidade:</strong> 182/200 → Se = 91%; 176/200 → Esp = 88%; (182+176)/400 = 89,5% ≈ <strong>90% de acurácia</strong>.</p>`)}
+
+  ${revisaoAtiva([
+    { q: 'Rastreamento lembra qual característica?', a: 'Sensibilidade. Em rastreamento, queremos não perder doente — sensibilidade alta, testes em paralelo, SnNout.' },
+    { q: 'Histopatológico antes de cirurgia lembra qual característica?', a: 'Especificidade. Antes de tratamento agressivo, queremos não tratar sadio — especificidade alta, testes em série, SpPin.' },
+    { q: 'Achado clínico que favorece doença aponta para RV+ ou RV−?', a: 'RV+. Probabilidade do achado em doentes muito maior que em sadios. Exemplo: reflexo abdominojugular em insuficiência cardíaca.' }
+  ])}
+
+  ${pageFooterMeta({
+    resumo: 'Reconheça o alvo (excluir/confirmar/calcular/comparar), identifique a palavra-gatilho do enunciado, escolha a métrica e o desenho (paralelo/série). Se/Esp/RV não mudam com prevalência — VPP/VPN sim, e isso abre o Módulo 2.',
+    proximaConexao: 'Encerramos o Módulo 1. O próximo passo natural é entender o que a prevalência faz com a interpretação clínica de um resultado — bem-vindo aos valores preditivos.',
+    nextId: 'm2-01'
+  })}
+  `;
+  renderStandard(container, page, body);
+};
