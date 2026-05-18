@@ -1,10 +1,10 @@
 /* =========================================
-   SINDROMES FEBRIS — SERVICE WORKER PWA
-   Cache versionado: infecto-pwa-v20260517-3
+   INTENSIVÃO PREVENTIVA — SERVICE WORKER PWA
+   Cache versionado: preventiva-pwa-v20260518-1
    ========================================= */
 
-const CACHE_NAME = 'infecto-pwa-v20260517-3';
-const CACHE_PREFIX = 'infecto-pwa-';
+const CACHE_NAME = 'preventiva-pwa-v20260518-1';
+const CACHE_PREFIX = 'preventiva-pwa-';
 
 const APP_SHELL = [
   './',
@@ -18,8 +18,16 @@ const APP_SHELL = [
   './css/theme-glass.css',
   './css/theme-motion.css',
   './css/pwa.css',
+  './css/preventiva.css',
   './js/data.js',
-  './js/pages.js',
+  './js/components/interactive.js',
+  './js/components/svg-library.js',
+  './js/pages/_helpers.js',
+  './js/pages/_global.js',
+  './js/pages/modulo1.js',
+  './js/pages/modulo2.js',
+  './js/pages/modulo3.js',
+  './js/pages/modulo4.js',
   './js/router.js',
   './js/app.js',
   './js/theme-enhancer.js',

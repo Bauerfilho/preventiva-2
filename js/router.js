@@ -47,7 +47,7 @@ class GORouter {
     }
 
     // Atualizar título da aba
-    document.title = `${page.label} — Síndromes Febris`;
+    document.title = `${page.label} — Intensivão Preventiva`;
 
     // Spinner de carregamento
     const container = document.getElementById('page-container');
@@ -92,15 +92,15 @@ class GORouter {
   }
 
   _markVisited(pageId) {
-    const visited = JSON.parse(localStorage.getItem('sf_visited') || '[]');
+    const visited = JSON.parse(localStorage.getItem('prev_visited') || '[]');
     if (!visited.includes(pageId)) {
       visited.push(pageId);
-      localStorage.setItem('sf_visited', JSON.stringify(visited));
+      localStorage.setItem('prev_visited', JSON.stringify(visited));
     }
   }
 
   _updateProgress() {
-    const visited = JSON.parse(localStorage.getItem('sf_visited') || '[]');
+    const visited = JSON.parse(localStorage.getItem('prev_visited') || '[]');
     const pct = Math.round((visited.length / GO_PAGES.length) * 100);
     const lbl = document.getElementById('progress-label');
     if (lbl) lbl.textContent = pct + '%';

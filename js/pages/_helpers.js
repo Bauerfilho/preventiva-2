@@ -1,0 +1,143 @@
+/* =========================================
+   INTENSIVÃO PREVENTIVA — HELPERS DE RENDERIZAÇÃO
+   Funções utilitárias usadas por todos os módulos.
+   ========================================= */
+
+window.GO_RENDER = window.GO_RENDER || {};
+
+/* ─────────────────────────────────────────
+   Escape / utils
+───────────────────────────────────────── */
+function _e(s) {
+  return String(s).replaceAll('&','&amp;').replaceAll('<','&lt;')
+    .replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;');
+}
+
+/* ─────────────────────────────────────────
+   pageHero — abertura premium de cada página
+───────────────────────────────────────── */
+function pageHero(opts) {
+  const { module = 'm1', moduleLabel = 'Módulo', pageNum = '', title, lead, grad } = opts;
+  return `
+  <div class="page-hero febris-hero has-aurora" style="--grad-current:${grad || 'var(--grad-m1)'}; position: relative;">
+    <span class="mod-pill --${module}">${_e(moduleLabel)}${pageNum ? ` · Página ${pageNum}` : ''}</span>
+    <h1>${title}</h1>
+    ${lead ? `<p class="subtitle">${lead}</p>` : ''}
+  </div>`;
+}
+
+/* ─────────────────────────────────────────
+   conceptHero — pergunta provocadora + lead
+───────────────────────────────────────── */
+function conceptHero(opts) {
+  const { question, title, lead, glow = 'rgba(37,99,235,.18)' } = opts;
+  return `
+  <div class="concept-hero" style="--hero-glow:${glow}">
+    ${question ? `<div class="ch-q">${_e(question)}</div>` : ''}
+    <h2>${title}</h2>
+    ${lead ? `<p class="ch-lead">${lead}</p>` : ''}
+  </div>`;
+}
+
+/* ─────────────────────────────────────────
+   didaxBlock — bloco didático com variante
+───────────────────────────────────────── */
+function didaxBlock(variant, icon, title, html) {
+  return `
+  <div class="didax-block --${variant}">
+    <div class="didax-block-title"><span class="ico">${icon}</span>${_e(title)}</div>
+    <div class="didax-block-body">${html}</div>
+  </div>`;
+}
+
+/* ─────────────────────────────────────────
+   sectionTitle — título de seção interna
+───────────────────────────────────────── */
+function sectionTitle(icon, title, color = 'var(--c-blue)') {
+  return `<div style="display:flex; align-items:center; gap:10px; margin: 22px 0 10px;">
+    <div style="width:32px; height:32px; border-radius:10px; background:${color}; opacity:.15; display:grid; place-items:center"><span style="font-size:16px; filter: saturate(1.2)">${icon}</span></div>
+    <h3 style="margin:0; font-size:17px; font-weight:800; color: var(--text-primary)">${_e(title)}</h3>
+  </div>`;
+}
+
+/* ─────────────────────────────────────────
+   keyTerms — chips com palavras-chave
+───────────────────────────────────────── */
+function keyTerms(arr, color = 'blue') {
+  return `<div style="display:flex; flex-wrap:wrap; gap:6px; margin: 8px 0 14px;">
+    ${arr.map(t => `<span class="didax-chip --${color}"><span class="ico">#</span>${_e(t)}</span>`).join('')}
+  </div>`;
+}
+
+/* ─────────────────────────────────────────
+   formulaBox
+───────────────────────────────────────── */
+function formulaBox(name, htmlFormula, note) {
+  return `<div class="formula-box">
+    <span class="name">${_e(name)}</span>
+    <div>${htmlFormula}</div>
+    ${note ? `<div style="margin-top:8px; font-family:Inter,sans-serif; font-size:12px; color: var(--text-muted);">${note}</div>` : ''}
+  </div>`;
+}
+
+/* Fração HTML helper */
+function frac(num, den) { return `<span class="frac"><span class="num">${num}</span><span class="den">${den}</span></span>`; }
+
+/* ─────────────────────────────────────────
+   revisaoAtiva — perguntas com toggle de resposta
+───────────────────────────────────────── */
+function revisaoAtiva(perguntasERespostas) {
+  // perguntasERespostas: [{q, a}]
+  return didaxBlock('resumo', '🧠', 'Revisão ativa — responda mentalmente antes de abrir',
+    `<ol style="margin: 6px 0 0 18px;">
+      ${perguntasERespostas.map((qa, i) => {
+        const id = 'ra-' + Math.random().toString(36).slice(2,8) + '-' + i;
+        return `<li style="margin: 6px 0;">
+          <div style="font-weight: 600; color: var(--text-primary);">${qa.q}</div>
+          <details style="margin-top: 4px;"><summary style="cursor: pointer; font-size: 13px; color: var(--c-blue); font-weight: 700;">Ver resposta</summary>
+            <div style="margin-top: 6px; font-size: 14px; color: var(--text-secondary); padding: 8px 12px; background: var(--c-green-soft); border-radius: 8px; border-left: 3px solid var(--c-green);">${qa.a}</div>
+          </details>
+        </li>`;
+      }).join('')}
+    </ol>`);
+}
+
+/* ─────────────────────────────────────────
+   bancaCallout — bloco "o que a banca quer"
+───────────────────────────────────────── */
+function bancaCallout(htmlContent) {
+  return `<div class="banca-callout"><div class="bc-title">O que a banca quer</div><div style="font-size:14px; line-height:1.65; color:var(--text-secondary)">${htmlContent}</div></div>`;
+}
+
+/* ─────────────────────────────────────────
+   navFooter — anterior / próxima
+───────────────────────────────────────── */
+function navFooter(currentPageId) {
+  const idx = GO_PAGES.findIndex(p => p.id === currentPageId);
+  if (idx === -1) return '';
+  const prev = GO_PAGES[idx - 1];
+  const next = GO_PAGES[idx + 1];
+  return `<div class="page-nav" style="margin-top: 30px;">
+    ${prev ? `<button class="page-nav-btn" data-goto="${prev.id}">← ${_e(prev.label)}</button>` : '<div></div>'}
+    ${next ? `<button class="page-nav-btn" data-goto="${next.id}">${_e(next.label)} →</button>` : '<div></div>'}
+  </div>`;
+}
+
+/* ─────────────────────────────────────────
+   pageFooterMeta — checagem + conexão próxima
+───────────────────────────────────────── */
+function pageFooterMeta(opts) {
+  const { resumo, proximaConexao, nextId } = opts;
+  return `
+  ${resumo ? didaxBlock('resumo', '✓', 'Resumo operacional', `<p>${resumo}</p>`) : ''}
+  ${proximaConexao ? didaxBlock('proxima', '→', 'Conexão com a próxima página', `<p>${proximaConexao}</p>${nextId ? `<button class="page-nav-btn" style="margin-top:8px" data-goto="${nextId}">Continuar →</button>` : ''}`) : ''}
+  `;
+}
+
+/* ─────────────────────────────────────────
+   Helper: renderiza uma página inteira com padrão completo
+   Cada renderer chama esta função apenas se quiser.
+   ─────────────────────────────────────────  */
+function renderStandard(container, page, body) {
+  container.innerHTML = body + navFooter(page.id);
+}
