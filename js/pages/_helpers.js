@@ -52,11 +52,18 @@ function didaxBlock(variant, icon, title, html) {
 
 /* ─────────────────────────────────────────
    sectionTitle — título de seção interna
+   color aceita 'var(--c-blue)'/'var(--c-teal)'/etc OU um módulo ('m1'..'m4').
+   Renderiza usando classe .section-title-pv (Fase 5).
 ───────────────────────────────────────── */
 function sectionTitle(icon, title, color = 'var(--c-blue)') {
-  return `<div style="display:flex; align-items:center; gap:10px; margin: 22px 0 10px;">
-    <div style="width:32px; height:32px; border-radius:10px; background:${color}; opacity:.15; display:grid; place-items:center"><span style="font-size:16px; filter: saturate(1.2)">${icon}</span></div>
-    <h3 style="margin:0; font-size:17px; font-weight:800; color: var(--text-primary)">${_e(title)}</h3>
+  // Detecta se o color é uma chave de módulo (m1..m4)
+  const modKey = /^m[1-4]$/.test(color) ? color : null;
+  const modClass = modKey ? ` --${modKey}` : '';
+  const inlineColor = modKey ? '' : ` style="--stp-color:${color}"`;
+  return `<div class="section-title-pv${modClass}"${inlineColor}>
+    <div class="stp-ico"></div>
+    <span class="stp-emoji">${icon}</span>
+    <h3>${_e(title)}</h3>
   </div>`;
 }
 
@@ -64,9 +71,30 @@ function sectionTitle(icon, title, color = 'var(--c-blue)') {
    keyTerms — chips com palavras-chave
 ───────────────────────────────────────── */
 function keyTerms(arr, color = 'blue') {
-  return `<div style="display:flex; flex-wrap:wrap; gap:6px; margin: 8px 0 14px;">
+  return `<div class="key-terms">
     ${arr.map(t => `<span class="didax-chip --${color}"><span class="ico">#</span>${_e(t)}</span>`).join('')}
   </div>`;
+}
+
+/* ─────────────────────────────────────────
+   fraseAutoral — voz fundadora da Preventiva (Fase 5)
+   Inserir 1× por módulo (idealmente em página-âncora).
+   opts: { tag?, body (HTML), assinatura? }
+───────────────────────────────────────── */
+function fraseAutoral(opts) {
+  const { tag = 'Voz Preventiva', body, assinatura = 'Intensivão Preventiva — voz editorial' } = opts;
+  return `<div class="frase-autoral" role="note" aria-label="Frase autoral da Preventiva">
+    <span class="fa-tag">${_e(tag)}</span>
+    <div class="fa-body">${body}</div>
+    <div class="fa-sig">${_e(assinatura)}</div>
+  </div>`;
+}
+
+/* ─────────────────────────────────────────
+   svgIllus — wrapper padronizado para SVGs (Fase 5)
+───────────────────────────────────────── */
+function svgIllus(svgString, caption) {
+  return `<div class="svg-illus">${svgString}${caption ? `<div class="svg-caption">${_e(caption)}</div>` : ''}</div>`;
 }
 
 /* ─────────────────────────────────────────

@@ -53,7 +53,7 @@ GO_RENDER['m4-01'] = function(c, p) {
       glow: 'rgba(37,99,235,.18)'
     }) +
 
-    sectionTitle('🧭', 'Três cenas, uma mesma ferramenta', 'var(--c-blue)') +
+    sectionTitle('🧭', 'Três cenas, uma mesma ferramenta', 'm4') +
     keyTerms(['tendência central','média','mediana','moda','representar o grupo','um número, muitas histórias'], 'blue') +
 
     didaxBlock('estrutura', '🏛️',
@@ -71,7 +71,7 @@ GO_RENDER['m4-01'] = function(c, p) {
       `<p>O professor fala: “a turma foi bem, média 7,8”. Você localiza-se: acima ou abaixo? A média ali serve para <strong>comparar</strong> (você versus o grupo) e para <strong>decidir</strong> (refaz prova ou não). Mesma lógica clínica: a média da sua glicemia comparada à média populacional define se você é “saudável” ou “alterado”.</p>`
     ) +
 
-    sectionTitle('🩺', 'Por que cai em prova de residência?', 'var(--c-violet)') +
+    sectionTitle('🩺', 'Por que cai em prova de residência?', 'm4') +
 
     didaxBlock('prevalencia', '📊',
       'Porque toda decisão epidemiológica começa em um resumo',
@@ -116,25 +116,27 @@ GO_RENDER['m4-02'] = function(c, p) {
       glow: 'rgba(37,99,235,.18)'
     }) +
 
-    sectionTitle('➗', 'A fórmula que cabe num post-it', 'var(--c-blue)') +
-    keyTerms(['média aritmética','x̄','soma','divide por n','panorama','primeira leitura'], 'blue') +
+    svgIllus(PrevSVG.histogramaTendencia(), 'Três medidas em um só gráfico: moda (classe mais alta), mediana (centro de massa), média (centro de gravidade). Quando há cauda, elas se separam.') +
+
+    sectionTitle('➗', 'A fórmula que cabe num post-it', 'm4') +
+    keyTerms(['média aritmética','x̄','soma','divide por n','panorama','primeira leitura'], 'violet') +
 
     formulaBox(
       'Média (x̄)',
-      `<div style="display:flex; align-items:center; justify-content:center; gap:14px; font-size:22px;">
+      `<div class="formula-inline">
         <span>x̄ =</span>
         ${frac('Σx<sub>i</sub>', 'n')}
-        <span style="font-size:14px; color:var(--text-muted)">= soma dos valores ÷ quantidade</span>
+        <span class="formula-note">= soma dos valores ÷ quantidade</span>
       </div>`,
       'Σ é só o "somatório" — apertar uma calculadora soma tudo e divide por <em>n</em>.'
     ) +
 
-    sectionTitle('🧪', 'Caso didático — média de uma sequência de 9 valores', 'var(--c-violet)') +
+    sectionTitle('🧪', 'Caso didático — média de uma sequência de 9 valores', 'm4') +
 
     didaxBlock('estrutura', '📋',
       'Sequência adaptada (didática)',
       `<p>Trabalharemos com a sequência <strong>2, 3, 6, 6, 6, 9, 20, 40, 46</strong> — uma adaptação que reproduz a média de referência <strong>15,3</strong> e a moda <strong>6</strong> usadas em material didático clássico. Use a calculadora abaixo para confirmar.</p>
-      <p style="font-size:12px; color:var(--text-muted); font-style:italic;">Nota editorial: a sequência literal do roteiro original não foi preservada; usamos uma versão didaticamente equivalente para manter média 15,3 e moda 6.</p>`
+      <p class="editorial-note">Nota editorial: a sequência literal do roteiro original não foi preservada; usamos uma versão didaticamente equivalente para manter média 15,3 e moda 6.</p>`
     ) +
 
     PrevInt.calcEstat({
@@ -144,7 +146,7 @@ GO_RENDER['m4-02'] = function(c, p) {
 
     didaxBlock('hit', '✅',
       'O que a calculadora confirma',
-      `<ul style="margin: 6px 0 0 18px; line-height: 1.75;">
+      `<ul class="tight">
         <li><strong>Soma</strong> dos 9 valores = 138</li>
         <li><strong>Média</strong> = 138 ÷ 9 ≈ <strong>15,3</strong></li>
         <li><strong>Moda</strong> = 6 (aparece três vezes)</li>
@@ -152,7 +154,7 @@ GO_RENDER['m4-02'] = function(c, p) {
       </ul>`
     ) +
 
-    sectionTitle('⚠️', 'A média é simpática, mas tem um defeito', 'var(--c-orange)') +
+    sectionTitle('⚠️', 'A média é simpática, mas tem um defeito', 'm3') +
 
     didaxBlock('pegadinha', '🪤',
       'Um único valor extremo "puxa" a média',
@@ -198,39 +200,41 @@ GO_RENDER['m4-03'] = function(c, p) {
       glow: 'rgba(124,58,237,.18)'
     }) +
 
-    sectionTitle('🎯', 'A definição que cabe em uma frase', 'var(--c-violet)') +
+    sectionTitle('🎯', 'A definição que cabe em uma frase', 'm4') +
     keyTerms(['mediana','centro','ordenar primeiro','robustez','assimetria','outliers'], 'violet') +
+
+    svgIllus(PrevSVG.assimetrias(), 'Em distribuição simétrica: média = mediana. Em cauda à direita: média > mediana. Em cauda à esquerda: média < mediana. A mediana resiste; a média segue a cauda.') +
 
     didaxBlock('estrutura', '📏',
       'Mediana = valor central de uma lista <em>ordenada</em>',
       `<p>É o valor que divide a amostra em duas metades iguais: metade abaixo, metade acima. Para encontrá-la você sempre faz dois movimentos, sempre nessa ordem:</p>
-      <ol style="margin: 6px 0 0 18px;">
+      <ol class="tight">
         <li><strong>Ordena</strong> os valores do menor para o maior.</li>
         <li><strong>Pega o do meio</strong> (se a quantidade for ímpar) ou a <strong>média dos dois centrais</strong> (se for par).</li>
       </ol>`
     ) +
 
-    sectionTitle('🔬', 'Demonstração clássica — a mediana resiste', 'var(--c-green)') +
+    sectionTitle('🔬', 'Demonstração clássica — a mediana resiste', 'm4') +
 
     didaxBlock('paralelo', '🅰️',
       'Lista A — 1, 3, 7',
       `<p>Três valores, ímpar. Já ordenados. <strong>O valor do meio é 3</strong>. <br><strong>Mediana = 3.</strong></p>
-      <p style="font-size:13px; color:var(--text-muted)">Média dessa lista = (1+3+7)/3 ≈ 3,67. Ainda razoavelmente parecidas.</p>`
+      <p class="editorial-note">Média dessa lista = (1+3+7)/3 ≈ 3,67. Ainda razoavelmente parecidas.</p>`
     ) +
 
     didaxBlock('paralelo', '🅱️',
       'Lista B — 1, 3, 10.000.000',
       `<p>Mudamos <strong>apenas o último valor</strong> (de 7 para dez milhões). Lista ordenada. <strong>O valor do meio continua 3</strong>. <br><strong>Mediana = 3.</strong></p>
-      <p style="font-size:13px; color:var(--text-muted)">Média dessa lista = (1+3+10.000.000)/3 ≈ 3.333.334,7. <strong>A média explodiu</strong>, a mediana não se mexeu.</p>`
+      <p class="editorial-note">Média dessa lista = (1+3+10.000.000)/3 ≈ 3.333.334,7. <strong>A média explodiu</strong>, a mediana não se mexeu.</p>`
     ) +
 
     didaxBlock('hit', '💡',
       'O que essa cena ensina em uma frase',
-      `<p style="font-size:16px; font-weight:700; color: var(--c-violet);">Mediana é pouco influenciada por valores extremos.</p>
+      `<p class="answer-text --violet">Mediana é pouco influenciada por valores extremos.</p>
       <p>Por isso ela é a medida-favorita para variáveis assimétricas: renda, salário, tempo de internação, custo hospitalar, tamanho de tumor, contagem viral. Sempre que houver risco de outlier puxar a média, a banca espera que você cite a mediana.</p>`
     ) +
 
-    sectionTitle('🧮', 'Sinta na calculadora', 'var(--c-blue)') +
+    sectionTitle('🧮', 'Sinta na calculadora', 'm4') +
     PrevInt.calcEstat({
       values: [1, 3, 7],
       title: 'Lista A — calcule e veja: mediana 3'
@@ -278,7 +282,7 @@ GO_RENDER['m4-04'] = function(c, p) {
       glow: 'rgba(16,185,129,.18)'
     }) +
 
-    sectionTitle('🔁', 'Definição operacional', 'var(--c-green)') +
+    sectionTitle('🔁', 'Definição operacional', 'm4') +
     keyTerms(['moda','valor mais frequente','unimodal','bimodal','trimodal','amodal','qualitativa'], 'green') +
 
     didaxBlock('estrutura', '📋',
@@ -286,7 +290,7 @@ GO_RENDER['m4-04'] = function(c, p) {
       `<p>Você olha a lista, conta quantas vezes cada valor aparece, e premia o que aparece mais. <strong>Não importa se é o maior, o menor ou o do meio</strong> — importa quantas vezes ele se repete.</p>`
     ) +
 
-    sectionTitle('🔢', 'Três casos canônicos', 'var(--c-blue)') +
+    sectionTitle('🔢', 'Três casos canônicos', 'm4') +
 
     didaxBlock('paralelo', '1️⃣',
       'Unimodal — uma única moda',
@@ -355,23 +359,23 @@ GO_RENDER['m4-05'] = function(c, p) {
       glow: 'rgba(124,58,237,.18)'
     }) +
 
-    sectionTitle('📜', 'O enunciado típico', 'var(--c-blue)') +
+    sectionTitle('📜', 'O enunciado típico', 'm4') +
 
     didaxBlock('estrutura', '🩺',
       'Caso clínico (estilo Unifesp)',
       `<p>Homem de 70 anos, com história clínica prévia, é avaliado em consulta ambulatorial. Foram aferidas <strong>seis medidas</strong> de pressão arterial sistólica, em mmHg, ao longo da consulta:</p>
-      <div style="text-align:center; padding: 12px 0; font-family: 'JetBrains Mono', monospace; font-size:20px; font-weight: 700; color: var(--c-blue);">110, 80, 75, 90, 110, 75</div>
+      <div class="center-display --blue">110, 80, 75, 90, 110, 75</div>
       <p>Pergunta-se: qual a <strong>mediana</strong>, a <strong>moda</strong> e a <strong>média</strong> dessas medidas?</p>
-      <p style="font-size:12px; color:var(--text-muted); font-style:italic;">Nota editorial: o enunciado original do material trazia uma sigla de transcrição duvidosa ("AEM"); usamos "homem de 70 anos com história clínica prévia" para preservar o sentido sem inventar dado clínico.</p>`
+      <p class="editorial-note">Nota editorial: o enunciado original do material trazia uma sigla de transcrição duvidosa ("AEM"); usamos "homem de 70 anos com história clínica prévia" para preservar o sentido sem inventar dado clínico.</p>`
     ) +
 
-    sectionTitle('1️⃣', 'Passo zero — ordenar', 'var(--c-violet)') +
+    sectionTitle('1️⃣', 'Passo zero — ordenar', 'm4') +
 
     didaxBlock('hit', '📏',
       'Reordenando do menor para o maior',
       `<p>Lista bruta: 110, 80, 75, 90, 110, 75.</p>
       <p>Lista ordenada: <strong>75, 75, 80, 90, 110, 110</strong>.</p>
-      <p style="font-size:15px; font-weight: 700; color: var(--c-violet); margin-top:8px;">Pediu mediana? <em>Ordena primeiro.</em></p>`
+      <p class="answer-text --violet">Pediu mediana? <em>Ordena primeiro.</em></p>`
     ) +
 
     sectionTitle('2️⃣', 'Calculando a mediana (n par → dois centros)', 'var(--c-violet)') +
@@ -383,7 +387,7 @@ GO_RENDER['m4-05'] = function(c, p) {
 
     formulaBox(
       'Mediana (n par)',
-      `<div style="display:flex; align-items:center; justify-content:center; gap:14px; font-size:22px;">
+      `<div class="formula-inline">
         <span>Mediana =</span>
         ${frac('x<sub>n/2</sub> + x<sub>(n/2)+1</sub>', '2')}
         <span>=</span>
@@ -393,18 +397,18 @@ GO_RENDER['m4-05'] = function(c, p) {
       'Para <em>n</em> ímpar a mediana é o valor único central; para <em>n</em> par é a <strong>média dos dois centrais</strong>.'
     ) +
 
-    sectionTitle('3️⃣', 'Calculando a moda e a média da mesma lista', 'var(--c-green)') +
+    sectionTitle('3️⃣', 'Calculando a moda e a média da mesma lista', 'm4') +
 
     didaxBlock('paralelo', '🔁',
       'Moda — quem mais aparece',
       `<p>Na lista ordenada (75, 75, 80, 90, 110, 110), <strong>75 aparece duas vezes</strong> e <strong>110 aparece duas vezes</strong>. Empatados, com frequência maior que todos os outros.</p>
-      <p style="font-size:16px; font-weight: 700; color: var(--c-green);">Moda = 75 e 110 (distribuição bimodal).</p>`
+      <p class="answer-text --green">Moda = 75 e 110 (distribuição bimodal).</p>`
     ) +
 
     didaxBlock('paralelo', '➗',
       'Média — soma tudo, divide por 6',
       `<p>Soma: 75 + 75 + 80 + 90 + 110 + 110 = <strong>540</strong>. Média: 540 ÷ 6 = <strong>90 mmHg</strong>.</p>
-      <p style="font-size:13px; color:var(--text-muted)">Observe: <em>média (90) ≠ mediana (85)</em>. Pequena diferença porque os extremos altos (110, 110) puxam a média para cima.</p>`
+      <p class="editorial-note">Observe: <em>média (90) ≠ mediana (85)</em>. Pequena diferença porque os extremos altos (110, 110) puxam a média para cima.</p>`
     ) +
 
     PrevInt.calcEstat({
@@ -414,7 +418,7 @@ GO_RENDER['m4-05'] = function(c, p) {
 
     didaxBlock('pegadinha', '🪤',
       'Como a banca elimina o aluno apressado',
-      `<ul style="margin: 6px 0 0 18px; line-height: 1.75;">
+      `<ul class="tight">
         <li>Alternativa "Mediana = 90" → quem pegou o <strong>quarto da lista bruta</strong> (110, 80, 75, <em>90</em>, 110, 75) sem ordenar.</li>
         <li>Alternativa "Mediana = 95" → quem ordenou, mas pegou <strong>só o 4.º elemento</strong> (90) esquecendo que par tem dois centros.</li>
         <li>Alternativa "Moda = 75" (só) → quem parou de contar antes de chegar ao final.</li>
@@ -460,16 +464,18 @@ GO_RENDER['m4-06'] = function(c, p) {
       glow: 'rgba(20,184,166,.18)'
     }) +
 
-    sectionTitle('👥', 'Felipe e Rafael — a comparação que abre o conceito', 'var(--c-teal)') +
-    keyTerms(['dispersão','espalhamento','mesma média, vidas diferentes','homogêneo','heterogêneo'], 'teal') +
+    sectionTitle('👥', 'Felipe e Rafael — a comparação que abre o conceito', 'm4') +
+    keyTerms(['dispersão','espalhamento','mesma média, vidas diferentes','homogêneo','heterogêneo'], 'violet') +
 
-    `<div class="split-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 16px 0;">
+    svgIllus(PrevSVG.dispersaoDP(), 'Três amostras, mesma média (μ=50): a dispersão (s) cresce de cima para baixo. É a foto numérica do "centro não é espalhamento".') +
+
+    `<div class="split-grid">
       <div class="didax-block --paralelo">
         <div class="didax-block-title"><span class="ico">🟦</span>Felipe — quatro provas</div>
         <div class="didax-block-body">
           <p>Notas: <strong>0, 2, 8, 10</strong>.</p>
           <p>Soma: 20. Média: <strong>5</strong>.</p>
-          <p style="color: var(--c-red); font-weight: 700;">Mas tirou zero! E também tirou dez. Notas oscilam violentamente.</p>
+          <p class="emphasis --red">Mas tirou zero! E também tirou dez. Notas oscilam violentamente.</p>
         </div>
       </div>
       <div class="didax-block --paralelo">
@@ -477,20 +483,26 @@ GO_RENDER['m4-06'] = function(c, p) {
         <div class="didax-block-body">
           <p>Notas: <strong>4, 5, 5, 6</strong>.</p>
           <p>Soma: 20. Média: <strong>5</strong>.</p>
-          <p style="color: var(--c-green); font-weight: 700;">Mesma média do Felipe, mas notas todas perto de 5 — desempenho estável.</p>
-          <p style="font-size:12px; color:var(--text-muted); font-style:italic; margin-top:6px;">Nota editorial: sequência didática compatível para preservar média 5, amplitude 2 e baixa dispersão.</p>
+          <p class="emphasis --green">Mesma média do Felipe, mas notas todas perto de 5 — desempenho estável.</p>
+          <p class="editorial-note">Nota editorial: sequência didática compatível para preservar média 5, amplitude 2 e baixa dispersão.</p>
         </div>
       </div>
     </div>` +
 
     didaxBlock('hit', '💡',
       'A pergunta inevitável',
-      `<p style="font-size:16px;">Se os dois têm a mesma média, eles tiveram o mesmo desempenho?</p>
-      <p style="font-size:18px; font-weight:700; color: var(--c-teal);">Não. Felipe é instável; Rafael é constante. A média esconde isso.</p>
+      `<p class="lead-text">Se os dois têm a mesma média, eles tiveram o mesmo desempenho?</p>
+      <p class="answer-text --teal">Não. Felipe é instável; Rafael é constante. A média esconde isso.</p>
       <p>Em clínica, mesma cena: dois pacientes hipertensos com pressão sistólica <strong>média 140 mmHg</strong>. Um oscila entre 135 e 145 (controle razoável). O outro oscila entre 90 e 190 (risco iminente). <strong>Centro idêntico, espalhamento opostos, decisões opostas</strong>.</p>`
     ) +
 
-    sectionTitle('🩺', 'Tradução clínica — por que isso é vital em Medicina', 'var(--c-orange)') +
+    fraseAutoral({
+      tag: 'Voz Preventiva',
+      body: `Quando eu olho um relatório clínico e vejo só a média da glicemia ou da pressão, eu sei que estou olhando metade da história. <strong>Centro não é espalhamento.</strong> Um residente experiente aprende a desconfiar de qualquer média que venha sozinha — porque por trás dela pode estar tanto o paciente estável quanto aquele que oscila entre o normal e a UTI. É essa desconfiança disciplinada que esse módulo está construindo em você.`,
+      assinatura: 'Intensivão Preventiva · M4-06'
+    }) +
+
+    sectionTitle('🩺', 'Tradução clínica — por que isso é vital em Medicina', 'm3') +
 
     didaxBlock('serie', '📈',
       'Glicemia 95 a 105 mg/dL — paciente sob controle',
@@ -540,12 +552,12 @@ GO_RENDER['m4-07'] = function(c, p) {
       glow: 'rgba(20,184,166,.18)'
     }) +
 
-    sectionTitle('📏', 'Amplitude — a medida mais grosseira', 'var(--c-teal)') +
+    sectionTitle('📏', 'Amplitude — a medida mais grosseira', 'm4') +
     keyTerms(['amplitude','range','maior - menor','desvio','distância até a média'], 'teal') +
 
     formulaBox(
       'Amplitude',
-      `<div style="display:flex; align-items:center; justify-content:center; gap:14px; font-size:22px;">
+      `<div class="formula-inline">
         <span>Amplitude = </span>
         <span>x<sub>máx</sub></span>
         <span>−</span>
@@ -559,7 +571,7 @@ GO_RENDER['m4-07'] = function(c, p) {
         <div class="didax-block-title"><span class="ico">🟦</span>Felipe — 0, 2, 8, 10</div>
         <div class="didax-block-body">
           <p>Maior: 10. Menor: 0.</p>
-          <p style="font-size:18px; font-weight:700; color: var(--c-teal);">Amplitude = 10 − 0 = <strong>10</strong></p>
+          <p class="answer-text --teal">Amplitude = 10 − 0 = <strong>10</strong></p>
           <p>Grande espalhamento detectado já na conta mais simples.</p>
         </div>
       </div>
@@ -567,7 +579,7 @@ GO_RENDER['m4-07'] = function(c, p) {
         <div class="didax-block-title"><span class="ico">🟪</span>Rafael — 4, 5, 5, 6</div>
         <div class="didax-block-body">
           <p>Maior: 6. Menor: 4.</p>
-          <p style="font-size:18px; font-weight:700; color: var(--c-teal);">Amplitude = 6 − 4 = <strong>2</strong></p>
+          <p class="answer-text --teal">Amplitude = 6 − 4 = <strong>2</strong></p>
           <p>Pequeno espalhamento, coerente com a sensação de "notas estáveis".</p>
         </div>
       </div>
@@ -576,10 +588,10 @@ GO_RENDER['m4-07'] = function(c, p) {
     didaxBlock('pegadinha', '⚠️',
       'O defeito da amplitude',
       `<p>Ela <strong>usa só dois valores</strong> da lista — o maior e o menor. <em>Tudo que está no meio é ignorado</em>. Em uma lista de 1.000 pacientes, basta um único outlier no topo ou no rodapé para inflar a amplitude sem que ela represente a realidade da maioria.</p>
-      <p style="font-size:15px; font-weight:700; color: var(--c-orange); margin-top:8px;">Por isso a amplitude é a medida de dispersão <em>mais grosseira</em>. Útil para uma primeira leitura — insuficiente para análise séria.</p>`
+      <p class="answer-text --orange">Por isso a amplitude é a medida de dispersão <em>mais grosseira</em>. Útil para uma primeira leitura — insuficiente para análise séria.</p>`
     ) +
 
-    sectionTitle('🎯', 'Desvio — a distância de cada valor até a média', 'var(--c-violet)') +
+    sectionTitle('🎯', 'Desvio — a distância de cada valor até a média', 'm4') +
 
     didaxBlock('estrutura', '📐',
       'Definição operacional',
@@ -588,7 +600,7 @@ GO_RENDER['m4-07'] = function(c, p) {
 
     formulaBox(
       'Desvio de um valor',
-      `<div style="display:flex; align-items:center; justify-content:center; gap:14px; font-size:22px;">
+      `<div class="formula-inline">
         <span>d<sub>i</sub> = x<sub>i</sub> − x̄</span>
       </div>`,
       'Lê-se: "desvio do valor <em>i</em> = valor menos média". Note o sinal — quem está abaixo da média tem desvio negativo.'
@@ -596,7 +608,7 @@ GO_RENDER['m4-07'] = function(c, p) {
 
     didaxBlock('hit', '🟦',
       'Desvios de Felipe (média = 5)',
-      `<ul style="margin: 6px 0 0 18px; line-height: 1.8;">
+      `<ul class="tight">
         <li>x = 0 → desvio = 0 − 5 = <strong>−5</strong></li>
         <li>x = 2 → desvio = 2 − 5 = <strong>−3</strong></li>
         <li>x = 8 → desvio = 8 − 5 = <strong>+3</strong></li>
@@ -607,7 +619,7 @@ GO_RENDER['m4-07'] = function(c, p) {
 
     didaxBlock('hit', '🟪',
       'Desvios de Rafael (média = 5)',
-      `<ul style="margin: 6px 0 0 18px; line-height: 1.8;">
+      `<ul class="tight">
         <li>x = 4 → desvio = 4 − 5 = <strong>−1</strong></li>
         <li>x = 5 → desvio = 5 − 5 = <strong>0</strong></li>
         <li>x = 5 → desvio = 5 − 5 = <strong>0</strong></li>
@@ -663,12 +675,12 @@ GO_RENDER['m4-08'] = function(c, p) {
       glow: 'rgba(124,58,237,.18)'
     }) +
 
-    sectionTitle('🧮', 'A receita em 4 passos', 'var(--c-violet)') +
+    sectionTitle('🧮', 'A receita em 4 passos', 'm4') +
     keyTerms(['variância','desvio padrão','quadrado dos desvios','n − 1','medida-rainha','formalização'], 'violet') +
 
     didaxBlock('estrutura', '📋',
       'Como se chega à variância',
-      `<ol style="margin: 6px 0 0 18px; line-height: 1.85;">
+      `<ol class="tight">
         <li>Calcule a <strong>média (x̄)</strong>.</li>
         <li>Para cada valor, calcule o <strong>desvio</strong> (x<sub>i</sub> − x̄).</li>
         <li><strong>Eleve cada desvio ao quadrado</strong> — agora todos são positivos.</li>
@@ -678,7 +690,7 @@ GO_RENDER['m4-08'] = function(c, p) {
 
     formulaBox(
       'Variância amostral (s²)',
-      `<div style="display:flex; align-items:center; justify-content:center; gap:14px; font-size:22px;">
+      `<div class="formula-inline">
         <span>s² = </span>
         ${frac('Σ (x<sub>i</sub> − x̄)²', 'n − 1')}
       </div>`,
@@ -687,7 +699,7 @@ GO_RENDER['m4-08'] = function(c, p) {
 
     formulaBox(
       'Desvio padrão (s)',
-      `<div style="display:flex; align-items:center; justify-content:center; gap:14px; font-size:22px;">
+      `<div class="formula-inline">
         <span>s = √s² = </span>
         <span>√(variância)</span>
       </div>`,
@@ -819,13 +831,13 @@ GO_RENDER['m4-09'] = function(c, p) {
       glow: 'rgba(245,158,11,.18)'
     }) +
 
-    sectionTitle('🗺️', 'Mapa mental — duas colunas, dois grupos', 'var(--c-yellow, var(--c-orange))') +
+    sectionTitle('🗺️', 'Mapa mental — duas colunas, dois grupos', 'm4') +
 
     `<div class="split-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 16px 0;">
       <div class="didax-block --estrutura">
         <div class="didax-block-title"><span class="ico">🎯</span>Tendência central — "onde está o grupo?"</div>
         <div class="didax-block-body">
-          <ul style="margin: 6px 0 0 18px; line-height: 1.85;">
+          <ul class="tight">
             <li><strong>Média</strong> = soma ÷ n. Sensível a extremos.</li>
             <li><strong>Mediana</strong> = valor central da lista ordenada. Robusta.</li>
             <li><strong>Moda</strong> = valor mais frequente. Única que serve para qualitativas.</li>
@@ -835,7 +847,7 @@ GO_RENDER['m4-09'] = function(c, p) {
       <div class="didax-block --paralelo">
         <div class="didax-block-title"><span class="ico">📏</span>Dispersão — "quão espalhado está o grupo?"</div>
         <div class="didax-block-body">
-          <ul style="margin: 6px 0 0 18px; line-height: 1.85;">
+          <ul class="tight">
             <li><strong>Amplitude</strong> = maior − menor. Grosseira.</li>
             <li><strong>Variância (s²)</strong> = Σ(x<sub>i</sub> − x̄)² / (n − 1). Em unidade².</li>
             <li><strong>Desvio padrão (s)</strong> = √s². Medida-rainha, em unidade original.</li>
@@ -850,7 +862,7 @@ GO_RENDER['m4-09'] = function(c, p) {
       <p>Em toda questão de Bioestatística descritiva, identifique primeiro <strong>qual pergunta o enunciado faz</strong>: ele quer saber onde está o grupo (centro) ou quão homogêneo ele é (dispersão)? Essa pergunta sozinha elimina metade das alternativas.</p>`
     ) +
 
-    sectionTitle('🎯', 'Treino de banca — 5 questões padrão', 'var(--c-orange)') +
+    sectionTitle('🎯', 'Treino de banca — 5 questões padrão', 'm4') +
 
     PrevInt.quizBanca([
       {
@@ -912,7 +924,7 @@ GO_RENDER['m4-09'] = function(c, p) {
       { q: 'Por que duas amostras com a mesma média podem ter condutas clínicas opostas?', a: 'Porque a <strong>dispersão</strong> (variância/desvio padrão) pode ser muito diferente. Glicemia média 100 com DP 3 é estável; média 100 com DP 50 é caótica. <strong>Clínica decide pela dispersão, não pela média sozinha.</strong>' }
     ]) +
 
-    sectionTitle('🔁', 'Fechando o anel — para onde voltar', 'var(--c-violet)') +
+    sectionTitle('🔁', 'Fechando o anel — para onde voltar', 'm4') +
 
     `<p style="font-size:14px; color: var(--text-secondary); margin: 8px 0 12px;">Você completou os 4 módulos do Intensivão Preventiva. Antes da prova, vale revisitar as âncoras de cada módulo:</p>` +
 

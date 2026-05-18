@@ -379,6 +379,164 @@ PrevSVG.dispersaoDP = function() {
 };
 
 /* ─────────────────────────────────────────
+   VPP / VPN / Prevalência — funil (M2)
+   Mostra como a prevalência altera VPP/VPN mesmo
+   com Sens/Esp fixos.
+───────────────────────────────────────── */
+PrevSVG.vppFunil = function() {
+  return `
+  <svg viewBox="0 0 600 280" role="img" aria-label="Funil mostrando o efeito da prevalência sobre VPP e VPN">
+    <defs>
+      <linearGradient id="vpp-grad-low" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="var(--c-teal)" stop-opacity=".2"/>
+        <stop offset="100%" stop-color="var(--c-red)" stop-opacity=".7"/>
+      </linearGradient>
+      <linearGradient id="vpp-grad-high" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="var(--c-teal)" stop-opacity=".2"/>
+        <stop offset="100%" stop-color="var(--c-green)" stop-opacity=".8"/>
+      </linearGradient>
+    </defs>
+
+    <!-- Cenário 1: prevalência BAIXA -->
+    <g transform="translate(20 30)">
+      <text x="130" y="0" font-size="12" font-weight="800" fill="var(--c-teal)" text-anchor="middle">RASTREIO POPULACIONAL</text>
+      <text x="130" y="16" font-size="10" fill="currentColor" text-anchor="middle" opacity=".7">Prevalência ≈ 1%</text>
+      <!-- funil -->
+      <path d="M 20 40 L 240 40 L 180 140 L 80 140 Z" fill="url(#vpp-grad-low)" stroke="var(--c-teal)" stroke-width="1.5"/>
+      <text x="130" y="70" font-size="11" font-weight="700" fill="currentColor" text-anchor="middle">10.000 testados +</text>
+      <text x="130" y="118" font-size="14" font-weight="800" fill="var(--c-red)" text-anchor="middle">VPP ≈ 9%</text>
+      <text x="130" y="170" font-size="10" fill="currentColor" text-anchor="middle" opacity=".75">→ muito falso positivo</text>
+      <text x="130" y="186" font-size="10" fill="currentColor" text-anchor="middle" opacity=".75">→ confiar pouco no +</text>
+    </g>
+
+    <text x="300" y="120" font-size="22" font-weight="800" fill="currentColor" opacity=".35" text-anchor="middle">vs</text>
+
+    <!-- Cenário 2: prevalência ALTA -->
+    <g transform="translate(330 30)">
+      <text x="130" y="0" font-size="12" font-weight="800" fill="var(--c-teal)" text-anchor="middle">PRÉ-TESTE ALTA</text>
+      <text x="130" y="16" font-size="10" fill="currentColor" text-anchor="middle" opacity=".7">Prevalência ≈ 40%</text>
+      <path d="M 20 40 L 240 40 L 180 140 L 80 140 Z" fill="url(#vpp-grad-high)" stroke="var(--c-teal)" stroke-width="1.5"/>
+      <text x="130" y="70" font-size="11" font-weight="700" fill="currentColor" text-anchor="middle">100 testados +</text>
+      <text x="130" y="118" font-size="14" font-weight="800" fill="var(--c-green)" text-anchor="middle">VPP ≈ 88%</text>
+      <text x="130" y="170" font-size="10" fill="currentColor" text-anchor="middle" opacity=".75">→ pouco falso positivo</text>
+      <text x="130" y="186" font-size="10" fill="currentColor" text-anchor="middle" opacity=".75">→ confiar muito no +</text>
+    </g>
+
+    <!-- Legenda inferior -->
+    <text x="300" y="252" font-size="11" fill="var(--c-violet)" font-weight="700" text-anchor="middle">Mesma Sens/Esp · prevalência muda tudo</text>
+    <text x="300" y="268" font-size="10" fill="currentColor" text-anchor="middle" opacity=".7">VPP sobe com prevalência · VPN desce com prevalência</text>
+  </svg>`;
+};
+
+/* ─────────────────────────────────────────
+   Distribuições sãos × doentes que GERAM a ROC (M3)
+   Curva ROC nasce da sobreposição de duas distribuições
+───────────────────────────────────────── */
+PrevSVG.distribuicoesROC = function() {
+  return `
+  <svg viewBox="0 0 600 300" role="img" aria-label="Duas distribuições sãos versus doentes que dão origem à curva ROC">
+    <text x="300" y="18" font-size="12" font-weight="800" fill="var(--c-orange)" text-anchor="middle">O QUE GERA A CURVA ROC</text>
+    <text x="300" y="34" font-size="10" fill="currentColor" text-anchor="middle" opacity=".7">duas distribuições — uma de sãos, outra de doentes — sobrepostas</text>
+
+    <!-- eixo X -->
+    <line x1="60" y1="220" x2="540" y2="220" stroke="currentColor" stroke-width="1.5" opacity=".5"/>
+    <text x="300" y="248" font-size="10" fill="currentColor" text-anchor="middle" opacity=".7">valor medido (ex.: glicemia, PSA, troponina)</text>
+    <text x="60" y="240" font-size="9" fill="currentColor" opacity=".55">baixo</text>
+    <text x="540" y="240" font-size="9" fill="currentColor" text-anchor="end" opacity=".55">alto</text>
+
+    <!-- Distribuição SÃOS (à esquerda) -->
+    <path d="M 80 220 Q 160 90 240 220 Z" fill="var(--c-green-soft)" stroke="var(--c-green)" stroke-width="2" opacity=".85"/>
+    <text x="160" y="120" font-size="11" font-weight="800" fill="var(--c-green)" text-anchor="middle">SÃOS</text>
+    <text x="160" y="134" font-size="9" fill="var(--c-green)" text-anchor="middle">μ=baixo · σ</text>
+
+    <!-- Distribuição DOENTES (à direita) -->
+    <path d="M 280 220 Q 360 70 440 220 Z" fill="var(--c-red-soft)" stroke="var(--c-red)" stroke-width="2" opacity=".85"/>
+    <text x="360" y="100" font-size="11" font-weight="800" fill="var(--c-red)" text-anchor="middle">DOENTES</text>
+    <text x="360" y="114" font-size="9" fill="var(--c-red)" text-anchor="middle">μ=alto · σ</text>
+
+    <!-- Zona de sobreposição (cinza) -->
+    <path d="M 240 220 Q 260 170 280 220 Z" fill="var(--c-amber-soft)" stroke="var(--c-amber)" stroke-width="1.5" opacity=".7"/>
+    <text x="260" y="195" font-size="9" font-weight="700" fill="var(--c-amber)" text-anchor="middle">ÁREA DE</text>
+    <text x="260" y="207" font-size="9" font-weight="700" fill="var(--c-amber)" text-anchor="middle">CONFUSÃO</text>
+
+    <!-- Linha do corte -->
+    <line x1="260" y1="60" x2="260" y2="220" stroke="var(--c-violet)" stroke-width="2.5" stroke-dasharray="5 4"/>
+    <text x="260" y="54" font-size="11" font-weight="800" fill="var(--c-violet)" text-anchor="middle">ponto de corte</text>
+
+    <!-- Anotação -->
+    <text x="300" y="278" font-size="11" fill="currentColor" text-anchor="middle" opacity=".75" font-style="italic">Quanto mais separadas as duas curvas, maior a AUC.</text>
+  </svg>`;
+};
+
+/* ─────────────────────────────────────────
+   Histograma de classes (M4) — mostra moda, mediana, média
+───────────────────────────────────────── */
+PrevSVG.histogramaTendencia = function() {
+  return `
+  <svg viewBox="0 0 600 280" role="img" aria-label="Histograma mostrando moda, mediana e média sobre as classes">
+    <text x="300" y="18" font-size="12" font-weight="800" fill="var(--c-violet)" text-anchor="middle">HISTOGRAMA · três medidas em um só gráfico</text>
+
+    <!-- eixo X com classes -->
+    <line x1="60" y1="220" x2="540" y2="220" stroke="currentColor" stroke-width="1.5" opacity=".5"/>
+
+    <!-- barras -->
+    <g>
+      <rect x="80"  y="180" width="50" height="40"  fill="var(--c-violet-soft)" stroke="var(--c-violet)" stroke-width="1.5"/>
+      <text x="105" y="240" font-size="10" fill="currentColor" text-anchor="middle">10-20</text>
+      <text x="105" y="176" font-size="9" fill="currentColor" text-anchor="middle" opacity=".7">n=4</text>
+
+      <rect x="140" y="140" width="50" height="80"  fill="var(--c-violet-soft)" stroke="var(--c-violet)" stroke-width="1.5"/>
+      <text x="165" y="240" font-size="10" fill="currentColor" text-anchor="middle">20-30</text>
+      <text x="165" y="136" font-size="9" fill="currentColor" text-anchor="middle" opacity=".7">n=8</text>
+
+      <rect x="200" y="80"  width="50" height="140" fill="var(--c-violet-soft)" stroke="var(--c-violet)" stroke-width="2"/>
+      <text x="225" y="240" font-size="10" font-weight="800" fill="var(--c-violet)" text-anchor="middle">30-40</text>
+      <text x="225" y="76" font-size="10" font-weight="800" fill="var(--c-violet)" text-anchor="middle">n=14</text>
+
+      <rect x="260" y="120" width="50" height="100" fill="var(--c-violet-soft)" stroke="var(--c-violet)" stroke-width="1.5"/>
+      <text x="285" y="240" font-size="10" fill="currentColor" text-anchor="middle">40-50</text>
+      <text x="285" y="116" font-size="9" fill="currentColor" text-anchor="middle" opacity=".7">n=10</text>
+
+      <rect x="320" y="160" width="50" height="60"  fill="var(--c-violet-soft)" stroke="var(--c-violet)" stroke-width="1.5"/>
+      <text x="345" y="240" font-size="10" fill="currentColor" text-anchor="middle">50-60</text>
+      <text x="345" y="156" font-size="9" fill="currentColor" text-anchor="middle" opacity=".7">n=6</text>
+
+      <rect x="380" y="190" width="50" height="30"  fill="var(--c-violet-soft)" stroke="var(--c-violet)" stroke-width="1.5"/>
+      <text x="405" y="240" font-size="10" fill="currentColor" text-anchor="middle">60-70</text>
+      <text x="405" y="186" font-size="9" fill="currentColor" text-anchor="middle" opacity=".7">n=3</text>
+    </g>
+
+    <!-- Moda (classe mais frequente) -->
+    <g>
+      <line x1="225" y1="80" x2="225" y2="60" stroke="var(--c-green)" stroke-width="2"/>
+      <rect x="195" y="44" width="60" height="18" rx="6" fill="var(--c-green)"/>
+      <text x="225" y="57" font-size="10" font-weight="800" fill="#fff" text-anchor="middle">MODA</text>
+    </g>
+
+    <!-- Mediana -->
+    <g>
+      <line x1="270" y1="220" x2="270" y2="260" stroke="var(--c-amber)" stroke-width="2.5" stroke-dasharray="3 3"/>
+      <rect x="240" y="258" width="70" height="18" rx="6" fill="var(--c-amber)"/>
+      <text x="275" y="271" font-size="10" font-weight="800" fill="#fff" text-anchor="middle">MEDIANA</text>
+    </g>
+
+    <!-- Média (puxada à direita pela cauda) -->
+    <g>
+      <line x1="295" y1="220" x2="295" y2="260" stroke="var(--c-orange)" stroke-width="2.5"/>
+      <rect x="305" y="258" width="60" height="18" rx="6" fill="var(--c-orange)"/>
+      <text x="335" y="271" font-size="10" font-weight="800" fill="#fff" text-anchor="middle">MÉDIA</text>
+    </g>
+
+    <!-- legenda -->
+    <text x="480" y="100" font-size="10" font-weight="700" fill="var(--c-green)">● Moda = classe mais alta</text>
+    <text x="480" y="116" font-size="10" font-weight="700" fill="var(--c-amber)">● Mediana = centro de massa</text>
+    <text x="480" y="132" font-size="10" font-weight="700" fill="var(--c-orange)">● Média = centro de gravidade</text>
+    <text x="480" y="156" font-size="9" fill="currentColor" opacity=".7">cauda à direita →</text>
+    <text x="480" y="170" font-size="9" fill="currentColor" opacity=".7">média &gt; mediana &gt; moda</text>
+  </svg>`;
+};
+
+/* ─────────────────────────────────────────
    Mapa-Hero dos 4 módulos
 ───────────────────────────────────────── */
 PrevSVG.heroMapa = function() {

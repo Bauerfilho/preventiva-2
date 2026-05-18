@@ -44,7 +44,9 @@ GO_RENDER['m3-01'] = function(container, page) {
     })}
   </div>
 
-  ${keyTerms(['razão de verossimilhança','Curva ROC','sensibilidade','especificidade','resultado positivo','resultado negativo','raciocínio matemático','raciocínio visual'])}
+  ${keyTerms(['razão de verossimilhança','Curva ROC','sensibilidade','especificidade','resultado positivo','resultado negativo','raciocínio matemático','raciocínio visual'], 'orange')}
+
+  ${svgIllus(PrevSVG.rocDidatica(), 'A Curva ROC: cada ponto é um corte. O canto superior-esquerdo é o melhor corte. A diagonal é o teste-acaso. AUC = área sob a curva.')}
 
   <div class="prose">
     <p>Antes de entrar na Curva ROC, é preciso separar duas ideias que costumam se misturar: <strong>razão de verossimilhança</strong> e <strong>representação gráfica do desempenho de um teste</strong>. As duas conversam com sensibilidade e especificidade, mas não são a mesma ferramenta.</p>
@@ -58,10 +60,10 @@ GO_RENDER['m3-01'] = function(container, page) {
     <p>A Curva ROC, portanto, deve ser apresentada como um <strong>mapa visual</strong> da disputa entre dois desejos clínicos: detectar o máximo de doentes possível e, ao mesmo tempo, evitar classificar saudáveis como doentes. Essa tensão é o coração de todos os pontos de corte.</p>
   </div>
 
-  ${sectionTitle('🧮','Duas ferramentas, duas perguntas — separe na cabeça', 'var(--c-violet)')}
+  ${sectionTitle('🧮','Duas ferramentas, duas perguntas — separe na cabeça', 'm3')}
   <div class="split2">
-    <div class="case-card" style="border-left:6px solid var(--c-violet);">
-      <strong style="color:var(--c-violet);">RAZÃO DE VEROSSIMILHANÇA — matemática</strong>
+    <div class="case-card --violet">
+      <div class="case-card-head">RAZÃO DE VEROSSIMILHANÇA — matemática</div>
       <p>Responde com <strong>números</strong>: quanto esse resultado <em>positivo</em> ou <em>negativo</em> muda a chance da doença?</p>
       <ul class="tight">
         <li><strong>RV+ alta</strong> → confiar mais no positivo.</li>
@@ -70,8 +72,8 @@ GO_RENDER['m3-01'] = function(container, page) {
         <li>RV− = (1 − Sens) ÷ Esp</li>
       </ul>
     </div>
-    <div class="case-card" style="border-left:6px solid var(--c-orange);">
-      <strong style="color:var(--c-orange);">CURVA ROC — gráfico</strong>
+    <div class="case-card --orange">
+      <div class="case-card-head">CURVA ROC — gráfico</div>
       <p>Responde com <strong>posição no plano</strong>: como Sens e Esp se comportam ao longo dos pontos de corte?</p>
       <ul class="tight">
         <li>Eixo Y = sensibilidade.</li>
@@ -166,8 +168,8 @@ GO_RENDER['m3-02'] = function(container, page) {
     <p>Por isso uma questão pode parecer simples e ainda assim derrubar gente. Quando ela pergunta <em>"qual ponto tem maior falso positivo?"</em>, o aluno não deve procurar o ponto mais específico — deve procurar o ponto <strong>mais à direita</strong>. Quando pergunta <em>"qual ponto é mais específico?"</em>, deve procurar o ponto <strong>mais à esquerda</strong>.</p>
   </div>
 
-  ${sectionTitle('🧭','Explorador interativo dos eixos — mexa o corte e veja o ponto andar', 'var(--c-orange)')}
-  <p style="color:var(--text-muted); margin-bottom: 12px;">Use o slider abaixo: ao <strong>baixar o corte</strong>, o ponto sobe na ROC (mais sensível) e vai à direita (mais falso positivo). Ao <strong>subir o corte</strong>, o ponto desce e vai à esquerda (mais específico). É o mapa físico das três frases-chave.</p>
+  ${sectionTitle('🧭','Explorador interativo dos eixos — mexa o corte e veja o ponto andar', 'm3')}
+  <p class="mt-prose">Use o slider abaixo: ao <strong>baixar o corte</strong>, o ponto sobe na ROC (mais sensível) e vai à direita (mais falso positivo). Ao <strong>subir o corte</strong>, o ponto desce e vai à esquerda (mais específico). É o mapa físico das três frases-chave.</p>
   ${PrevInt.rocCurva({ mu0: 4.8, sd0: 0.55, mu1: 7.5, sd1: 1.05, cut: 6.5, label: 'HbA1c (%)', range: [3, 12] })}
 
   ${didaxBlock('caso','🩺','Caso-guia: três pontos na curva',
@@ -270,8 +272,8 @@ GO_RENDER['m3-03'] = function(container, page) {
     <p>Esta página deve ensinar o aluno a <strong>transformar posição espacial em raciocínio clínico</strong>: alto significa <em>não deixar doentes passarem</em>; esquerdo significa <em>não acusar saudáveis indevidamente</em>.</p>
   </div>
 
-  ${sectionTitle('⭐','Identificando o ponto ideal — interativo', 'var(--c-orange)')}
-  <p style="color:var(--text-muted); margin-bottom: 12px;">Brinque com o slider: posicione o ponto de corte de modo que o marcador na ROC chegue o mais próximo possível do <strong>canto superior esquerdo</strong>. Esse é o ponto que combina alta Sens E alta Esp ao mesmo tempo.</p>
+  ${sectionTitle('⭐','Identificando o ponto ideal — interativo', 'm3')}
+  <p class="mt-prose">Brinque com o slider: posicione o ponto de corte de modo que o marcador na ROC chegue o mais próximo possível do <strong>canto superior esquerdo</strong>. Esse é o ponto que combina alta Sens E alta Esp ao mesmo tempo.</p>
   ${PrevInt.rocCurva({ mu0: 4.9, sd0: 0.45, mu1: 7.8, sd1: 0.85, cut: 6.2, label: 'Marcador (un.)', range: [3, 12] })}
 
   ${didaxBlock('caso','🩺','Caso-guia: três pontos competindo',
@@ -362,8 +364,8 @@ GO_RENDER['m3-04'] = function(container, page) {
     <p>Esse raciocínio não vale só para HbA1c. Ele se aplica, com adaptações, a muitos exames laboratoriais, imagens, escalas clínicas e testes de rastreamento. <strong>Sempre que há um "normal" e um "alterado", existe por trás uma decisão sobre ponto de corte</strong> — uma escolha feita a partir de desempenho diagnóstico em uma população estudada.</p>
   </div>
 
-  ${sectionTitle('🩸','Simulador HbA1c — de onde veio o 5,7?', 'var(--c-orange)')}
-  <p style="color:var(--text-muted); margin-bottom: 12px;">Mova o slider e observe: no corte <strong>5,7</strong>, o ponto da ROC chega o mais próximo possível do canto superior esquerdo — é o <em>ponto B</em>. Para cortes <strong>abaixo de 5,7</strong>, ganhamos sensibilidade mas explodimos o falso positivo (ponto C). Para cortes <strong>acima de 5,7</strong>, ganhamos especificidade mas perdemos doentes (ponto A).</p>
+  ${sectionTitle('🩸','Simulador HbA1c — de onde veio o 5,7?', 'm3')}
+  <p class="mt-prose">Mova o slider e observe: no corte <strong>5,7</strong>, o ponto da ROC chega o mais próximo possível do canto superior esquerdo — é o <em>ponto B</em>. Para cortes <strong>abaixo de 5,7</strong>, ganhamos sensibilidade mas explodimos o falso positivo (ponto C). Para cortes <strong>acima de 5,7</strong>, ganhamos especificidade mas perdemos doentes (ponto A).</p>
   ${PrevInt.rocCurva({ mu0: 5.1, sd0: 0.40, mu1: 6.6, sd1: 0.70, cut: 5.7, label: 'HbA1c (%)', range: [4, 8] })}
 
   ${didaxBlock('caso','🩺','Caso-guia: por que não 5,4 ou 6,1?',
@@ -406,6 +408,12 @@ GO_RENDER['m3-04'] = function(container, page) {
 
   ${didaxBlock('avancado','⚡','O que diferencia o aluno avançado',
     `<p>O aluno avançado entende que <strong>valores de referência são dependentes de contexto</strong>: população, objetivo do teste (rastreamento × diagnóstico × confirmação) e consequências dos erros (custo de falso positivo × custo de falso negativo). Um ponto ótimo para rastrear pode <em>não ser</em> o mesmo ponto ótimo para confirmar diagnóstico. A ROC oferece o mapa; a decisão clínica escolhe o ponto.</p>`)}
+
+  ${fraseAutoral({
+    tag: 'Voz Preventiva',
+    body: `O 5,7 da HbA1c não veio de uma revelação divina — ele veio de uma <strong>escolha humana</strong> feita em cima de uma curva. Quando eu mostro isso para o aluno, vejo o clique acontecer: <em>"então o valor de referência é uma decisão, não um dogma"</em>. É exatamente o tipo de pensamento que distingue quem só decora exame de quem entende como o exame foi construído. Toda vez que você ler um valor de referência, lembre: <strong>tem uma ROC por trás dele</strong>.`,
+    assinatura: 'Intensivão Preventiva · M3-04'
+  })}
 
   ${revisaoAtiva([
     { q: 'De onde vêm os valores de referência de exames?', a: 'De estudos com Curvas ROC: o melhor ponto da curva (superior esquerdo) vira o número de referência. Comparam-se doentes e não doentes, testam-se cortes, escolhe-se o de melhor desempenho.' },
@@ -458,14 +466,14 @@ GO_RENDER['m3-05'] = function(container, page) {
     <p class="pulled">A troca cristalina: <strong>corte menor aumenta sensibilidade E falso positivo; corte maior aumenta especificidade E falso negativo</strong>. Essa é a essência do raciocínio de ponto de corte.</p>
   </div>
 
-  ${sectionTitle('🎚️','Simulador completo — desloque o corte e veja tudo girar', 'var(--c-orange)')}
-  <p style="color:var(--text-muted); margin-bottom: 12px;">Posicione o slider em <strong>5,7</strong> (ponto B — equilíbrio). Depois, <strong>baixe</strong> para 5,2 (ponto C — mais sensível, mais FP). Por fim, <strong>suba</strong> para 6,3 (ponto A — mais específico, mais FN). Observe os KPIs Sens/Esp/AUC/FPR mudando em tempo real.</p>
+  ${sectionTitle('🎚️','Simulador completo — desloque o corte e veja tudo girar', 'm3')}
+  <p class="mt-prose">Posicione o slider em <strong>5,7</strong> (ponto B — equilíbrio). Depois, <strong>baixe</strong> para 5,2 (ponto C — mais sensível, mais FP). Por fim, <strong>suba</strong> para 6,3 (ponto A — mais específico, mais FN). Observe os KPIs Sens/Esp/AUC/FPR mudando em tempo real.</p>
   ${PrevInt.rocCurva({ mu0: 5.1, sd0: 0.40, mu1: 6.6, sd1: 0.70, cut: 5.7, label: 'HbA1c (%)', range: [4, 8] })}
 
-  ${sectionTitle('📏','Régua de HbA1c — três zonas, três pontos', 'var(--c-teal)')}
+  ${sectionTitle('📏','Régua de HbA1c — três zonas, três pontos', 'm3')}
   <div class="split2">
-    <div class="case-card" style="border-left:6px solid var(--c-teal);">
-      <strong style="color:var(--c-teal);">PONTO C — corte MENOR que 5,7 (mais sensível)</strong>
+    <div class="case-card --teal">
+      <div class="case-card-head">PONTO C — corte MENOR que 5,7 (mais sensível)</div>
       <ul class="tight">
         <li>"Qualquer cheirinho de doença fica positivo".</li>
         <li>Reduz falso negativo. Aumenta falso positivo.</li>
@@ -474,8 +482,8 @@ GO_RENDER['m3-05'] = function(container, page) {
         <li>Útil em <strong>rastreamento</strong> — perder doente é mais grave que assustar saudável.</li>
       </ul>
     </div>
-    <div class="case-card" style="border-left:6px solid var(--c-green);">
-      <strong style="color:var(--c-green);">PONTO A — corte MAIOR que 5,7 (mais específico)</strong>
+    <div class="case-card --green">
+      <div class="case-card-head">PONTO A — corte MAIOR que 5,7 (mais específico)</div>
       <ul class="tight">
         <li>"Só convence se for muito alto".</li>
         <li>Reduz falso positivo. Aumenta falso negativo.</li>
@@ -581,16 +589,18 @@ GO_RENDER['m3-06'] = function(container, page) {
     <p>Assim, quando a questão pergunta por que o <strong>teste 1 é superior ao teste 2</strong>, a resposta é: <strong>porque tem maior área sob a curva</strong>, isto é, maior desempenho global e maior acurácia no sentido cobrado pela prova.</p>
   </div>
 
-  ${sectionTitle('📊','Comparando dois testes — AUC alta × AUC baixa', 'var(--c-violet)')}
-  <p style="color:var(--text-muted); margin-bottom: 12px;">Abaixo, dois cenários lado a lado. Observe que distribuições mais <strong>separadas</strong> (doentes e sãos pouco sobrepostos) produzem AUC ALTA — curva colada no canto superior esquerdo. Distribuições <strong>sobrepostas</strong> produzem AUC BAIXA — curva próxima da diagonal (próximo do acaso).</p>
+  ${svgIllus(PrevSVG.distribuicoesROC(), 'A ROC nasce de duas distribuições — sãos e doentes — sobrepostas. Quanto menor a "área de confusão", maior a AUC e mais a curva colaba no canto superior-esquerdo.')}
+
+  ${sectionTitle('📊','Comparando dois testes — AUC alta × AUC baixa', 'm3')}
+  <p class="mt-prose">Abaixo, dois cenários lado a lado. Observe que distribuições mais <strong>separadas</strong> (doentes e sãos pouco sobrepostos) produzem AUC ALTA — curva colada no canto superior esquerdo. Distribuições <strong>sobrepostas</strong> produzem AUC BAIXA — curva próxima da diagonal (próximo do acaso).</p>
 
   <div class="split2">
     <div>
-      <h4 style="margin:0 0 8px; color:var(--c-violet); font-size:14px; text-transform:uppercase; letter-spacing:.05em;">TESTE 1 — bom discriminador (AUC alta)</h4>
+      <h4 class="card-head --violet">TESTE 1 — bom discriminador (AUC alta)</h4>
       ${PrevInt.rocCurva({ mu0: 4.8, sd0: 0.40, mu1: 7.8, sd1: 0.55, cut: 6.0, label: 'Marcador A (un.)', range: [3, 10] })}
     </div>
     <div>
-      <h4 style="margin:0 0 8px; color:var(--c-red); font-size:14px; text-transform:uppercase; letter-spacing:.05em;">TESTE 2 — discriminador fraco (AUC baixa)</h4>
+      <h4 class="card-head --red">TESTE 2 — discriminador fraco (AUC baixa)</h4>
       ${PrevInt.rocCurva({ mu0: 5.5, sd0: 0.95, mu1: 6.8, sd1: 1.10, cut: 6.0, label: 'Marcador B (un.)', range: [3, 10] })}
     </div>
   </div>
@@ -692,27 +702,27 @@ GO_RENDER['m3-07'] = function(container, page) {
     <p class="pulled">A aula menciona uma questão da <strong>Unicamp</strong> em que a superioridade do teste 1 sobre o teste 2 se referia à <strong>maior acurácia</strong>. Posteriormente, também se aceitou <strong>maior área sob a curva</strong> — porque uma é a tradução da outra. Preserve esse alerta: se a banca cometer um erro pequeno no rótulo do eixo, <em>reconheça o padrão da Curva ROC e responda pela lógica cobrada</em>. Não brigue com a banca na hora da prova.</p>
   </div>
 
-  ${sectionTitle('📋','As quatro perguntas automáticas — quadro de prova', 'var(--c-violet)')}
+  ${sectionTitle('📋','As quatro perguntas automáticas — quadro de prova', 'm3')}
   <div class="split2">
-    <div class="case-card" style="border-left:6px solid var(--c-violet);">
-      <strong style="color:var(--c-violet);">Maior ACURÁCIA?</strong>
+    <div class="case-card --violet">
+      <div class="case-card-head">Maior ACURÁCIA?</div>
       <p>Procure a curva mais <strong>próxima do canto superior esquerdo</strong>. Maior <strong>AUC</strong> = maior acurácia. "A com A".</p>
     </div>
-    <div class="case-card" style="border-left:6px solid var(--c-green);">
-      <strong style="color:var(--c-green);">Mais ESPECÍFICO?</strong>
+    <div class="case-card --green">
+      <div class="case-card-head">Mais ESPECÍFICO?</div>
       <p>Procure o ponto <strong>mais à esquerda</strong>. Especificidade aumenta para a esquerda. No exemplo: <strong>ponto A</strong>.</p>
     </div>
-    <div class="case-card" style="border-left:6px solid var(--c-teal);">
-      <strong style="color:var(--c-teal);">Mais SENSÍVEL?</strong>
+    <div class="case-card --teal">
+      <div class="case-card-head">Mais SENSÍVEL?</div>
       <p>Procure o ponto <strong>mais superior</strong>. Sensibilidade está no eixo Y. No exemplo: <strong>ponto C</strong>.</p>
     </div>
-    <div class="case-card" style="border-left:6px solid var(--c-red);">
-      <strong style="color:var(--c-red);">Maior FALSO POSITIVO?</strong>
+    <div class="case-card --red">
+      <div class="case-card-head">Maior FALSO POSITIVO?</div>
       <p>Procure o ponto <strong>mais à direita</strong>. Eixo X = 1 − Esp = taxa de FP. No exemplo: <strong>ponto C</strong> (sim, mesmo ponto sensível).</p>
     </div>
   </div>
 
-  ${sectionTitle('🎯','Modo prova ROC — pratique reconhecimento', 'var(--c-orange)')}
+  ${sectionTitle('🎯','Modo prova ROC — pratique reconhecimento', 'm3')}
   ${PrevInt.quizBanca([
     {
       stem: '<strong>UNICAMP — adaptado.</strong> Duas curvas ROC comparam testes para diagnóstico de diabetes. A curva do TESTE 1 está mais próxima do canto superior esquerdo; a do TESTE 2 está mais próxima da diagonal. A superioridade do teste 1 sobre o teste 2 se refere a:',

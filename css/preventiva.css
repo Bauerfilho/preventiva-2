@@ -127,6 +127,15 @@
 .didax-block.--numerico { --didax-accent: var(--c-teal); }
 .didax-block.--resumo  { --didax-accent: var(--c-green); background: linear-gradient(180deg, rgba(16,185,129,.05), transparent 80%), var(--bg-card-strong); }
 .didax-block.--proxima { --didax-accent: var(--c-blue); }
+/* Variantes adicionais (Fase 5 — alinhamento com módulos M2/M3/M4) */
+.didax-block.--hit        { --didax-accent: var(--c-green);  background: linear-gradient(180deg, rgba(16,185,129,.05), transparent 80%), var(--bg-card-strong); }
+.didax-block.--paralelo   { --didax-accent: var(--c-blue);   background: linear-gradient(180deg, rgba(37,99,235,.05), transparent 80%), var(--bg-card-strong); }
+.didax-block.--serie      { --didax-accent: var(--c-violet); background: linear-gradient(180deg, rgba(139,92,246,.05), transparent 80%), var(--bg-card-strong); }
+.didax-block.--prevalencia{ --didax-accent: var(--c-teal);   background: linear-gradient(180deg, rgba(20,184,166,.06), transparent 80%), var(--bg-card-strong); }
+.didax-block.--estrutura  { --didax-accent: var(--c-blue);   background: linear-gradient(180deg, rgba(37,99,235,.04), transparent 80%), var(--bg-card-strong); }
+.didax-block.--autoral    { --didax-accent: var(--c-violet); background: linear-gradient(135deg, rgba(139,92,246,.12), rgba(20,184,166,.05) 60%), var(--bg-card-strong); border-left-width: 5px; }
+.didax-block.--autoral .didax-block-title { font-style: italic; letter-spacing: .01em; }
+.didax-block.--autoral .didax-block-title .ico { filter: drop-shadow(0 0 8px rgba(139,92,246,.45)); }
 
 /* Listas estilizadas dentro dos blocos */
 .didax-block ul.tight { margin: 6px 0 0 18px; }
@@ -742,4 +751,215 @@ input:focus-visible,
 .ponto-costura .pc-body { font-size: 15px; line-height: 1.65; color: var(--text-secondary); }
 .ponto-costura .pc-body p { margin: 0 0 10px; }
 .ponto-costura .pc-links { margin-top: 12px; display: flex; flex-direction: column; gap: 8px; }
+
+/* ═════════════════════════════════════════════════════════════════
+   FASE 5 — UNIFICAÇÃO VISUAL E IDENTIDADE PREVENTIVA
+   ═════════════════════════════════════════════════════════════════ */
+
+/* sectionTitle unificado (substitui inline styles) */
+.section-title-pv {
+  display: flex; align-items: center; gap: 10px;
+  margin: 22px 0 10px;
+}
+.section-title-pv .stp-ico {
+  width: 32px; height: 32px; border-radius: 10px;
+  background: var(--stp-color, var(--c-blue));
+  opacity: .15;
+  display: grid; place-items: center;
+}
+.section-title-pv .stp-ico::after {
+  content: ""; /* iconebackground via ::after — não usado */
+}
+.section-title-pv .stp-emoji {
+  position: relative; z-index: 1;
+  font-size: 16px; filter: saturate(1.2);
+  margin-left: -32px; width: 32px; text-align: center;
+}
+.section-title-pv h3 {
+  margin: 0; font-size: 17px; font-weight: 800;
+  color: var(--text-primary);
+}
+.section-title-pv.--m1 { --stp-color: var(--c-blue); }
+.section-title-pv.--m2 { --stp-color: var(--c-teal); }
+.section-title-pv.--m3 { --stp-color: var(--c-orange); }
+.section-title-pv.--m4 { --stp-color: var(--c-violet); }
+
+/* keyTerms unificado (chips coloridos por módulo) */
+.key-terms {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin: 8px 0 14px;
+}
+
+/* case-card com borda colorida por contexto (substitui inline style) */
+.case-card.--blue   { border-left: 6px solid var(--c-blue); }
+.case-card.--teal   { border-left: 6px solid var(--c-teal); }
+.case-card.--orange { border-left: 6px solid var(--c-orange); }
+.case-card.--violet { border-left: 6px solid var(--c-violet); }
+.case-card.--green  { border-left: 6px solid var(--c-green); }
+.case-card.--red    { border-left: 6px solid var(--c-red); }
+.case-card.--amber  { border-left: 6px solid var(--c-amber); }
+.case-card .case-card-head { font-weight: 800; margin-bottom: 6px; }
+.case-card.--blue   .case-card-head { color: var(--c-blue); }
+.case-card.--teal   .case-card-head { color: var(--c-teal); }
+.case-card.--orange .case-card-head { color: var(--c-orange); }
+.case-card.--violet .case-card-head { color: var(--c-violet); }
+.case-card.--green  .case-card-head { color: var(--c-green); }
+.case-card.--red    .case-card-head { color: var(--c-red); }
+.case-card.--amber  .case-card-head { color: var(--c-amber); }
+
+/* Identidade Preventiva — frase autoral (voz fundadora) */
+.frase-autoral {
+  position: relative;
+  margin: 26px 0;
+  padding: 22px 26px 22px 56px;
+  border-radius: 18px;
+  background: linear-gradient(135deg,
+              rgba(139,92,246,.12),
+              rgba(20,184,166,.06) 50%,
+              rgba(37,99,235,.05) 100%),
+              var(--bg-card-strong);
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--c-violet);
+  box-shadow: 0 4px 18px rgba(139,92,246,.08);
+}
+.frase-autoral::before {
+  content: "❝";
+  position: absolute;
+  top: 6px; left: 14px;
+  font-size: 56px;
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--c-violet);
+  opacity: .4;
+  line-height: 1;
+}
+.frase-autoral .fa-tag {
+  display: inline-block;
+  font-size: 10px; font-weight: 800; letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: 3px 10px; border-radius: 999px;
+  background: var(--c-violet-soft); color: var(--c-violet);
+  margin-bottom: 8px;
+}
+.frase-autoral .fa-body {
+  font-size: 16px; line-height: 1.65;
+  font-style: italic;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+.frase-autoral .fa-body strong { color: var(--c-violet); font-style: normal; }
+.frase-autoral .fa-sig {
+  margin-top: 10px;
+  font-size: 12px; color: var(--text-muted);
+  font-weight: 700; letter-spacing: .04em;
+}
+.frase-autoral .fa-sig::before { content: "— "; }
+
+/* Container para SVGs ilustrativos (padroniza wrapper) */
+.svg-illus {
+  margin: 18px 0;
+  padding: 12px;
+  border-radius: 16px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+}
+.svg-illus svg { width: 100%; height: auto; display: block; }
+.svg-illus .svg-caption {
+  font-size: 12px; color: var(--text-muted);
+  text-align: center;
+  margin-top: 6px;
+  font-style: italic;
+}
+
+/* split-grid responsivo unificado (substitui inline grid) */
+.split-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+
+/* Centered display (para fórmulas grandes inline) */
+.center-display {
+  text-align: center;
+  padding: 14px 0;
+  font-family: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  font-size: 20px; font-weight: 700;
+  color: var(--text-primary);
+}
+.center-display.--blue   { color: var(--c-blue); }
+.center-display.--teal   { color: var(--c-teal); }
+.center-display.--orange { color: var(--c-orange); }
+.center-display.--violet { color: var(--c-violet); }
+
+/* emphasis colorida em parágrafos dentro de blocos */
+.emphasis {
+  font-weight: 700;
+  margin: 6px 0;
+}
+.emphasis.--red    { color: var(--c-red); }
+.emphasis.--green  { color: var(--c-green); }
+.emphasis.--blue   { color: var(--c-blue); }
+.emphasis.--teal   { color: var(--c-teal); }
+.emphasis.--orange { color: var(--c-orange); }
+.emphasis.--violet { color: var(--c-violet); }
+.emphasis.--amber  { color: var(--c-amber); }
+
+.lead-text { font-size: 16px; line-height: 1.6; }
+.answer-text { font-size: 18px; font-weight: 700; line-height: 1.5; margin: 6px 0; }
+.answer-text.--teal   { color: var(--c-teal); }
+.answer-text.--violet { color: var(--c-violet); }
+.answer-text.--blue   { color: var(--c-blue); }
+.answer-text.--green  { color: var(--c-green); }
+.answer-text.--orange { color: var(--c-orange); }
+
+/* fórmula inline centrada (substitui inline flex em formulaBox) */
+.formula-inline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  font-size: 22px;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+}
+.formula-inline .formula-note {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-family: Inter, sans-serif;
+}
+
+/* parágrafo de introdução para simuladores/seções */
+.mt-prose {
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  font-size: 14.5px;
+  line-height: 1.6;
+}
+
+/* card-head: pequeno cabeçalho colorido sobre cards (substitui inline h4) */
+.card-head {
+  margin: 0 0 8px;
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+.card-head.--blue   { color: var(--c-blue); }
+.card-head.--teal   { color: var(--c-teal); }
+.card-head.--orange { color: var(--c-orange); }
+.card-head.--violet { color: var(--c-violet); }
+.card-head.--green  { color: var(--c-green); }
+.card-head.--red    { color: var(--c-red); }
+.card-head.--amber  { color: var(--c-amber); }
+
+/* nota editorial (rodapé pequeno) */
+.editorial-note {
+  font-size: 12px; color: var(--text-muted);
+  font-style: italic;
+  margin-top: 8px;
+  padding: 6px 10px;
+  background: var(--bg-elevated);
+  border-radius: 8px;
+  border-left: 2px solid var(--border-color);
+}
 

@@ -234,7 +234,9 @@ GO_RENDER['m2-03'] = function(container, page) {
     glow: 'rgba(245,158,11,.22)'
   })}
 
-  ${keyTerms(['prevalência','VPP acompanha prevalência','VPN inverso','tuberculose','Rio de Janeiro','Complexo da Maré','Complexo do Alemão','Londres didática','teste do escarro','porquinha torce o rabo'])}
+  ${keyTerms(['prevalência','VPP acompanha prevalência','VPN inverso','tuberculose','Rio de Janeiro','Complexo da Maré','Complexo do Alemão','Londres didática','teste do escarro','porquinha torce o rabo'], 'teal')}
+
+  ${svgIllus(PrevSVG.vppFunil(), 'Duas populações, mesma Sens/Esp (90% / 90%): o funil do VPP se aperta quando a prevalência cai.')}
 
   <div class="prose">
     <p>Até agora, VPP e VPN pareciam apenas fórmulas. Mas aqui a aula muda de nível. A frase central é: <strong>sensibilidade e especificidade não mudam com a prevalência; valores preditivos mudam.</strong> É nesse ponto que <em>"a porquinha torce o rabo"</em>.</p>
@@ -287,6 +289,12 @@ GO_RENDER['m2-03'] = function(container, page) {
 
   ${didaxBlock('numerico','🔢','Preparação para a próxima página',
     `<p>Esta página construiu a intuição. A próxima transforma "Rio versus Londres" em números: duas tabelas 2x2 lado a lado, 1000 pessoas em cada, sensibilidade e especificidade idênticas — apenas a prevalência muda.</p>`)}
+
+  ${fraseAutoral({
+    tag: 'Voz Preventiva',
+    body: `Aprendi na ponta da urgência: <strong>o exame nunca aterrissa no vácuo</strong>. Ele cai numa população, numa clínica, numa história. Se o aluno entende isso aqui, no Módulo 2, ele para de pedir teste por reflexo — e começa a <em>raciocinar</em> antes de pedir. É essa virada que separa o residente que decora do residente que decide.`,
+    assinatura: 'Intensivão Preventiva · M2-03'
+  })}
 
   ${revisaoAtiva([
     { q: 'O que muda com prevalência: sensibilidade, especificidade, VPP ou VPN?', a: 'Apenas VPP e VPN. Sensibilidade e especificidade são propriedades intrínsecas do teste.' },

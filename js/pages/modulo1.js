@@ -263,7 +263,7 @@ GO_RENDER['m1-04'] = function(container, page) {
     <p>Esse cruzamento gera <strong>quatro caselas</strong> — quatro possibilidades de resultado:</p>
   </div>
 
-  ${sectionTitle('🧩','A estrutura conceitual', 'var(--c-blue)')}
+  ${sectionTitle('🧩','A estrutura conceitual', 'm1')}
   <div class="dist-wrap">${PrevSVG.tabela2x2Concept()}</div>
 
   <div class="prose">
@@ -272,7 +272,7 @@ GO_RENDER['m1-04'] = function(container, page) {
     <p>Agora vem o salto. Você pode treinar isso lendo, mas só vai dominar mexendo. Use a tabela interativa abaixo. <strong>Mude os valores</strong>. Veja em tempo real a sensibilidade, a especificidade, a acurácia, o VPP, o VPN e as razões de verossimilhança se moverem.</p>
   </div>
 
-  ${sectionTitle('⚙','Laboratório interativo — tabela 2x2 mãe', 'var(--c-blue)')}
+  ${sectionTitle('⚙','Laboratório interativo — tabela 2x2 mãe', 'm1')}
   ${PrevInt.tabela2x2()}
 
   ${didaxBlock('caso','🩺','Cenário aplicado',
@@ -296,6 +296,12 @@ GO_RENDER['m1-04'] = function(container, page) {
 
   ${didaxBlock('avancado','⚡','O que diferencia o aluno avançado',
     `<p>O avançado <strong>refaz a 2x2 do zero</strong> em qualquer questão. Em 30 segundos. Não tenta decorar fórmulas, monta a estrutura e calcula. Isso protege contra qualquer pegadinha de eixos invertidos.</p>`)}
+
+  ${fraseAutoral({
+    tag: 'Voz Preventiva',
+    body: `A tabela 2×2 é a ferramenta mais subestimada de toda a residência. Eu já vi candidato perder ponto que valia ouro porque entrou na questão tentando lembrar fórmula, em vez de desenhar a cruz. <strong>Quem desenha a 2×2 manda na questão</strong>; quem decora fórmula é mandado por ela. Esse módulo inteiro nasce daqui — todo o resto, do Bayes à curva ROC, é diálogo entre estas quatro caselas.`,
+    assinatura: 'Intensivão Preventiva · M1-04'
+  })}
 
   ${revisaoAtiva([
     { q: 'Quem fica na coluna esquerda da tabela 2x2?', a: 'Os doentes verdadeiros, segundo o padrão-ouro.' },
@@ -344,7 +350,7 @@ GO_RENDER['m1-05'] = function(container, page) {
     <p>Quando você é o médico que recebe o resultado do exame, é preciso lembrar: nenhum exame é perfeito. <strong>Cada resultado positivo pode ser FP. Cada resultado negativo pode ser FN.</strong> O que muda essa probabilidade é a combinação do desempenho do teste com a clínica do paciente. Esse é o motivo de existirem dois pares de métricas — Sens/Esp (sobre o teste) e VPP/VPN (sobre o resultado naquele paciente).</p>
   </div>
 
-  ${sectionTitle('🎯','Aterre o conceito: encaixe os quatro destinos', 'var(--c-blue)')}
+  ${sectionTitle('🎯','Aterre o conceito: encaixe os quatro destinos', 'm1')}
   ${PrevInt.tabela2x2({ preset: { vp: 90, fp: 30, fn: 10, vn: 870 } })}
 
   ${didaxBlock('caso','🩺','Cenário-impacto: o que dói em cada erro',
@@ -428,7 +434,7 @@ GO_RENDER['m1-06'] = function(container, page) {
     <p>Onde acurácia ainda é útil? Em <strong>comparação direta entre testes</strong> aplicados na mesma população. Se o teste A tem acurácia 92% e o B, 87%, em condições iguais, o A vence em desempenho global. Mas se você quer saber qual exame pedir em paciente específico, acurácia não responde.</p>
   </div>
 
-  ${sectionTitle('⚙','Veja a acurácia se mover', 'var(--c-blue)')}
+  ${sectionTitle('⚙','Veja a acurácia se mover', 'm1')}
   ${PrevInt.tabela2x2({ preset: { vp: 99, fp: 99, fn: 1, vn: 9801 }, presets: [
     { name: 'Doença rara (1%)', vp: 99, fp: 99, fn: 1, vn: 9801 },
     { name: 'Doença comum (50%)', vp: 99, fp: 1, fn: 1, vn: 99 },
