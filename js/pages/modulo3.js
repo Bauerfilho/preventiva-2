@@ -18,12 +18,31 @@ GO_RENDER['m3-01'] = function(container, page) {
     grad: 'var(--grad-m3)'
   })}
 
+  ${jornadaBar({
+    from: { module: 'm2', label: 'Valores Preditivos — VPP/VPN' },
+    current: { module: 'm3', label: 'Curva ROC' },
+    next: { module: 'm4', label: 'Tendência Central e Dispersão' }
+  })}
+
   ${conceptHero({
     question: 'Pergunta central',
     title: 'Se a razão de verossimilhança já ajuda a interpretar testes, por que existe a Curva ROC?',
     lead: 'Porque a primeira responde "quanto esse resultado muda minha confiança?" — e a segunda responde "como sensibilidade e especificidade se comportam quando eu mexo o ponto de corte?".',
     glow: 'rgba(249,115,22,.22)'
   })}
+
+  <div class="split2" style="margin: 14px 0;">
+    ${crossLink({
+      module: 'm1', pageId: 'm1-12', variant: 'recap',
+      label: 'Revisar Razão de Verossimilhança (M1)',
+      hint: 'A ponte matemática que abre esta página.'
+    })}
+    ${crossLink({
+      module: 'm2', pageId: 'm2-10', variant: 'recap',
+      label: 'Revisar fechamento do M2 — Sens/Esp × VPP/VPN',
+      hint: 'A relação que será destrinchada visualmente pela ROC.'
+    })}
+  </div>
 
   ${keyTerms(['razão de verossimilhança','Curva ROC','sensibilidade','especificidade','resultado positivo','resultado negativo','raciocínio matemático','raciocínio visual'])}
 
@@ -807,9 +826,25 @@ GO_RENDER['m3-07'] = function(container, page) {
     { q: 'O que fazer se a banca rotular mal o eixo X?', a: 'Reconhecer o padrão da Curva ROC e responder pela lógica correta. Não brigar com a banca durante a prova — recurso é depois.' }
   ])}
 
+  ${pontoDeCostura({
+    fromModule: 'm3', toModule: 'm4',
+    fromTitle: 'Módulo 3 — Curva ROC',
+    toTitle: 'Módulo 4 — Tendência Central e Dispersão',
+    ponte: `<p>Note algo que ficou implícito durante todo o Módulo 3: as duas distribuições (sãos × doentes) que geram a ROC <strong>são caracterizadas por média e desvio padrão</strong>. Quando dissemos "doentes têm HbA1c em torno de 7,5%", estávamos descrevendo o <em>centro</em>. Quando dissemos "essa nuvem tem largura de quase 2 pontos", estávamos descrevendo a <em>dispersão</em>.</p>
+    <p>O Módulo 4 destrincha esses dois conceitos — média, mediana, moda, amplitude, variância, desvio padrão — que sustentam toda a estatística médica daqui em diante. Não é mudança de assunto; é descer um nível para sustentar o que já vimos.</p>`,
+    links: [
+      { module: 'm4', pageId: 'm4-01', variant: 'bridge',
+        label: 'Avançar para Módulo 4 — Por que tendência central cai em Medicina?',
+        hint: 'Começa pela analogia: IBGE, Seleção Brasileira, nota da turma.' },
+      { module: 'm4', pageId: 'm4-06', variant: 'bridge',
+        label: 'Visualizar a aplicação clínica — glicemia 95-105 vs 50-180',
+        hint: 'A página em que centro e dispersão decidem condutas opostas.' }
+    ]
+  })}
+
   ${pageFooterMeta({
     resumo: 'Quatro reflexos automáticos para Curva ROC: maior AUC = maior acurácia; mais à esquerda = mais específico; mais alto = mais sensível; mais à direita = maior FP. Não brigue com a banca — reconheça o padrão e responda.',
-    proximaConexao: 'Curva ROC fechada. No Módulo 4, mudamos completamente de território: saímos do mundo dos testes diagnósticos e entramos na estatística descritiva — média, mediana, moda, amplitude, variância e desvio padrão.',
+    proximaConexao: 'Curva ROC fechada. No Módulo 4, descemos um nível: as duas distribuições que geram qualquer ROC são feitas de <em>média</em> e <em>desvio padrão</em>. Vamos formalizar centro e espalhamento.',
     nextId: 'm4-01'
   })}
   `;

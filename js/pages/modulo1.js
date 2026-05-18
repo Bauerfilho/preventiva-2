@@ -1007,6 +1007,12 @@ GO_RENDER['m1-13'] = function(container, page) {
     grad: 'var(--grad-m1)'
   })}
 
+  ${jornadaBar({
+    from: null,
+    current: { module: 'm1', label: 'Validação de Testes (fechamento)' },
+    next: { module: 'm2', label: 'Valores Preditivos' }
+  })}
+
   ${conceptHero({
     question: 'Pergunta central',
     title: 'Como reconhecer rapidamente o que a questão está pedindo — sem perder tempo montando tabela quando o enunciado já entrega o cálculo?',
@@ -1124,6 +1130,19 @@ GO_RENDER['m1-13'] = function(container, page) {
     { q: 'Histopatológico antes de cirurgia lembra qual característica?', a: 'Especificidade. Antes de tratamento agressivo, queremos não tratar sadio — especificidade alta, testes em série, SpPin.' },
     { q: 'Achado clínico que favorece doença aponta para RV+ ou RV−?', a: 'RV+. Probabilidade do achado em doentes muito maior que em sadios. Exemplo: reflexo abdominojugular em insuficiência cardíaca.' }
   ])}
+
+  ${pontoDeCostura({
+    fromModule: 'm1', toModule: 'm2',
+    fromTitle: 'Módulo 1 — Validação de testes',
+    toTitle: 'Módulo 2 — Valores Preditivos',
+    ponte: `<p>Você fechou o Módulo 1 sabendo escolher um teste. Mas há um momento que ainda não enfrentamos: <strong>o paciente volta com o resultado em mãos</strong>. A pergunta deixa de ser "qual teste eu peço?" e vira <em>"quanto eu acredito nesse resultado?"</em>.</p>
+    <p>Esse é o território dos <strong>valores preditivos</strong> — e a prevalência da população onde o teste é aplicado vai mudar tudo. Sens, Esp e RV são propriedades do teste; VPP e VPN são propriedades do <em>paciente em seu contexto</em>.</p>`,
+    links: [
+      { module: 'm2', pageId: 'm2-01', variant: 'bridge',
+        label: 'Avançar para Módulo 2 — O segundo tempo do exame',
+        hint: 'Começa pela diferença entre "antes do teste" e "depois do teste".' }
+    ]
+  })}
 
   ${pageFooterMeta({
     resumo: 'Reconheça o alvo (excluir/confirmar/calcular/comparar), identifique a palavra-gatilho do enunciado, escolha a métrica e o desenho (paralelo/série). Se/Esp/RV não mudam com prevalência — VPP/VPN sim, e isso abre o Módulo 2.',

@@ -16,11 +16,23 @@ GO_RENDER['m2-01'] = function(container, page) {
     grad: 'var(--grad-m2)'
   })}
 
+  ${jornadaBar({
+    from: { module: 'm1', label: 'Validação de testes — Se, Esp, RV' },
+    current: { module: 'm2', label: 'Valores Preditivos' },
+    next: { module: 'm3', label: 'Curva ROC' }
+  })}
+
   ${conceptHero({
     question: 'Pergunta central',
     title: 'O paciente voltou com o exame em mãos. A pergunta deixou de ser "qual teste eu peço?" — e virou "quanto eu acredito nesse resultado?"',
     lead: 'Valores preditivos são, antes de qualquer fórmula, a tradução de uma pergunta humana em uma probabilidade clínica.',
     glow: 'rgba(20,184,166,.22)'
+  })}
+
+  ${crossLink({
+    module: 'm1', pageId: 'm1-12', variant: 'recap',
+    label: 'Revisar Razão de Verossimilhança (M1)',
+    hint: 'RV+ e RV− são a ponte natural para VPP e VPN — vale revisar antes de seguir.'
   })}
 
   ${keyTerms(['valores preditivos','probabilidade pós-teste','VPP','VPN','resultado positivo','resultado negativo','confiança no exame','paciente voltou'])}
@@ -929,6 +941,12 @@ GO_RENDER['m2-10'] = function(container, page) {
     grad: 'var(--grad-m2)'
   })}
 
+  ${jornadaBar({
+    from: { module: 'm1', label: 'Sens, Esp e RV' },
+    current: { module: 'm2', label: 'Valores Preditivos (fechamento)' },
+    next: { module: 'm3', label: 'Curva ROC' }
+  })}
+
   ${conceptHero({
     question: 'Pergunta central',
     title: 'Se eu aumento sensibilidade ou especificidade, o que acontece com VPN e VPP?',
@@ -1012,6 +1030,19 @@ GO_RENDER['m2-10'] = function(container, page) {
     { q: 'Qual medida aumenta quando há menos falso positivo?', a: 'VPP — a confiança no positivo cresce quando os erros do "lado positivo" diminuem.' },
     { q: 'Por que a Curva ROC entra depois dessa aula?', a: 'Porque a ROC mostra como mover o ponto de corte troca Sens por Esp ao longo da curva — o passo natural depois de entender que ambas afetam VPP e VPN.' }
   ])}
+
+  ${pontoDeCostura({
+    fromModule: 'm2', toModule: 'm3',
+    fromTitle: 'Módulo 2 — VPP/VPN e prevalência',
+    toTitle: 'Módulo 3 — Curva ROC e ponto de corte',
+    ponte: `<p>Até aqui você tratou sensibilidade e especificidade como <em>números fixos</em> do teste. Mas elas <strong>não são</strong>. Toda vez que se define um <em>ponto de corte</em> (HbA1c ≥ 6,5%? glicemia ≥ 126 mg/dL? troponina ≥ 0,04 ng/mL?), Sens e Esp se mexem juntas — em direções opostas.</p>
+    <p>A <strong>Curva ROC</strong> é o gráfico que mostra esse balé. Cada ponto é um corte; mover o corte para baixo aumenta sensibilidade e diminui especificidade. A "área sob a curva" (AUC) resume a qualidade global do teste — e é a métrica-mestre da prova.</p>`,
+    links: [
+      { module: 'm3', pageId: 'm3-01', variant: 'bridge',
+        label: 'Avançar para Módulo 3 — Da RV à Curva ROC',
+        hint: 'Conecta RV (matemática) e ROC (gráfico) — duas linguagens para a mesma trade-off.' }
+    ]
+  })}
 
   ${pageFooterMeta({
     resumo: 'Sensibilidade melhora a confiança no negativo ao reduzir FN. Especificidade melhora a confiança no positivo ao reduzir FP. VPP e VPN traduzem isso para o paciente. A próxima aula — Curva ROC — mostrará que Sens e Esp não são fixas: o ponto de corte as define.',

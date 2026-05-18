@@ -23,6 +23,29 @@ GO_RENDER['m4-01'] = function(c, p) {
       grad: M4_GRAD
     }) +
 
+    jornadaBar({
+      from: { module: 'm3', label: 'Curva ROC — comparar testes pela área' },
+      current: { module: 'm4', label: 'Tendência Central e Dispersão' },
+      next: null
+    }) +
+
+    pontoDeCostura({
+      fromModule: 'm3', toModule: 'm4',
+      fromTitle: 'Módulo 3 — testes diagnósticos',
+      toTitle: 'Módulo 4 — estatística descritiva',
+      ponte: `<p>Nos Módulos 1, 2 e 3 você aprendeu a <strong>avaliar um teste</strong> diante de um paciente: sensibilidade, especificidade, valores preditivos e, por fim, a Curva ROC. Agora o foco muda — e por uma boa razão.</p>
+      <p>Antes de qualquer teste, alguém precisou <strong>medir</strong>: medir HbA1c em diabéticos e não diabéticos, medir pressão sistólica em hipertensos e controles, medir tamanho de tumor em respondedores e não respondedores. E quando se mede muita gente, surgem <em>distribuições</em> — populações inteiras condensadas em duas perguntas: <strong>onde está o centro?</strong> e <strong>quão espalhado está o grupo?</strong></p>
+      <p>É esse o terreno do Módulo 4. Sem ele, a ROC do Módulo 3 não existiria: as duas curvas normais que você viu (sãos × doentes) <em>são</em> média e desvio padrão em ação.</p>`,
+      links: [
+        { module: 'm3', pageId: 'm3-04', variant: 'recap',
+          label: 'Onde a ROC nasce: as duas distribuições (HbA1c)',
+          hint: 'Reveja como sãos e doentes têm <em>média e desvio padrão</em> diferentes — base do Módulo 4.' },
+        { module: 'm3', pageId: 'm3-07', variant: 'recap',
+          label: 'Fechamento do Módulo 3 — quatro reflexos automáticos',
+          hint: 'Se ainda precisar do mapa visual da ROC antes de seguir.' }
+      ]
+    }) +
+
     conceptHero({
       question: 'O que o IBGE, a Seleção Brasileira e a nota da turma têm em comum?',
       title: 'Todos pedem um número que represente o grupo inteiro.',
@@ -888,6 +911,35 @@ GO_RENDER['m4-09'] = function(c, p) {
       { q: 'No quiz, qual o padrão de erro mais comum em "qual é uma medida de dispersão?"', a: 'Marcar <strong>média, mediana ou moda</strong> — todas tendência central. A única medida de dispersão na lista típica é a <strong>amplitude</strong> (ou variância/DP, quando aparecem).' },
       { q: 'Por que duas amostras com a mesma média podem ter condutas clínicas opostas?', a: 'Porque a <strong>dispersão</strong> (variância/desvio padrão) pode ser muito diferente. Glicemia média 100 com DP 3 é estável; média 100 com DP 50 é caótica. <strong>Clínica decide pela dispersão, não pela média sozinha.</strong>' }
     ]) +
+
+    sectionTitle('🔁', 'Fechando o anel — para onde voltar', 'var(--c-violet)') +
+
+    `<p style="font-size:14px; color: var(--text-secondary); margin: 8px 0 12px;">Você completou os 4 módulos do Intensivão Preventiva. Antes da prova, vale revisitar as âncoras de cada módulo:</p>` +
+
+    crossLink({
+      module: 'm1', pageId: 'm1-13', variant: 'recap',
+      label: 'Módulo 1 — Fechamento (gatilhos de prova)',
+      hint: 'Painel de frases-âncora: SnNout, SpPin, paralelo×série, RV+ e RV−.'
+    }) +
+    crossLink({
+      module: 'm2', pageId: 'm2-10', variant: 'recap',
+      label: 'Módulo 2 — Fechamento (Sens/Esp × VPP/VPN)',
+      hint: 'As quatro setas: ↑Sens → ↓FN → ↑VPN; ↑Esp → ↓FP → ↑VPP.'
+    }) +
+    crossLink({
+      module: 'm3', pageId: 'm3-07', variant: 'recap',
+      label: 'Módulo 3 — Fechamento (quatro reflexos da ROC)',
+      hint: 'Maior AUC = maior acurácia; alto = sensível; esquerda = específico; direita = FP.'
+    }) +
+
+    pontoDeCostura({
+      fromModule: 'm4', toModule: 'm4',
+      fromTitle: 'Estatística descritiva (M4)',
+      toTitle: 'Diagnóstico clínico (M1, M2, M3)',
+      ponte: `<p>Repare como tudo conecta: a <strong>média e o desvio padrão</strong> que você acabou de formalizar são exatamente o que descreve as duas distribuições da ROC (sãos e doentes). A <strong>mediana</strong> resistente a outliers é a métrica que estudos clínicos com tempo de internação e custo hospitalar usam. A <strong>moda</strong> bimodal é o sinal de que existem dois subgrupos — exatamente como uma curva ROC com dois pontos ótimos.</p>
+      <p>Estatística descritiva não é um capítulo separado: é o <em>chão</em> sobre o qual diagnóstico, prevalência e curvas são construídos.</p>`,
+      links: []
+    }) +
 
     pageFooterMeta({
       resumo: 'Tendência central (média, mediana, moda) responde <em>onde</em>; dispersão (amplitude, variância, desvio padrão) responde <em>quão espalhado</em>. <strong>Centro não é espalhamento</strong> — separe os dois e a banca não te alcança.',

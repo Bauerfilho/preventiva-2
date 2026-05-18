@@ -135,6 +135,71 @@ function pageFooterMeta(opts) {
 }
 
 /* ─────────────────────────────────────────
+   crossLink — link cruzado entre módulos (revisão ou conexão)
+   Usado para reconectar conceitos âncora dos módulos anteriores.
+   variant: 'recap' (revisão) | 'bridge' (ponte para próximo)
+   ───────────────────────────────────────── */
+function crossLink(opts) {
+  const { module = 'm1', pageId, label, hint, variant = 'recap' } = opts;
+  const icon = variant === 'bridge' ? '→' : '↺';
+  const verb = variant === 'bridge' ? 'Avance para' : 'Revise';
+  return `<a class="crosslink crosslink--${variant} crosslink--${module}" data-goto="${pageId}" role="button" tabindex="0">
+    <span class="cl-ico">${icon}</span>
+    <span class="cl-body">
+      <span class="cl-hint">${verb} · ${_e(module.toUpperCase())}</span>
+      <span class="cl-label">${_e(label)}</span>
+      ${hint ? `<span class="cl-note">${hint}</span>` : ''}
+    </span>
+  </a>`;
+}
+
+/* ─────────────────────────────────────────
+   jornadaBar — barra de continuidade entre módulos
+   Mostra "Você vem de ... · está em ... · próximo será ..."
+   Apenas para páginas de abertura/fechamento de módulo.
+   ───────────────────────────────────────── */
+function jornadaBar(opts) {
+  const { from, current, next } = opts;
+  // from/current/next: { module: 'm1', label: '...' } | null
+  const cell = (item, role) => {
+    if (!item) return `<div class="jb-cell jb-empty"></div>`;
+    const verb = role === 'from' ? 'Você vem de' : role === 'current' ? 'Você está em' : 'Em seguida';
+    return `<div class="jb-cell jb-${role} jb-${item.module}">
+      <span class="jb-verb">${verb}</span>
+      <span class="jb-mod">${_e(item.module.toUpperCase())}</span>
+      <span class="jb-label">${_e(item.label)}</span>
+    </div>`;
+  };
+  return `<div class="jornada-bar" role="navigation" aria-label="Continuidade entre módulos">
+    ${cell(from, 'from')}
+    <span class="jb-arrow" aria-hidden="true">›</span>
+    ${cell(current, 'current')}
+    <span class="jb-arrow" aria-hidden="true">›</span>
+    ${cell(next, 'next')}
+  </div>`;
+}
+
+/* ─────────────────────────────────────────
+   pontoDeCostura — bloco-ponte temático
+   Mostra a transição conceitual com cor do módulo de destino.
+   ───────────────────────────────────────── */
+function pontoDeCostura(opts) {
+  const { fromModule, toModule, fromTitle, toTitle, ponte, links = [] } = opts;
+  return `<div class="ponto-costura ponto-costura--${toModule || fromModule}">
+    <div class="pc-header">
+      <span class="pc-tag">↪ Ponto de costura</span>
+      <span class="pc-route">
+        <span class="pc-from">${_e(fromTitle)}</span>
+        <span class="pc-arrow">→</span>
+        <span class="pc-to">${_e(toTitle)}</span>
+      </span>
+    </div>
+    <div class="pc-body">${ponte}</div>
+    ${links.length ? `<div class="pc-links">${links.map(l => crossLink(l)).join('')}</div>` : ''}
+  </div>`;
+}
+
+/* ─────────────────────────────────────────
    Helper: renderiza uma página inteira com padrão completo
    Cada renderer chama esta função apenas se quiser.
    ─────────────────────────────────────────  */
