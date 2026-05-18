@@ -4,7 +4,7 @@
     "pages": 46,
     "ok": 46,
     "fail": 0,
-    "avgLoadMs": 299,
+    "avgLoadMs": 303,
     "sumConsoleErrors": 0,
     "sumPageErrors": 0,
     "sumRequestFailures": 0,
@@ -28,7 +28,7 @@
       "block": "home",
       "label": "Dashboard — Mapa da Preventiva",
       "url": "http://localhost:8000/#home",
-      "loadMs": 1563,
+      "loadMs": 1534,
       "title": "Dashboard — Mapa da Preventiva — Intensivão Preventiva",
       "metrics": {
         "title": "Dashboard — Mapa da Preventiva — Intensivão Preventiva",
@@ -71,7 +71,7 @@
       "block": "home",
       "label": "Como estudar nesta plataforma",
       "url": "http://localhost:8000/#como-estudar",
-      "loadMs": 270,
+      "loadMs": 322,
       "title": "Como estudar nesta plataforma — Intensivão Preventiva",
       "metrics": {
         "title": "Como estudar nesta plataforma — Intensivão Preventiva",
@@ -114,7 +114,7 @@
       "block": "m1",
       "label": "Por que validar testes diagnósticos?",
       "url": "http://localhost:8000/#m1-01",
-      "loadMs": 279,
+      "loadMs": 277,
       "title": "Por que validar testes diagnósticos? — Intensivão Preventiva",
       "metrics": {
         "title": "Por que validar testes diagnósticos? — Intensivão Preventiva",
@@ -165,7 +165,7 @@
       "block": "m1",
       "label": "Medicina baseada em evidências: IA não substitui o médico",
       "url": "http://localhost:8000/#m1-02",
-      "loadMs": 269,
+      "loadMs": 275,
       "title": "Medicina baseada em evidências: IA não substitui o médico — Intensivão Preventiva",
       "metrics": {
         "title": "Medicina baseada em evidências: IA não substitui o médico — Intensivão Preventiva",
@@ -216,7 +216,7 @@
       "block": "m1",
       "label": "Epidemiologia clínica: pedir e interpretar exames",
       "url": "http://localhost:8000/#m1-03",
-      "loadMs": 265,
+      "loadMs": 277,
       "title": "Epidemiologia clínica: pedir e interpretar exames — Intensivão Preventiva",
       "metrics": {
         "title": "Epidemiologia clínica: pedir e interpretar exames — Intensivão Preventiva",
@@ -267,7 +267,7 @@
       "block": "m1",
       "label": "A tabela 2x2: a cruz que organiza o raciocínio",
       "url": "http://localhost:8000/#m1-04",
-      "loadMs": 264,
+      "loadMs": 267,
       "title": "A tabela 2x2: a cruz que organiza o raciocínio — Intensivão Preventiva",
       "metrics": {
         "title": "A tabela 2x2: a cruz que organiza o raciocínio — Intensivão Preventiva",
@@ -319,7 +319,7 @@
       "block": "m1",
       "label": "Quatro resultados: VP, FP, FN e VN",
       "url": "http://localhost:8000/#m1-05",
-      "loadMs": 269,
+      "loadMs": 266,
       "title": "Quatro resultados: VP, FP, FN e VN — Intensivão Preventiva",
       "metrics": {
         "title": "Quatro resultados: VP, FP, FN e VN — Intensivão Preventiva",
@@ -370,7 +370,7 @@
       "block": "m1",
       "label": "Acurácia: a proporção de acertos",
       "url": "http://localhost:8000/#m1-06",
-      "loadMs": 266,
+      "loadMs": 267,
       "title": "Acurácia: a proporção de acertos — Intensivão Preventiva",
       "metrics": {
         "title": "Acurácia: a proporção de acertos — Intensivão Preventiva",
@@ -472,7 +472,7 @@
       "block": "m1",
       "label": "Testes em paralelo: priorizar exclusão",
       "url": "http://localhost:8000/#m1-08",
-      "loadMs": 276,
+      "loadMs": 278,
       "title": "Testes em paralelo: priorizar exclusão — Intensivão Preventiva",
       "metrics": {
         "title": "Testes em paralelo: priorizar exclusão — Intensivão Preventiva",
@@ -523,7 +523,7 @@
       "block": "m1",
       "label": "Especificidade: reconhecer sadios",
       "url": "http://localhost:8000/#m1-09",
-      "loadMs": 270,
+      "loadMs": 267,
       "title": "Especificidade: reconhecer sadios — Intensivão Preventiva",
       "metrics": {
         "title": "Especificidade: reconhecer sadios — Intensivão Preventiva",
@@ -574,7 +574,7 @@
       "block": "m1",
       "label": "Testes em série: priorizar confirmação",
       "url": "http://localhost:8000/#m1-10",
-      "loadMs": 275,
+      "loadMs": 273,
       "title": "Testes em série: priorizar confirmação — Intensivão Preventiva",
       "metrics": {
         "title": "Testes em série: priorizar confirmação — Intensivão Preventiva",
@@ -625,7 +625,7 @@
       "block": "m1",
       "label": "Sens, Esp e prevalência: o que muda e o que não muda",
       "url": "http://localhost:8000/#m1-11",
-      "loadMs": 275,
+      "loadMs": 265,
       "title": "Sens, Esp e prevalência: o que muda e o que não muda — Intensivão Preventiva",
       "metrics": {
         "title": "Sens, Esp e prevalência: o que muda e o que não muda — Intensivão Preventiva",
@@ -676,7 +676,7 @@
       "block": "m1",
       "label": "Razões de verossimilhança",
       "url": "http://localhost:8000/#m1-12",
-      "loadMs": 275,
+      "loadMs": 269,
       "title": "Razões de verossimilhança — Intensivão Preventiva",
       "metrics": {
         "title": "Razões de verossimilhança — Intensivão Preventiva",
@@ -727,7 +727,7 @@
       "block": "m1",
       "label": "Fechamento de prova — Módulo 1",
       "url": "http://localhost:8000/#m1-13",
-      "loadMs": 271,
+      "loadMs": 337,
       "title": "Fechamento de prova — Módulo 1 — Intensivão Preventiva",
       "metrics": {
         "title": "Fechamento de prova — Módulo 1 — Intensivão Preventiva",
@@ -779,7 +779,7 @@
       "block": "m2",
       "label": "O segundo tempo do exame: valores preditivos",
       "url": "http://localhost:8000/#m2-01",
-      "loadMs": 268,
+      "loadMs": 275,
       "title": "O segundo tempo do exame: valores preditivos — Intensivão Preventiva",
       "metrics": {
         "title": "O segundo tempo do exame: valores preditivos — Intensivão Preventiva",
@@ -830,7 +830,7 @@
       "block": "m2",
       "label": "Da tabela à fórmula: VPP e VPN sem decoreba",
       "url": "http://localhost:8000/#m2-02",
-      "loadMs": 266,
+      "loadMs": 267,
       "title": "Da tabela à fórmula: VPP e VPN sem decoreba — Intensivão Preventiva",
       "metrics": {
         "title": "Da tabela à fórmula: VPP e VPN sem decoreba — Intensivão Preventiva",
@@ -881,7 +881,7 @@
       "block": "m2",
       "label": "A porquinha torce o rabo: prevalência transforma VPP/VPN",
       "url": "http://localhost:8000/#m2-03",
-      "loadMs": 269,
+      "loadMs": 275,
       "title": "A porquinha torce o rabo: prevalência transforma VPP/VPN — Intensivão Preventiva",
       "metrics": {
         "title": "A porquinha torce o rabo: prevalência transforma VPP/VPN — Intensivão Preventiva",
@@ -933,7 +933,7 @@
       "block": "m2",
       "label": "Rio × Londres: mesma Sens/Esp, VPP/VPN diferentes",
       "url": "http://localhost:8000/#m2-04",
-      "loadMs": 273,
+      "loadMs": 282,
       "title": "Rio × Londres: mesma Sens/Esp, VPP/VPN diferentes — Intensivão Preventiva",
       "metrics": {
         "title": "Rio × Londres: mesma Sens/Esp, VPP/VPN diferentes — Intensivão Preventiva",
@@ -984,7 +984,7 @@
       "block": "m2",
       "label": "Prevalência vira probabilidade pré-teste",
       "url": "http://localhost:8000/#m2-05",
-      "loadMs": 275,
+      "loadMs": 264,
       "title": "Prevalência vira probabilidade pré-teste — Intensivão Preventiva",
       "metrics": {
         "title": "Prevalência vira probabilidade pré-teste — Intensivão Preventiva",
@@ -1035,7 +1035,7 @@
       "block": "m2",
       "label": "Baixa probabilidade pré-teste: boa prática",
       "url": "http://localhost:8000/#m2-06",
-      "loadMs": 267,
+      "loadMs": 268,
       "title": "Baixa probabilidade pré-teste: boa prática — Intensivão Preventiva",
       "metrics": {
         "title": "Baixa probabilidade pré-teste: boa prática — Intensivão Preventiva",
@@ -1086,7 +1086,7 @@
       "block": "m2",
       "label": "Questão guiada 1: hanseníase e tabela 2x2",
       "url": "http://localhost:8000/#m2-07",
-      "loadMs": 266,
+      "loadMs": 274,
       "title": "Questão guiada 1: hanseníase e tabela 2x2 — Intensivão Preventiva",
       "metrics": {
         "title": "Questão guiada 1: hanseníase e tabela 2x2 — Intensivão Preventiva",
@@ -1137,7 +1137,7 @@
       "block": "m2",
       "label": "Questões guiadas 2 e 3: baixa prevalência, FP",
       "url": "http://localhost:8000/#m2-08",
-      "loadMs": 266,
+      "loadMs": 267,
       "title": "Questões guiadas 2 e 3: baixa prevalência, FP — Intensivão Preventiva",
       "metrics": {
         "title": "Questões guiadas 2 e 3: baixa prevalência, FP — Intensivão Preventiva",
@@ -1188,7 +1188,7 @@
       "block": "m2",
       "label": "Sintomas como teste: cistite e VPP",
       "url": "http://localhost:8000/#m2-09",
-      "loadMs": 270,
+      "loadMs": 289,
       "title": "Sintomas como teste: cistite e VPP — Intensivão Preventiva",
       "metrics": {
         "title": "Sintomas como teste: cistite e VPP — Intensivão Preventiva",
@@ -1239,7 +1239,7 @@
       "block": "m2",
       "label": "Fechamento — Módulo 2",
       "url": "http://localhost:8000/#m2-10",
-      "loadMs": 272,
+      "loadMs": 265,
       "title": "Fechamento — Módulo 2 — Intensivão Preventiva",
       "metrics": {
         "title": "Fechamento — Módulo 2 — Intensivão Preventiva",
@@ -1291,7 +1291,7 @@
       "block": "m3",
       "label": "Da razão de verossimilhança à Curva ROC",
       "url": "http://localhost:8000/#m3-01",
-      "loadMs": 268,
+      "loadMs": 275,
       "title": "Da razão de verossimilhança à Curva ROC — Intensivão Preventiva",
       "metrics": {
         "title": "Da razão de verossimilhança à Curva ROC — Intensivão Preventiva",
@@ -1342,7 +1342,7 @@
       "block": "m3",
       "label": "Lendo os eixos da Curva ROC",
       "url": "http://localhost:8000/#m3-02",
-      "loadMs": 266,
+      "loadMs": 267,
       "title": "Lendo os eixos da Curva ROC — Intensivão Preventiva",
       "metrics": {
         "title": "Lendo os eixos da Curva ROC — Intensivão Preventiva",
@@ -1393,7 +1393,7 @@
       "block": "m3",
       "label": "O melhor ponto: superior e à esquerda",
       "url": "http://localhost:8000/#m3-03",
-      "loadMs": 268,
+      "loadMs": 265,
       "title": "O melhor ponto: superior e à esquerda — Intensivão Preventiva",
       "metrics": {
         "title": "O melhor ponto: superior e à esquerda — Intensivão Preventiva",
@@ -1444,7 +1444,7 @@
       "block": "m3",
       "label": "De onde vêm os valores de referência (HbA1c)",
       "url": "http://localhost:8000/#m3-04",
-      "loadMs": 317,
+      "loadMs": 315,
       "title": "De onde vêm os valores de referência (HbA1c) — Intensivão Preventiva",
       "metrics": {
         "title": "De onde vêm os valores de referência (HbA1c) — Intensivão Preventiva",
@@ -1547,7 +1547,7 @@
       "block": "m3",
       "label": "AUC: comparando testes pela área sob a curva",
       "url": "http://localhost:8000/#m3-06",
-      "loadMs": 266,
+      "loadMs": 273,
       "title": "AUC: comparando testes pela área sob a curva — Intensivão Preventiva",
       "metrics": {
         "title": "AUC: comparando testes pela área sob a curva — Intensivão Preventiva",
@@ -1598,7 +1598,7 @@
       "block": "m3",
       "label": "Como a banca cobra Curva ROC",
       "url": "http://localhost:8000/#m3-07",
-      "loadMs": 273,
+      "loadMs": 277,
       "title": "Como a banca cobra Curva ROC — Intensivão Preventiva",
       "metrics": {
         "title": "Como a banca cobra Curva ROC — Intensivão Preventiva",
@@ -1650,7 +1650,7 @@
       "block": "m4",
       "label": "Por que tendência central cai em Medicina?",
       "url": "http://localhost:8000/#m4-01",
-      "loadMs": 269,
+      "loadMs": 274,
       "title": "Por que tendência central cai em Medicina? — Intensivão Preventiva",
       "metrics": {
         "title": "Por que tendência central cai em Medicina? — Intensivão Preventiva",
@@ -1701,7 +1701,7 @@
       "block": "m4",
       "label": "Média: muitos números em um panorama",
       "url": "http://localhost:8000/#m4-02",
-      "loadMs": 268,
+      "loadMs": 286,
       "title": "Média: muitos números em um panorama — Intensivão Preventiva",
       "metrics": {
         "title": "Média: muitos números em um panorama — Intensivão Preventiva",
@@ -1752,7 +1752,7 @@
       "block": "m4",
       "label": "Mediana: o centro que resiste aos extremos",
       "url": "http://localhost:8000/#m4-03",
-      "loadMs": 264,
+      "loadMs": 272,
       "title": "Mediana: o centro que resiste aos extremos — Intensivão Preventiva",
       "metrics": {
         "title": "Mediana: o centro que resiste aos extremos — Intensivão Preventiva",
@@ -1803,7 +1803,7 @@
       "block": "m4",
       "label": "Moda: o valor que mais aparece",
       "url": "http://localhost:8000/#m4-04",
-      "loadMs": 267,
+      "loadMs": 272,
       "title": "Moda: o valor que mais aparece — Intensivão Preventiva",
       "metrics": {
         "title": "Moda: o valor que mais aparece — Intensivão Preventiva",
@@ -1854,7 +1854,7 @@
       "block": "m4",
       "label": "Mediana em prova: ordenar primeiro, calcular depois",
       "url": "http://localhost:8000/#m4-05",
-      "loadMs": 271,
+      "loadMs": 266,
       "title": "Mediana em prova: ordenar primeiro, calcular depois — Intensivão Preventiva",
       "metrics": {
         "title": "Mediana em prova: ordenar primeiro, calcular depois — Intensivão Preventiva",
@@ -1905,7 +1905,7 @@
       "block": "m4",
       "label": "Dispersão: quando a média esconde histórias",
       "url": "http://localhost:8000/#m4-06",
-      "loadMs": 263,
+      "loadMs": 266,
       "title": "Dispersão: quando a média esconde histórias — Intensivão Preventiva",
       "metrics": {
         "title": "Dispersão: quando a média esconde histórias — Intensivão Preventiva",
@@ -1957,7 +1957,7 @@
       "block": "m4",
       "label": "Amplitude e desvio: o espalhamento simples",
       "url": "http://localhost:8000/#m4-07",
-      "loadMs": 268,
+      "loadMs": 297,
       "title": "Amplitude e desvio: o espalhamento simples — Intensivão Preventiva",
       "metrics": {
         "title": "Amplitude e desvio: o espalhamento simples — Intensivão Preventiva",
@@ -2008,7 +2008,7 @@
       "block": "m4",
       "label": "Variância e desvio padrão: formalizando o espalhamento",
       "url": "http://localhost:8000/#m4-08",
-      "loadMs": 264,
+      "loadMs": 274,
       "title": "Variância e desvio padrão: formalizando o espalhamento — Intensivão Preventiva",
       "metrics": {
         "title": "Variância e desvio padrão: formalizando o espalhamento — Intensivão Preventiva",
@@ -2059,7 +2059,7 @@
       "block": "m4",
       "label": "Como a banca cobra: centro × dispersão",
       "url": "http://localhost:8000/#m4-09",
-      "loadMs": 276,
+      "loadMs": 265,
       "title": "Como a banca cobra: centro × dispersão — Intensivão Preventiva",
       "metrics": {
         "title": "Como a banca cobra: centro × dispersão — Intensivão Preventiva",
@@ -2111,7 +2111,7 @@
       "block": "integ",
       "label": "Mapa Mental Integrado",
       "url": "http://localhost:8000/#mapa-global",
-      "loadMs": 274,
+      "loadMs": 266,
       "title": "Mapa Mental Integrado — Intensivão Preventiva",
       "metrics": {
         "title": "Mapa Mental Integrado — Intensivão Preventiva",
@@ -2154,7 +2154,7 @@
       "block": "integ",
       "label": "Matriz comparativa dos 4 módulos",
       "url": "http://localhost:8000/#matriz-comparativa",
-      "loadMs": 267,
+      "loadMs": 263,
       "title": "Matriz comparativa dos 4 módulos — Intensivão Preventiva",
       "metrics": {
         "title": "Matriz comparativa dos 4 módulos — Intensivão Preventiva",
@@ -2197,7 +2197,7 @@
       "block": "integ",
       "label": "Simulador Bayesiano (pré → pós)",
       "url": "http://localhost:8000/#simulador-bayesiano",
-      "loadMs": 265,
+      "loadMs": 264,
       "title": "Simulador Bayesiano (pré → pós) — Intensivão Preventiva",
       "metrics": {
         "title": "Simulador Bayesiano (pré → pós) — Intensivão Preventiva",
@@ -2240,7 +2240,7 @@
       "block": "integ",
       "label": "Revisão Final Global",
       "url": "http://localhost:8000/#revisao-final",
-      "loadMs": 276,
+      "loadMs": 267,
       "title": "Revisão Final Global — Intensivão Preventiva",
       "metrics": {
         "title": "Revisão Final Global — Intensivão Preventiva",
@@ -2283,7 +2283,7 @@
       "block": "integ",
       "label": "Como instalar o app (PWA)",
       "url": "http://localhost:8000/#instalar-app",
-      "loadMs": 274,
+      "loadMs": 273,
       "title": "Como instalar o app (PWA) — Intensivão Preventiva",
       "metrics": {
         "title": "Como instalar o app (PWA) — Intensivão Preventiva",
