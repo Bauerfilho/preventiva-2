@@ -147,6 +147,14 @@ GO_RENDER['m1-02'] = function(container, page) {
   ${didaxBlock('avancado','⚡','O que diferencia o aluno avançado',
     `<p>O aluno avançado conhece os "quatro És" do método clínico centrado na pessoa e sabe que demanda oculta é tão diagnóstica quanto sinal vital. Sabe também que IA tem um papel — mas no nível do auxílio, não da substituição.</p>`)}
 
+  ${sectionTitle('🔁','Vire o cartão — fixe os reflexos da MBE', 'm1')}
+  ${PrevInt.flashdeck([
+    { q: 'Os três pilares da MBE são…', a: 'Melhor evidência disponível, experiência clínica do médico e valores/preferências do paciente — integrados ativamente.' },
+    { q: 'Onde a IA atua melhor dentro da MBE?', a: 'No primeiro pilar (recuperar e sintetizar evidência) e como apoio ao segundo. Não substitui o terceiro (encontro humano e decisão compartilhada).' },
+    { q: 'O que são os "quatro És" do método clínico centrado na pessoa?', a: 'Explorar a doença e a experiência da doença · Entender a pessoa como um todo · Encontrar terreno comum · Estabelecer e fortalecer a relação médico-paciente.' },
+    { q: 'Demanda oculta — definição prática.', a: 'A motivação real do paciente por trás da queixa explicitada. Ex.: vem por "dor de cabeça", mas pesa o medo de demência. Identificá-la é tão diagnóstico quanto medir pressão.' }
+  ])}
+
   ${revisaoAtiva([
     { q: 'Quais são os três pilares da MBE?', a: 'Melhor evidência disponível, experiência clínica do médico e valores/preferências do paciente.' },
     { q: 'Por que IA não substitui médico?', a: 'Pode reproduzir o primeiro pilar (evidência) e auxiliar no segundo, mas não substitui o encontro humano que sustenta o terceiro (decisão compartilhada).' },
@@ -222,6 +230,24 @@ GO_RENDER['m1-03'] = function(container, page) {
 
   ${didaxBlock('avancado','⚡','O que diferencia o aluno avançado',
     `<p>O avançado pergunta, antes de pedir qualquer exame: "se o resultado for positivo, o que eu faço? e se for negativo, o que eu faço?". Se as respostas forem iguais, o exame não deveria ter sido pedido.</p>`)}
+
+  ${sectionTitle('🩺','Caso guiado — você é o médico de plantão', 'm1')}
+  ${PrevInt.casoClinico({
+    tag: 'Pedir ou não pedir?',
+    title: 'Mulher de 22 anos com dor torácica atípica',
+    scenario: `<p>Estudante de 22 anos chega ao pronto-socorro com episódio de dor torácica atípica durante semana de provas. Sem fatores de risco cardiovascular. Exame físico normal. ECG normal. Hemodinâmica estável.</p>
+    <p>Probabilidade pré-teste de doença coronariana estimada: <strong>~2%</strong>.</p>`,
+    question: 'Qual a melhor conduta diagnóstica neste momento?',
+    options: [
+      'Solicitar cintilografia miocárdica para descartar doença coronariana.',
+      'Solicitar angio-TC de coronárias por garantia, dada a queixa torácica.',
+      'Tranquilizar, orientar retorno se piora, e investigar causa funcional/ansiedade (sem teste cardíaco de imagem).',
+      'Internar para troponinas seriadas e prova de esforço.'
+    ],
+    correctIndex: 2,
+    explain: `Probabilidade pré-teste muito baixa (~2%) — solicitar um teste com Sens 85% e Esp 75% nessa população produzirá, em sua maioria, <strong>falsos positivos</strong> (VPP despenca em prevalência baixa). O exame não muda a conduta e ainda gera cascata diagnóstica. A boa medicina aqui é clínica + tranquilização + orientação de retorno.`,
+    tip: 'Filtro pré-exame: "se positivo, o que faço? se negativo, o que faço?". Se as respostas são iguais, o exame não deveria ser pedido.'
+  })}
 
   ${revisaoAtiva([
     { q: 'O que é probabilidade pré-teste?', a: 'Sua estimativa individual da probabilidade de doença antes do exame, baseada em idade, sexo, fatores de risco, clínica e prevalência local.' },

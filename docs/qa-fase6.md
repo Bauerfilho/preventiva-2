@@ -1,7 +1,7 @@
 # QA Fase 6 — Intensivão Preventiva
 
 > Auditoria automática Playwright das **46 páginas** declaradas em `js/data.js`.
-> Geração: 2026-05-18T03:57:38.660Z
+> Geração: 2026-05-18T04:07:34.857Z
 > Base URL: `http://localhost:8000`
 
 ## Sumário
@@ -9,15 +9,15 @@
 | Métrica | Valor |
 |---|---|
 | Páginas auditadas | **46** |
-| Páginas OK | **40** |
-| Páginas com issues | **6** |
-| Tempo médio de load | 298 ms |
+| Páginas OK | **46** |
+| Páginas com issues | **0** |
+| Tempo médio de load | 299 ms |
 | Console errors (soma) | 0 |
 | Page errors (soma) | 0 |
 | Requests falhados | 0 |
-| Interativos (PrevInt) | 48 |
+| Interativos (PrevInt) | 55 |
 | didaxBlocks | 1101 |
-| section-title-pv (Fase 5) | 71 |
+| section-title-pv (Fase 5) | 77 |
 | key-terms (Fase 5) | 37 |
 | .banca-callout | 39 |
 | revisão ativa (didax --resumo + details) | 40 |
@@ -29,84 +29,74 @@
 | .cross-link (Fase 4) | 12 |
 | .ponto-costura (Fase 4) | 5 |
 
-## Achados acionáveis
+## Conformidade didática
 
-### Páginas de conteúdo SEM componente interativo PrevInt
+✅ **Todas as 39 páginas de conteúdo (m1/m2/m3/m4) possuem ≥1 componente interativo PrevInt**, em conformidade com o requisito contratual "MANDATORY complementary interactives".
 
-O contrato exige "MANDATORY complementary interactives" em todas as páginas de conteúdo. As páginas abaixo passam em tudo (zero erros, didax e revisão presentes), mas **não chamam nenhum `PrevInt.*`**. Todas são páginas de abertura conceitual de módulo ou subtópico, o que pode ser intencional — mas vale checar antes do encerramento da Fase 6.
-
-| Página | Bloco | Posição editorial | Sugestão de interativo |
-|---|---|---|---|
-| `m1-02` | m1 | abertura M1 (MBE × IA) | flashdeck curto com 4 afirmações "IA × médico" para virar conceito |
-| `m1-03` | m1 | epidemiologia clínica — base teórica | casoClinico com 1 cenário "pedir o exame certo?" |
-| `m2-01` | m2 | abertura M2 (valores preditivos) | tabela2x2 mostrando VPP/VPN aparecendo na 2ª camada |
-| `m3-01` | m3 | abertura M3 (RV → ROC) | rocCurva já presente no m3-02 — adicionar versão simplificada de calibração ou flashdeck |
-| `m4-01` | m4 | abertura M4 (tendência central) | calcEstat com dataset clínico introdutório |
-| `m4-06` | m4 | abertura conceitual da dispersão | calcEstat lado a lado (Felipe 0,2,8,10 × Rafael 4,5,5,6) para visualizar mesma média / DP diferente |
-
-> **Decisão pendente:** ratificar essas omissões como deliberadas (e documentar em `arquitetura-didatica.md`) **ou** completar com os interativos sugeridos acima.
+Histórico:
+- 1ª varredura (Fase 6): 40/46 OK, 6 páginas sem interativo (`m1-02, m1-03, m2-01, m3-01, m4-01, m4-06` — todas páginas de abertura conceitual).
+- 2ª varredura (Fase 6.5): 46/46 OK após inserção dos 6 interativos:
+  - `m1-02`: `flashdeck` (4 cards "MBE × IA")
+  - `m1-03`: `casoClinico` (jovem 22a com dor torácica atípica)
+  - `m2-01`: `tabela2x2` (prévia visual de VPP/VPN)
+  - `m3-01`: `flashdeck` (5 cards "RV × ROC")
+  - `m4-01`: `calcEstat` (glicemia de jejum de 8 pacientes)
+  - `m4-06`: `calcEstat` × 2 (Felipe instável × Rafael estável)
 
 ## Páginas com issues
 
-| ID | Bloco | Issues |
-|---|---|---|
-| `m1-02` | m1 | NO interativo |
-| `m1-03` | m1 | NO interativo |
-| `m2-01` | m2 | NO interativo |
-| `m3-01` | m3 | NO interativo |
-| `m4-01` | m4 | NO interativo |
-| `m4-06` | m4 | NO interativo |
+Nenhuma página com issues bloqueantes ✅
 
 ## Detalhe por página
 
 | ID | Bloco | Load | Hero | Didax | Sect | Banca | Rev | Inter | SVG | FA | PC | Status |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| `home` | home | 1409ms | 0 | 0 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | ✅ |
-| `como-estudar` | home | 275ms | 1 | 9 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | ✅ |
-| `m1-01` | m1 | 266ms | 1 | 30 | 1 | 1 | 1 | 1 | 0 | 0 | 0 | ✅ |
-| `m1-02` | m1 | 269ms | 1 | 27 | 1 | 1 | 1 | 0 | 0 | 0 | 0 | ⚠️ |
-| `m1-03` | m1 | 276ms | 1 | 27 | 1 | 1 | 1 | 0 | 0 | 0 | 0 | ⚠️ |
-| `m1-04` | m1 | 281ms | 1 | 27 | 2 | 1 | 1 | 2 | 0 | 1 | 0 | ✅ |
-| `m1-05` | m1 | 273ms | 1 | 27 | 1 | 1 | 1 | 1 | 0 | 0 | 0 | ✅ |
-| `m1-06` | m1 | 285ms | 1 | 27 | 1 | 1 | 1 | 1 | 0 | 0 | 0 | ✅ |
-| `m1-07` | m1 | 271ms | 1 | 30 | 2 | 1 | 1 | 2 | 0 | 0 | 0 | ✅ |
-| `m1-08` | m1 | 272ms | 1 | 30 | 2 | 1 | 1 | 2 | 0 | 0 | 0 | ✅ |
-| `m1-09` | m1 | 266ms | 1 | 30 | 2 | 1 | 1 | 2 | 0 | 0 | 0 | ✅ |
-| `m1-10` | m1 | 267ms | 1 | 30 | 2 | 1 | 1 | 1 | 0 | 0 | 0 | ✅ |
-| `m1-11` | m1 | 268ms | 1 | 30 | 1 | 1 | 1 | 1 | 0 | 0 | 0 | ✅ |
-| `m1-12` | m1 | 277ms | 1 | 30 | 1 | 1 | 1 | 1 | 0 | 0 | 0 | ✅ |
+| `home` | home | 1563ms | 0 | 0 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | ✅ |
+| `como-estudar` | home | 270ms | 1 | 9 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | ✅ |
+| `m1-01` | m1 | 279ms | 1 | 30 | 1 | 1 | 1 | 1 | 0 | 0 | 0 | ✅ |
+| `m1-02` | m1 | 269ms | 1 | 27 | 2 | 1 | 1 | 1 | 0 | 0 | 0 | ✅ |
+| `m1-03` | m1 | 265ms | 1 | 27 | 2 | 1 | 1 | 1 | 0 | 0 | 0 | ✅ |
+| `m1-04` | m1 | 264ms | 1 | 27 | 2 | 1 | 1 | 2 | 0 | 1 | 0 | ✅ |
+| `m1-05` | m1 | 269ms | 1 | 27 | 1 | 1 | 1 | 1 | 0 | 0 | 0 | ✅ |
+| `m1-06` | m1 | 266ms | 1 | 27 | 1 | 1 | 1 | 1 | 0 | 0 | 0 | ✅ |
+| `m1-07` | m1 | 286ms | 1 | 30 | 2 | 1 | 1 | 2 | 0 | 0 | 0 | ✅ |
+| `m1-08` | m1 | 276ms | 1 | 30 | 2 | 1 | 1 | 2 | 0 | 0 | 0 | ✅ |
+| `m1-09` | m1 | 270ms | 1 | 30 | 2 | 1 | 1 | 2 | 0 | 0 | 0 | ✅ |
+| `m1-10` | m1 | 275ms | 1 | 30 | 2 | 1 | 1 | 1 | 0 | 0 | 0 | ✅ |
+| `m1-11` | m1 | 275ms | 1 | 30 | 1 | 1 | 1 | 1 | 0 | 0 | 0 | ✅ |
+| `m1-12` | m1 | 275ms | 1 | 30 | 1 | 1 | 1 | 1 | 0 | 0 | 0 | ✅ |
 | `m1-13` | m1 | 271ms | 1 | 30 | 2 | 1 | 1 | 1 | 0 | 0 | 1 | ✅ |
-| `m2-01` | m2 | 266ms | 1 | 30 | 1 | 1 | 1 | 0 | 0 | 0 | 0 | ⚠️ |
-| `m2-02` | m2 | 267ms | 1 | 30 | 2 | 1 | 1 | 2 | 0 | 0 | 0 | ✅ |
-| `m2-03` | m2 | 270ms | 1 | 30 | 1 | 1 | 1 | 1 | 1 | 1 | 0 | ✅ |
-| `m2-04` | m2 | 263ms | 1 | 30 | 2 | 1 | 1 | 2 | 0 | 0 | 0 | ✅ |
-| `m2-05` | m2 | 270ms | 1 | 30 | 1 | 1 | 1 | 1 | 0 | 0 | 0 | ✅ |
+| `m2-01` | m2 | 268ms | 1 | 30 | 2 | 1 | 1 | 1 | 0 | 0 | 0 | ✅ |
+| `m2-02` | m2 | 266ms | 1 | 30 | 2 | 1 | 1 | 2 | 0 | 0 | 0 | ✅ |
+| `m2-03` | m2 | 269ms | 1 | 30 | 1 | 1 | 1 | 1 | 1 | 1 | 0 | ✅ |
+| `m2-04` | m2 | 273ms | 1 | 30 | 2 | 1 | 1 | 2 | 0 | 0 | 0 | ✅ |
+| `m2-05` | m2 | 275ms | 1 | 30 | 1 | 1 | 1 | 1 | 0 | 0 | 0 | ✅ |
 | `m2-06` | m2 | 267ms | 1 | 30 | 1 | 1 | 1 | 1 | 0 | 0 | 0 | ✅ |
-| `m2-07` | m2 | 267ms | 1 | 30 | 1 | 1 | 1 | 1 | 0 | 0 | 0 | ✅ |
+| `m2-07` | m2 | 266ms | 1 | 30 | 1 | 1 | 1 | 1 | 0 | 0 | 0 | ✅ |
 | `m2-08` | m2 | 266ms | 1 | 30 | 1 | 1 | 1 | 1 | 0 | 0 | 0 | ✅ |
-| `m2-09` | m2 | 273ms | 1 | 30 | 1 | 1 | 1 | 1 | 0 | 0 | 0 | ✅ |
-| `m2-10` | m2 | 266ms | 1 | 30 | 2 | 1 | 1 | 2 | 0 | 0 | 1 | ✅ |
-| `m3-01` | m3 | 267ms | 1 | 27 | 1 | 1 | 1 | 0 | 1 | 0 | 0 | ⚠️ |
-| `m3-02` | m3 | 274ms | 1 | 30 | 1 | 1 | 1 | 1 | 0 | 0 | 0 | ✅ |
-| `m3-03` | m3 | 269ms | 1 | 27 | 1 | 1 | 1 | 1 | 0 | 0 | 0 | ✅ |
-| `m3-04` | m3 | 304ms | 1 | 27 | 1 | 1 | 1 | 1 | 0 | 1 | 0 | ✅ |
-| `m3-05` | m3 | 296ms | 1 | 27 | 2 | 1 | 1 | 1 | 0 | 0 | 0 | ✅ |
-| `m3-06` | m3 | 272ms | 1 | 30 | 1 | 1 | 1 | 2 | 1 | 0 | 0 | ✅ |
-| `m3-07` | m3 | 263ms | 1 | 27 | 2 | 1 | 1 | 1 | 0 | 0 | 1 | ✅ |
-| `m4-01` | m4 | 293ms | 1 | 21 | 2 | 1 | 1 | 0 | 0 | 0 | 1 | ⚠️ |
-| `m4-02` | m4 | 274ms | 1 | 18 | 3 | 1 | 1 | 1 | 1 | 0 | 0 | ✅ |
-| `m4-03` | m4 | 266ms | 1 | 21 | 3 | 1 | 1 | 2 | 1 | 0 | 0 | ✅ |
-| `m4-04` | m4 | 279ms | 1 | 24 | 2 | 1 | 1 | 2 | 0 | 0 | 0 | ✅ |
+| `m2-09` | m2 | 270ms | 1 | 30 | 1 | 1 | 1 | 1 | 0 | 0 | 0 | ✅ |
+| `m2-10` | m2 | 272ms | 1 | 30 | 2 | 1 | 1 | 2 | 0 | 0 | 1 | ✅ |
+| `m3-01` | m3 | 268ms | 1 | 27 | 2 | 1 | 1 | 1 | 1 | 0 | 0 | ✅ |
+| `m3-02` | m3 | 266ms | 1 | 30 | 1 | 1 | 1 | 1 | 0 | 0 | 0 | ✅ |
+| `m3-03` | m3 | 268ms | 1 | 27 | 1 | 1 | 1 | 1 | 0 | 0 | 0 | ✅ |
+| `m3-04` | m3 | 317ms | 1 | 27 | 1 | 1 | 1 | 1 | 0 | 1 | 0 | ✅ |
+| `m3-05` | m3 | 266ms | 1 | 27 | 2 | 1 | 1 | 1 | 0 | 0 | 0 | ✅ |
+| `m3-06` | m3 | 266ms | 1 | 30 | 1 | 1 | 1 | 2 | 1 | 0 | 0 | ✅ |
+| `m3-07` | m3 | 273ms | 1 | 27 | 2 | 1 | 1 | 1 | 0 | 0 | 1 | ✅ |
+| `m4-01` | m4 | 269ms | 1 | 21 | 3 | 1 | 1 | 1 | 0 | 0 | 1 | ✅ |
+| `m4-02` | m4 | 268ms | 1 | 18 | 3 | 1 | 1 | 1 | 1 | 0 | 0 | ✅ |
+| `m4-03` | m4 | 264ms | 1 | 21 | 3 | 1 | 1 | 2 | 1 | 0 | 0 | ✅ |
+| `m4-04` | m4 | 267ms | 1 | 24 | 2 | 1 | 1 | 2 | 0 | 0 | 0 | ✅ |
 | `m4-05` | m4 | 271ms | 1 | 27 | 4 | 1 | 1 | 1 | 0 | 0 | 0 | ✅ |
-| `m4-06` | m4 | 267ms | 1 | 24 | 2 | 1 | 1 | 0 | 1 | 1 | 0 | ⚠️ |
-| `m4-07` | m4 | 269ms | 1 | 27 | 2 | 1 | 1 | 2 | 0 | 0 | 0 | ✅ |
-| `m4-08` | m4 | 317ms | 1 | 24 | 3 | 1 | 1 | 2 | 0 | 0 | 0 | ✅ |
-| `m4-09` | m4 | 271ms | 1 | 18 | 3 | 1 | 1 | 1 | 0 | 0 | 1 | ✅ |
-| `mapa-global` | integ | 280ms | 1 | 3 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | ✅ |
+| `m4-06` | m4 | 263ms | 1 | 24 | 3 | 1 | 1 | 2 | 1 | 1 | 0 | ✅ |
+| `m4-07` | m4 | 268ms | 1 | 27 | 2 | 1 | 1 | 2 | 0 | 0 | 0 | ✅ |
+| `m4-08` | m4 | 264ms | 1 | 24 | 3 | 1 | 1 | 2 | 0 | 0 | 0 | ✅ |
+| `m4-09` | m4 | 276ms | 1 | 18 | 3 | 1 | 1 | 1 | 0 | 0 | 1 | ✅ |
+| `mapa-global` | integ | 274ms | 1 | 3 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | ✅ |
 | `matriz-comparativa` | integ | 267ms | 1 | 3 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ✅ |
-| `simulador-bayesiano` | integ | 264ms | 1 | 9 | 0 | 0 | 1 | 1 | 0 | 0 | 0 | ✅ |
-| `revisao-final` | integ | 264ms | 1 | 3 | 1 | 0 | 0 | 2 | 0 | 0 | 0 | ✅ |
-| `instalar-app` | integ | 266ms | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ✅ |
+| `simulador-bayesiano` | integ | 265ms | 1 | 9 | 0 | 0 | 1 | 1 | 0 | 0 | 0 | ✅ |
+| `revisao-final` | integ | 276ms | 1 | 3 | 1 | 0 | 0 | 2 | 0 | 0 | 0 | ✅ |
+| `instalar-app` | integ | 274ms | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | ✅ |
 
 ## Identidade Fase 5 — fraseAutoral
 

@@ -78,6 +78,12 @@ GO_RENDER['m4-01'] = function(c, p) {
       `<p>Estudo clínico publicado: “pacientes com idade <strong>média</strong> 62 anos, glicemia <strong>mediana</strong> 138 mg/dL, IMC <strong>médio</strong> 28”. Você lê em segundos uma população inteira. Sem tendência central, cada artigo seria uma planilha indecifrável. A banca cobra porque é a primeira leitura de qualquer estudo clínico.</p>`
     ) +
 
+    sectionTitle('🧮', 'Calculadora introdutória — experimente resumir um grupo', 'm4') +
+    `<p class="mt-prose">Abaixo: glicemia de jejum (mg/dL) de 8 pacientes do ambulatório. Os campos de média, mediana, moda, amplitude, variância e desvio padrão atualizam em tempo real. <strong>Apague um valor</strong> ou <strong>adicione um extremo</strong> (ex.: 350) e veja como cada métrica reage diferente — esse é o cerne dos próximos capítulos.</p>` +
+    PrevInt.calcEstat({
+      values: [92, 98, 102, 105, 108, 112, 118, 125]
+    }) +
+
     bancaCallout(
       `<strong>O que a banca quer testar nesta página:</strong> que você reconheça que <em>média, mediana e moda</em> têm o mesmo propósito (resumir um grupo) mas <strong>contam histórias diferentes</strong>. Quem confunde os três paga caro em questão de pressão arterial, glicemia, idade e renda — todas com perfis assimétricos.`
     ) +
@@ -486,6 +492,19 @@ GO_RENDER['m4-06'] = function(c, p) {
           <p class="emphasis --green">Mesma média do Felipe, mas notas todas perto de 5 — desempenho estável.</p>
           <p class="editorial-note">Nota editorial: sequência didática compatível para preservar média 5, amplitude 2 e baixa dispersão.</p>
         </div>
+      </div>
+    </div>` +
+
+    sectionTitle('🧮', 'Confirme você mesmo — duas calculadoras lado a lado', 'm4') +
+    `<p class="mt-prose">Não acredite no texto: confirme. As duas calculadoras abaixo carregam exatamente as notas de Felipe e Rafael. Compare <strong>Média</strong> (igual nas duas), depois <strong>Amplitude</strong>, <strong>Variância</strong> e <strong>Desvio Padrão</strong> — todas radicalmente diferentes. É o conceito de dispersão nascendo numericamente diante dos seus olhos.</p>` +
+    `<div class="split-grid">
+      <div>
+        <h4 style="margin:0 0 8px; font-size:13px; text-transform:uppercase; letter-spacing:.05em; color:var(--c-red); font-weight:700;">🟦 Felipe — instável (0, 2, 8, 10)</h4>
+        ${PrevInt.calcEstat({ values: [0, 2, 8, 10] })}
+      </div>
+      <div>
+        <h4 style="margin:0 0 8px; font-size:13px; text-transform:uppercase; letter-spacing:.05em; color:var(--c-green); font-weight:700;">🟪 Rafael — estável (4, 5, 5, 6)</h4>
+        ${PrevInt.calcEstat({ values: [4, 5, 5, 6] })}
       </div>
     </div>` +
 

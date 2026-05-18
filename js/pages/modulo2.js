@@ -96,6 +96,14 @@ GO_RENDER['m2-01'] = function(container, page) {
   ${didaxBlock('numerico','🔢','Preparação para a fórmula',
     `<p>Nesta página, ainda não calculamos. Apenas fixamos o terreno: <strong>se VPP é confiança no positivo, a fórmula olhará para todos os positivos. Se VPN é confiança no negativo, a fórmula olhará para todos os negativos.</strong></p>`)}
 
+  ${sectionTitle('🔬','Tabela 2x2 — onde VPP e VPN nascem (prévia visual)', 'm2')}
+  <p class="mt-prose">Antes de qualquer fórmula, observe os painéis VPP/VPN na lateral direita da tabela abaixo. Eles aparecem prontos — exatamente o que a próxima página irá destrinchar matematicamente. Mexa nos valores, veja como o positivo e o negativo respondem.</p>
+  ${PrevInt.tabela2x2({
+    vp: 90, fp: 30, fn: 10, vn: 870,
+    lockPrev: false,
+    title: 'Tabela 2x2 — Sens, Esp e os dois valores preditivos lado a lado'
+  })}
+
   ${revisaoAtiva([
     { q: 'Valores preditivos são sinônimo de quê?', a: 'Probabilidade pós-teste — a chance de o resultado obtido representar a realidade do paciente.' },
     { q: 'VPP interpreta qual tipo de resultado?', a: 'O resultado positivo. VPP responde: "dado um teste positivo, qual a chance de o paciente realmente ter a doença?".' },

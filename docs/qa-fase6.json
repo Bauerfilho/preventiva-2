@@ -2,17 +2,17 @@
   "baseUrl": "http://localhost:8000",
   "totals": {
     "pages": 46,
-    "ok": 40,
-    "fail": 6,
-    "avgLoadMs": 298,
+    "ok": 46,
+    "fail": 0,
+    "avgLoadMs": 299,
     "sumConsoleErrors": 0,
     "sumPageErrors": 0,
     "sumRequestFailures": 0,
     "totalFrasesAutorais": 4,
     "totalSvgIllus": 6,
     "totalSvgInline": 29,
-    "totalInterativos": 48,
-    "totalSectionTitlesPv": 71,
+    "totalInterativos": 55,
+    "totalSectionTitlesPv": 77,
     "totalKeyTerms": 37,
     "totalDidax": 1101,
     "totalBanca": 39,
@@ -28,7 +28,7 @@
       "block": "home",
       "label": "Dashboard — Mapa da Preventiva",
       "url": "http://localhost:8000/#home",
-      "loadMs": 1409,
+      "loadMs": 1563,
       "title": "Dashboard — Mapa da Preventiva — Intensivão Preventiva",
       "metrics": {
         "title": "Dashboard — Mapa da Preventiva — Intensivão Preventiva",
@@ -71,7 +71,7 @@
       "block": "home",
       "label": "Como estudar nesta plataforma",
       "url": "http://localhost:8000/#como-estudar",
-      "loadMs": 275,
+      "loadMs": 270,
       "title": "Como estudar nesta plataforma — Intensivão Preventiva",
       "metrics": {
         "title": "Como estudar nesta plataforma — Intensivão Preventiva",
@@ -114,7 +114,7 @@
       "block": "m1",
       "label": "Por que validar testes diagnósticos?",
       "url": "http://localhost:8000/#m1-01",
-      "loadMs": 266,
+      "loadMs": 279,
       "title": "Por que validar testes diagnósticos? — Intensivão Preventiva",
       "metrics": {
         "title": "Por que validar testes diagnósticos? — Intensivão Preventiva",
@@ -169,11 +169,11 @@
       "title": "Medicina baseada em evidências: IA não substitui o médico — Intensivão Preventiva",
       "metrics": {
         "title": "Medicina baseada em evidências: IA não substitui o médico — Intensivão Preventiva",
-        "bodyTextLen": 6257,
+        "bodyTextLen": 7060,
         "heroCount": 1,
         "conceptHeroCount": 1,
         "didaxCount": 27,
-        "sectionTitleCount": 1,
+        "sectionTitleCount": 2,
         "keyTermsCount": 1,
         "revisaoAtivaCount": 1,
         "bancaCalloutCount": 1,
@@ -185,7 +185,7 @@
         "fraseAutoralCount": 0,
         "svgIllusCount": 0,
         "svgInlineCount": 1,
-        "interativoCount": 0,
+        "interativoCount": 1,
         "navFooterCount": 1
       },
       "consoleErrors": [],
@@ -204,28 +204,27 @@
         "revisao-ativa",
         "banca-callout",
         "page-footer-meta",
+        "interativo",
         "nav-footer"
       ],
-      "issues": [
-        "NO interativo"
-      ],
+      "issues": [],
       "costuraNote": "",
-      "ok": false
+      "ok": true
     },
     {
       "id": "m1-03",
       "block": "m1",
       "label": "Epidemiologia clínica: pedir e interpretar exames",
       "url": "http://localhost:8000/#m1-03",
-      "loadMs": 276,
+      "loadMs": 265,
       "title": "Epidemiologia clínica: pedir e interpretar exames — Intensivão Preventiva",
       "metrics": {
         "title": "Epidemiologia clínica: pedir e interpretar exames — Intensivão Preventiva",
-        "bodyTextLen": 5692,
+        "bodyTextLen": 6422,
         "heroCount": 1,
         "conceptHeroCount": 1,
         "didaxCount": 27,
-        "sectionTitleCount": 1,
+        "sectionTitleCount": 2,
         "keyTermsCount": 1,
         "revisaoAtivaCount": 1,
         "bancaCalloutCount": 1,
@@ -237,7 +236,7 @@
         "fraseAutoralCount": 0,
         "svgIllusCount": 0,
         "svgInlineCount": 1,
-        "interativoCount": 0,
+        "interativoCount": 1,
         "navFooterCount": 1
       },
       "consoleErrors": [],
@@ -256,20 +255,19 @@
         "revisao-ativa",
         "banca-callout",
         "page-footer-meta",
+        "interativo",
         "nav-footer"
       ],
-      "issues": [
-        "NO interativo"
-      ],
+      "issues": [],
       "costuraNote": "",
-      "ok": false
+      "ok": true
     },
     {
       "id": "m1-04",
       "block": "m1",
       "label": "A tabela 2x2: a cruz que organiza o raciocínio",
       "url": "http://localhost:8000/#m1-04",
-      "loadMs": 281,
+      "loadMs": 264,
       "title": "A tabela 2x2: a cruz que organiza o raciocínio — Intensivão Preventiva",
       "metrics": {
         "title": "A tabela 2x2: a cruz que organiza o raciocínio — Intensivão Preventiva",
@@ -321,7 +319,7 @@
       "block": "m1",
       "label": "Quatro resultados: VP, FP, FN e VN",
       "url": "http://localhost:8000/#m1-05",
-      "loadMs": 273,
+      "loadMs": 269,
       "title": "Quatro resultados: VP, FP, FN e VN — Intensivão Preventiva",
       "metrics": {
         "title": "Quatro resultados: VP, FP, FN e VN — Intensivão Preventiva",
@@ -372,7 +370,7 @@
       "block": "m1",
       "label": "Acurácia: a proporção de acertos",
       "url": "http://localhost:8000/#m1-06",
-      "loadMs": 285,
+      "loadMs": 266,
       "title": "Acurácia: a proporção de acertos — Intensivão Preventiva",
       "metrics": {
         "title": "Acurácia: a proporção de acertos — Intensivão Preventiva",
@@ -423,7 +421,7 @@
       "block": "m1",
       "label": "Sensibilidade: detectar doentes",
       "url": "http://localhost:8000/#m1-07",
-      "loadMs": 271,
+      "loadMs": 286,
       "title": "Sensibilidade: detectar doentes — Intensivão Preventiva",
       "metrics": {
         "title": "Sensibilidade: detectar doentes — Intensivão Preventiva",
@@ -474,7 +472,7 @@
       "block": "m1",
       "label": "Testes em paralelo: priorizar exclusão",
       "url": "http://localhost:8000/#m1-08",
-      "loadMs": 272,
+      "loadMs": 276,
       "title": "Testes em paralelo: priorizar exclusão — Intensivão Preventiva",
       "metrics": {
         "title": "Testes em paralelo: priorizar exclusão — Intensivão Preventiva",
@@ -525,7 +523,7 @@
       "block": "m1",
       "label": "Especificidade: reconhecer sadios",
       "url": "http://localhost:8000/#m1-09",
-      "loadMs": 266,
+      "loadMs": 270,
       "title": "Especificidade: reconhecer sadios — Intensivão Preventiva",
       "metrics": {
         "title": "Especificidade: reconhecer sadios — Intensivão Preventiva",
@@ -576,7 +574,7 @@
       "block": "m1",
       "label": "Testes em série: priorizar confirmação",
       "url": "http://localhost:8000/#m1-10",
-      "loadMs": 267,
+      "loadMs": 275,
       "title": "Testes em série: priorizar confirmação — Intensivão Preventiva",
       "metrics": {
         "title": "Testes em série: priorizar confirmação — Intensivão Preventiva",
@@ -627,7 +625,7 @@
       "block": "m1",
       "label": "Sens, Esp e prevalência: o que muda e o que não muda",
       "url": "http://localhost:8000/#m1-11",
-      "loadMs": 268,
+      "loadMs": 275,
       "title": "Sens, Esp e prevalência: o que muda e o que não muda — Intensivão Preventiva",
       "metrics": {
         "title": "Sens, Esp e prevalência: o que muda e o que não muda — Intensivão Preventiva",
@@ -678,7 +676,7 @@
       "block": "m1",
       "label": "Razões de verossimilhança",
       "url": "http://localhost:8000/#m1-12",
-      "loadMs": 277,
+      "loadMs": 275,
       "title": "Razões de verossimilhança — Intensivão Preventiva",
       "metrics": {
         "title": "Razões de verossimilhança — Intensivão Preventiva",
@@ -781,15 +779,15 @@
       "block": "m2",
       "label": "O segundo tempo do exame: valores preditivos",
       "url": "http://localhost:8000/#m2-01",
-      "loadMs": 266,
+      "loadMs": 268,
       "title": "O segundo tempo do exame: valores preditivos — Intensivão Preventiva",
       "metrics": {
         "title": "O segundo tempo do exame: valores preditivos — Intensivão Preventiva",
-        "bodyTextLen": 5863,
+        "bodyTextLen": 6503,
         "heroCount": 1,
         "conceptHeroCount": 1,
         "didaxCount": 30,
-        "sectionTitleCount": 1,
+        "sectionTitleCount": 2,
         "keyTermsCount": 1,
         "revisaoAtivaCount": 1,
         "bancaCalloutCount": 1,
@@ -801,7 +799,7 @@
         "fraseAutoralCount": 0,
         "svgIllusCount": 0,
         "svgInlineCount": 0,
-        "interativoCount": 0,
+        "interativoCount": 1,
         "navFooterCount": 1
       },
       "consoleErrors": [],
@@ -820,20 +818,19 @@
         "revisao-ativa",
         "banca-callout",
         "page-footer-meta",
+        "interativo",
         "nav-footer"
       ],
-      "issues": [
-        "NO interativo"
-      ],
+      "issues": [],
       "costuraNote": "",
-      "ok": false
+      "ok": true
     },
     {
       "id": "m2-02",
       "block": "m2",
       "label": "Da tabela à fórmula: VPP e VPN sem decoreba",
       "url": "http://localhost:8000/#m2-02",
-      "loadMs": 267,
+      "loadMs": 266,
       "title": "Da tabela à fórmula: VPP e VPN sem decoreba — Intensivão Preventiva",
       "metrics": {
         "title": "Da tabela à fórmula: VPP e VPN sem decoreba — Intensivão Preventiva",
@@ -884,7 +881,7 @@
       "block": "m2",
       "label": "A porquinha torce o rabo: prevalência transforma VPP/VPN",
       "url": "http://localhost:8000/#m2-03",
-      "loadMs": 270,
+      "loadMs": 269,
       "title": "A porquinha torce o rabo: prevalência transforma VPP/VPN — Intensivão Preventiva",
       "metrics": {
         "title": "A porquinha torce o rabo: prevalência transforma VPP/VPN — Intensivão Preventiva",
@@ -936,7 +933,7 @@
       "block": "m2",
       "label": "Rio × Londres: mesma Sens/Esp, VPP/VPN diferentes",
       "url": "http://localhost:8000/#m2-04",
-      "loadMs": 263,
+      "loadMs": 273,
       "title": "Rio × Londres: mesma Sens/Esp, VPP/VPN diferentes — Intensivão Preventiva",
       "metrics": {
         "title": "Rio × Londres: mesma Sens/Esp, VPP/VPN diferentes — Intensivão Preventiva",
@@ -987,7 +984,7 @@
       "block": "m2",
       "label": "Prevalência vira probabilidade pré-teste",
       "url": "http://localhost:8000/#m2-05",
-      "loadMs": 270,
+      "loadMs": 275,
       "title": "Prevalência vira probabilidade pré-teste — Intensivão Preventiva",
       "metrics": {
         "title": "Prevalência vira probabilidade pré-teste — Intensivão Preventiva",
@@ -1089,7 +1086,7 @@
       "block": "m2",
       "label": "Questão guiada 1: hanseníase e tabela 2x2",
       "url": "http://localhost:8000/#m2-07",
-      "loadMs": 267,
+      "loadMs": 266,
       "title": "Questão guiada 1: hanseníase e tabela 2x2 — Intensivão Preventiva",
       "metrics": {
         "title": "Questão guiada 1: hanseníase e tabela 2x2 — Intensivão Preventiva",
@@ -1191,7 +1188,7 @@
       "block": "m2",
       "label": "Sintomas como teste: cistite e VPP",
       "url": "http://localhost:8000/#m2-09",
-      "loadMs": 273,
+      "loadMs": 270,
       "title": "Sintomas como teste: cistite e VPP — Intensivão Preventiva",
       "metrics": {
         "title": "Sintomas como teste: cistite e VPP — Intensivão Preventiva",
@@ -1242,7 +1239,7 @@
       "block": "m2",
       "label": "Fechamento — Módulo 2",
       "url": "http://localhost:8000/#m2-10",
-      "loadMs": 266,
+      "loadMs": 272,
       "title": "Fechamento — Módulo 2 — Intensivão Preventiva",
       "metrics": {
         "title": "Fechamento — Módulo 2 — Intensivão Preventiva",
@@ -1294,15 +1291,15 @@
       "block": "m3",
       "label": "Da razão de verossimilhança à Curva ROC",
       "url": "http://localhost:8000/#m3-01",
-      "loadMs": 267,
+      "loadMs": 268,
       "title": "Da razão de verossimilhança à Curva ROC — Intensivão Preventiva",
       "metrics": {
         "title": "Da razão de verossimilhança à Curva ROC — Intensivão Preventiva",
-        "bodyTextLen": 6803,
+        "bodyTextLen": 7698,
         "heroCount": 1,
         "conceptHeroCount": 1,
         "didaxCount": 27,
-        "sectionTitleCount": 1,
+        "sectionTitleCount": 2,
         "keyTermsCount": 1,
         "revisaoAtivaCount": 1,
         "bancaCalloutCount": 1,
@@ -1314,7 +1311,7 @@
         "fraseAutoralCount": 0,
         "svgIllusCount": 1,
         "svgInlineCount": 1,
-        "interativoCount": 0,
+        "interativoCount": 1,
         "navFooterCount": 1
       },
       "consoleErrors": [],
@@ -1333,20 +1330,19 @@
         "revisao-ativa",
         "banca-callout",
         "page-footer-meta",
+        "interativo",
         "nav-footer"
       ],
-      "issues": [
-        "NO interativo"
-      ],
+      "issues": [],
       "costuraNote": "",
-      "ok": false
+      "ok": true
     },
     {
       "id": "m3-02",
       "block": "m3",
       "label": "Lendo os eixos da Curva ROC",
       "url": "http://localhost:8000/#m3-02",
-      "loadMs": 274,
+      "loadMs": 266,
       "title": "Lendo os eixos da Curva ROC — Intensivão Preventiva",
       "metrics": {
         "title": "Lendo os eixos da Curva ROC — Intensivão Preventiva",
@@ -1397,7 +1393,7 @@
       "block": "m3",
       "label": "O melhor ponto: superior e à esquerda",
       "url": "http://localhost:8000/#m3-03",
-      "loadMs": 269,
+      "loadMs": 268,
       "title": "O melhor ponto: superior e à esquerda — Intensivão Preventiva",
       "metrics": {
         "title": "O melhor ponto: superior e à esquerda — Intensivão Preventiva",
@@ -1448,7 +1444,7 @@
       "block": "m3",
       "label": "De onde vêm os valores de referência (HbA1c)",
       "url": "http://localhost:8000/#m3-04",
-      "loadMs": 304,
+      "loadMs": 317,
       "title": "De onde vêm os valores de referência (HbA1c) — Intensivão Preventiva",
       "metrics": {
         "title": "De onde vêm os valores de referência (HbA1c) — Intensivão Preventiva",
@@ -1500,7 +1496,7 @@
       "block": "m3",
       "label": "Mexendo no ponto de corte: mais sensível ou mais específico",
       "url": "http://localhost:8000/#m3-05",
-      "loadMs": 296,
+      "loadMs": 266,
       "title": "Mexendo no ponto de corte: mais sensível ou mais específico — Intensivão Preventiva",
       "metrics": {
         "title": "Mexendo no ponto de corte: mais sensível ou mais específico — Intensivão Preventiva",
@@ -1551,7 +1547,7 @@
       "block": "m3",
       "label": "AUC: comparando testes pela área sob a curva",
       "url": "http://localhost:8000/#m3-06",
-      "loadMs": 272,
+      "loadMs": 266,
       "title": "AUC: comparando testes pela área sob a curva — Intensivão Preventiva",
       "metrics": {
         "title": "AUC: comparando testes pela área sob a curva — Intensivão Preventiva",
@@ -1602,7 +1598,7 @@
       "block": "m3",
       "label": "Como a banca cobra Curva ROC",
       "url": "http://localhost:8000/#m3-07",
-      "loadMs": 263,
+      "loadMs": 273,
       "title": "Como a banca cobra Curva ROC — Intensivão Preventiva",
       "metrics": {
         "title": "Como a banca cobra Curva ROC — Intensivão Preventiva",
@@ -1654,15 +1650,15 @@
       "block": "m4",
       "label": "Por que tendência central cai em Medicina?",
       "url": "http://localhost:8000/#m4-01",
-      "loadMs": 293,
+      "loadMs": 269,
       "title": "Por que tendência central cai em Medicina? — Intensivão Preventiva",
       "metrics": {
         "title": "Por que tendência central cai em Medicina? — Intensivão Preventiva",
-        "bodyTextLen": 4541,
+        "bodyTextLen": 5154,
         "heroCount": 1,
         "conceptHeroCount": 1,
         "didaxCount": 21,
-        "sectionTitleCount": 2,
+        "sectionTitleCount": 3,
         "keyTermsCount": 1,
         "revisaoAtivaCount": 1,
         "bancaCalloutCount": 1,
@@ -1674,7 +1670,7 @@
         "fraseAutoralCount": 0,
         "svgIllusCount": 0,
         "svgInlineCount": 0,
-        "interativoCount": 0,
+        "interativoCount": 1,
         "navFooterCount": 1
       },
       "consoleErrors": [],
@@ -1693,20 +1689,19 @@
         "revisao-ativa",
         "banca-callout",
         "page-footer-meta",
+        "interativo",
         "nav-footer"
       ],
-      "issues": [
-        "NO interativo"
-      ],
+      "issues": [],
       "costuraNote": "",
-      "ok": false
+      "ok": true
     },
     {
       "id": "m4-02",
       "block": "m4",
       "label": "Média: muitos números em um panorama",
       "url": "http://localhost:8000/#m4-02",
-      "loadMs": 274,
+      "loadMs": 268,
       "title": "Média: muitos números em um panorama — Intensivão Preventiva",
       "metrics": {
         "title": "Média: muitos números em um panorama — Intensivão Preventiva",
@@ -1757,7 +1752,7 @@
       "block": "m4",
       "label": "Mediana: o centro que resiste aos extremos",
       "url": "http://localhost:8000/#m4-03",
-      "loadMs": 266,
+      "loadMs": 264,
       "title": "Mediana: o centro que resiste aos extremos — Intensivão Preventiva",
       "metrics": {
         "title": "Mediana: o centro que resiste aos extremos — Intensivão Preventiva",
@@ -1808,7 +1803,7 @@
       "block": "m4",
       "label": "Moda: o valor que mais aparece",
       "url": "http://localhost:8000/#m4-04",
-      "loadMs": 279,
+      "loadMs": 267,
       "title": "Moda: o valor que mais aparece — Intensivão Preventiva",
       "metrics": {
         "title": "Moda: o valor que mais aparece — Intensivão Preventiva",
@@ -1910,15 +1905,15 @@
       "block": "m4",
       "label": "Dispersão: quando a média esconde histórias",
       "url": "http://localhost:8000/#m4-06",
-      "loadMs": 267,
+      "loadMs": 263,
       "title": "Dispersão: quando a média esconde histórias — Intensivão Preventiva",
       "metrics": {
         "title": "Dispersão: quando a média esconde histórias — Intensivão Preventiva",
-        "bodyTextLen": 4015,
+        "bodyTextLen": 4918,
         "heroCount": 1,
         "conceptHeroCount": 1,
         "didaxCount": 24,
-        "sectionTitleCount": 2,
+        "sectionTitleCount": 3,
         "keyTermsCount": 1,
         "revisaoAtivaCount": 1,
         "bancaCalloutCount": 1,
@@ -1930,7 +1925,7 @@
         "fraseAutoralCount": 1,
         "svgIllusCount": 1,
         "svgInlineCount": 1,
-        "interativoCount": 0,
+        "interativoCount": 2,
         "navFooterCount": 1
       },
       "consoleErrors": [],
@@ -1949,21 +1944,20 @@
         "revisao-ativa",
         "banca-callout",
         "page-footer-meta",
+        "interativo",
         "nav-footer",
         "frase-autoral"
       ],
-      "issues": [
-        "NO interativo"
-      ],
+      "issues": [],
       "costuraNote": "",
-      "ok": false
+      "ok": true
     },
     {
       "id": "m4-07",
       "block": "m4",
       "label": "Amplitude e desvio: o espalhamento simples",
       "url": "http://localhost:8000/#m4-07",
-      "loadMs": 269,
+      "loadMs": 268,
       "title": "Amplitude e desvio: o espalhamento simples — Intensivão Preventiva",
       "metrics": {
         "title": "Amplitude e desvio: o espalhamento simples — Intensivão Preventiva",
@@ -2014,7 +2008,7 @@
       "block": "m4",
       "label": "Variância e desvio padrão: formalizando o espalhamento",
       "url": "http://localhost:8000/#m4-08",
-      "loadMs": 317,
+      "loadMs": 264,
       "title": "Variância e desvio padrão: formalizando o espalhamento — Intensivão Preventiva",
       "metrics": {
         "title": "Variância e desvio padrão: formalizando o espalhamento — Intensivão Preventiva",
@@ -2065,7 +2059,7 @@
       "block": "m4",
       "label": "Como a banca cobra: centro × dispersão",
       "url": "http://localhost:8000/#m4-09",
-      "loadMs": 271,
+      "loadMs": 276,
       "title": "Como a banca cobra: centro × dispersão — Intensivão Preventiva",
       "metrics": {
         "title": "Como a banca cobra: centro × dispersão — Intensivão Preventiva",
@@ -2117,7 +2111,7 @@
       "block": "integ",
       "label": "Mapa Mental Integrado",
       "url": "http://localhost:8000/#mapa-global",
-      "loadMs": 280,
+      "loadMs": 274,
       "title": "Mapa Mental Integrado — Intensivão Preventiva",
       "metrics": {
         "title": "Mapa Mental Integrado — Intensivão Preventiva",
@@ -2203,7 +2197,7 @@
       "block": "integ",
       "label": "Simulador Bayesiano (pré → pós)",
       "url": "http://localhost:8000/#simulador-bayesiano",
-      "loadMs": 264,
+      "loadMs": 265,
       "title": "Simulador Bayesiano (pré → pós) — Intensivão Preventiva",
       "metrics": {
         "title": "Simulador Bayesiano (pré → pós) — Intensivão Preventiva",
@@ -2246,7 +2240,7 @@
       "block": "integ",
       "label": "Revisão Final Global",
       "url": "http://localhost:8000/#revisao-final",
-      "loadMs": 264,
+      "loadMs": 276,
       "title": "Revisão Final Global — Intensivão Preventiva",
       "metrics": {
         "title": "Revisão Final Global — Intensivão Preventiva",
@@ -2289,7 +2283,7 @@
       "block": "integ",
       "label": "Como instalar o app (PWA)",
       "url": "http://localhost:8000/#instalar-app",
-      "loadMs": 266,
+      "loadMs": 274,
       "title": "Como instalar o app (PWA) — Intensivão Preventiva",
       "metrics": {
         "title": "Como instalar o app (PWA) — Intensivão Preventiva",

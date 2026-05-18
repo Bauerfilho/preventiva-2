@@ -119,6 +119,15 @@ GO_RENDER['m3-01'] = function(container, page) {
   ${didaxBlock('avancado','⚡','O que diferencia o aluno avançado',
     `<p>O aluno avançado percebe que a Curva ROC é útil <strong>antes</strong> mesmo de decorar qualquer ponto: ela mostra o <em>custo</em> de deslocar um corte. Ganhar sensibilidade geralmente custa especificidade. Ganhar especificidade geralmente custa sensibilidade. A ROC é a foto desse trade-off.</p>`)}
 
+  ${sectionTitle('🔁','Vire o cartão — separe ferramenta e pergunta', 'm3')}
+  ${PrevInt.flashdeck([
+    { q: 'A questão me dá RV+ = 12 e RV− = 0,08. É RV ou ROC?', a: 'É razão de verossimilhança (cálculo). RV+ alta fortalece o positivo; RV− baixa fortalece o negativo. Não há gráfico envolvido.' },
+    { q: 'A questão me mostra um gráfico XY com Sens no eixo Y. É RV ou ROC?', a: 'É Curva ROC (raciocínio visual). Eixo X = 1 − Especificidade. Cada ponto da curva = um ponto de corte diferente.' },
+    { q: 'Como ler "RV+ alta" em uma frase clínica?', a: 'Significa "confiar mais no positivo". Quanto maior a RV+, mais o teste positivo eleva a probabilidade pós-teste de doença.' },
+    { q: 'Como ler "RV− baixa" em uma frase clínica?', a: 'Significa "confiar mais no negativo". Quanto menor a RV−, mais o teste negativo afasta doença.' },
+    { q: 'O que a Curva ROC mostra que a RV sozinha não mostra?', a: 'O trade-off ao longo de TODOS os pontos de corte simultaneamente. RV avalia um corte fixo; ROC compara cortes (e testes inteiros).' }
+  ])}
+
   ${revisaoAtiva([
     { q: 'Qual ferramenta é mais diretamente matemática: razão de verossimilhança ou Curva ROC?', a: 'A razão de verossimilhança — é cálculo (RV+ = Sens/(1−Esp); RV− = (1−Sens)/Esp). A Curva ROC é gráfica.' },
     { q: 'Se quero confiar mais no resultado positivo, procuro RV+ alta ou baixa?', a: 'RV+ alta. Quanto maior a RV+, mais o positivo eleva a chance de doença.' },
